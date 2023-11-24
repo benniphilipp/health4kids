@@ -7,7 +7,8 @@ DEBUG = True
 SECRET_KEY = "django-insecure-=t=1$oekehhkg2fhf8^bjja116n4_5h(4_s=prtrp6q(a0#3&!"
 
 # SECURITY WARNING: define the correct hosts in production!
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["localhost", "*", "185.163.118.173"]
+CSRF_TRUSTED_ORIGINS = ["http://*.185.163.118.173"]
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
