@@ -1,5 +1,7 @@
 from .base import *
 
+# https://learnwagtail.com/launch-your-wagtail-website-digital-ocean-ubuntu-18/
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 

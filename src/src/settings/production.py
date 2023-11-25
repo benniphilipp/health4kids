@@ -9,7 +9,7 @@ DATABASES = {
         'USER': 'health4kidsuser',
         'PASSWORD': 'health4kids',
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': '5432',
     }
 }
 
