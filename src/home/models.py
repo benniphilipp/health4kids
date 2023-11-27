@@ -8,6 +8,7 @@ from wagtail.admin.panels import FieldPanel, TabbedInterface, ObjectList
 class HomePage(Page):
     template = "home/home_page.html"
     max_count = 1
+    subpage_types = ["coaching.Coaching"]
 
     skyline = models.CharField(blank=True, max_length=350, verbose_name="Skyline")
     headline = RichTextField(blank=True, features=['h1', 'h2'])
