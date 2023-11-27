@@ -1,9 +1,16 @@
+# ToDo
+
+coching Modul erstellen
+Menu Modul erstelen
+
+Social Media Verlinkung
+
 # Git
 git add .
 git commit -m <Commit>
-git push origin <branch_name>
+git push origin home <branch_name>
 
-
+git branch --list
 git branch <Name>
 git checkout <Name>
 
@@ -22,6 +29,8 @@ python manage.py startapp app_name
 # Apps
 
 python manage.py startapp snippets
+python manage.py startapp coaching
+python manage.py startapp menu
 
 
 

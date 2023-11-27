@@ -1,0 +1,25 @@
+{
+  "name": "health4kids",
+  "version": "1.0.0",
+  "description": "coching Modul erstellen Menu Modul erstelen",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tailwindcss build src/static/css/input.css -o src/static/css/output.css",
+    "watch": "tailwindcss -i ./src/src/static/css/input.css -o ./src/src/static/css/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benniphilipp/health4kids.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benniphilipp/health4kids/issues"
+  },
+  "homepage": "https://github.com/benniphilipp/health4kids#readme",
+  "dependencies": {
+    "tailwindcss": "^3.3.5"
+  }
+}

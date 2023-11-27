@@ -1,4 +1,5 @@
-{% load static wagtailcore_tags wagtailuserbar %}
+{% load static wagtailcore_tags menus_tags wagtailuserbar %}
+{% get_menu "main" as navigation %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +35,28 @@
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
+
+        <!--Main Navbar-->
+        <section class="bg-brown">
+            <div class="container mx-auto p-3">
+                <div class="flex">
+                    <div class="flex-none">
+                        <img class="w-64" src="{% static 'image/logo.png' %}" alt="Logo">
+                    </div>
+                    <nav class="justify-items-start flex-1 w-64">
+                        <ul class="flex items-center h-16">
+                            {% for item in navigation.menu_items.all %}
+                                <li>
+                                    <a class="p-4" href="{{ item.link }}" class="nav-link"{% if item.open_in_new_tab %} target="_blank"{% endif %}>{{ item.title }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                    <div class="flex-1 w-64 flex justify-end items-center h-16">BTN</div>
+                </div>
+            </div>
+        </section>
+
 
         {% block content %}{% endblock %}
 
