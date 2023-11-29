@@ -26,10 +26,7 @@
 
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/src.css' %}">
-
-        {% comment %}
-        <link rel="stylesheet" href="{% static 'css/output.css' %}">
-        {% endcomment %}
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
         
         {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
@@ -40,27 +37,28 @@
         {% wagtailuserbar %}
 
         <!--Main Navbar-->
-        <section class="bg-brown">
-            <div class="container-xl mx-auto p-3">
-                <div class="flex">
-                    <div class="flex-none">
-                        <img class="w-64" src="{% static 'image/logo.png' %}" alt="Logo">
-                    </div>
-                    <nav class="justify-items-start flex-1 w-64">
-                        <ul class="flex items-center h-16 px-4">
-                            {% for item in navigation.menu_items.all %}
-                                <li>
-                                    <a class="p-4 mx-3 uppercase text-base font-sans font-medium hover-link {% if request.path == item.link %}active{% endif %}" href="{{ item.link }}" class="nav-link"{% if item.open_in_new_tab %} target="_blank"{% endif %}>{{ item.title }}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </nav>
-                    <div class="flex-1 w-64 flex justify-end items-center h-16 lg:hidden">
-                        <div class="btn-primary text-base">Strategiegespräch</div>
-                    </div>
+
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="#">Fixed navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                  <ul class="navbar-nav me-auto mb-2 mb-md-0">
+
+                    {% for item in navigation.menu_items.all %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == item.link %}active{% endif %}" href="{{ item.link }}" {% if item.open_in_new_tab %} target="_blank"{% endif %}>{{ item.title }}</a>
+                        </li>
+                    {% endfor %}
+
+                  </ul>
                 </div>
-            </div>
-        </section>
+              </div>
+            </nav>
+        </header>
 
         {% comment %}
             {{ settings.site_settings.SocialMediaSettings.facebook }}
