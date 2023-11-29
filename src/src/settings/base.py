@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     "home",
     "snippets",
     "coaching",
+    "site_settings",
     "menu",
     "search",
     "wagtail.contrib.forms",
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "wagtail.contrib.settings",
 ]
 
 MIDDLEWARE = [
@@ -77,6 +79,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "webp_converter.context_processors.webp_support",
+                "wagtail.contrib.settings.context_processors.settings",
             ],
         },
     },

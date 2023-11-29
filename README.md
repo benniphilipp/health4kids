@@ -1,9 +1,8 @@
 # ToDo
 
-coching Modul erstellen
-Menu Modul erstelen
-
-Social Media Verlinkung
+Seiten Einstllungen
+    Social Media Verlinkung
+    Button CTA
 
 # Git
 git add .
@@ -31,6 +30,7 @@ python manage.py startapp app_name
 python manage.py startapp snippets
 python manage.py startapp coaching
 python manage.py startapp menu
+python manage.py startapp site_settings
 
 
 

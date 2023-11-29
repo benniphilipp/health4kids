@@ -1,9 +1,0 @@
-/*npx tailwindcss -i ./src/src/static/css/input.css -o ./src/src/static/css/output.css --watch*/
-/*https://flowbite.com/docs/getting-started/django/*/
-
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
-
-

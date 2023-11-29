@@ -26,8 +26,11 @@
 
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/src.css' %}">
-        <link rel="stylesheet" href="{% static 'css/output.css' %}">
 
+        {% comment %}
+        <link rel="stylesheet" href="{% static 'css/output.css' %}">
+        {% endcomment %}
+        
         {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
         {% endblock %}
@@ -38,25 +41,32 @@
 
         <!--Main Navbar-->
         <section class="bg-brown">
-            <div class="container mx-auto p-3">
+            <div class="container-xl mx-auto p-3">
                 <div class="flex">
                     <div class="flex-none">
                         <img class="w-64" src="{% static 'image/logo.png' %}" alt="Logo">
                     </div>
                     <nav class="justify-items-start flex-1 w-64">
-                        <ul class="flex items-center h-16">
+                        <ul class="flex items-center h-16 px-4">
                             {% for item in navigation.menu_items.all %}
                                 <li>
-                                    <a class="p-4" href="{{ item.link }}" class="nav-link"{% if item.open_in_new_tab %} target="_blank"{% endif %}>{{ item.title }}</a>
+                                    <a class="p-4 mx-3 uppercase text-base font-sans font-medium hover-link {% if request.path == item.link %}active{% endif %}" href="{{ item.link }}" class="nav-link"{% if item.open_in_new_tab %} target="_blank"{% endif %}>{{ item.title }}</a>
                                 </li>
                             {% endfor %}
                         </ul>
                     </nav>
-                    <div class="flex-1 w-64 flex justify-end items-center h-16">BTN</div>
+                    <div class="flex-1 w-64 flex justify-end items-center h-16 lg:hidden">
+                        <div class="btn-primary text-base">Strategiegespräch</div>
+                    </div>
                 </div>
             </div>
         </section>
 
+        {% comment %}
+            {{ settings.site_settings.SocialMediaSettings.facebook }}
+            {{ settings.site_settings.SocialMediaSettings.instagram }}
+            {{ settings.site_settings.SocialMediaSettings.whatsapp }}
+        {% endcomment %}
 
         {% block content %}{% endblock %}
 
