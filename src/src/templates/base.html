@@ -1,8 +1,10 @@
-{% load static wagtailcore_tags menus_tags wagtailuserbar %}
+{% load static wagtailcore_tags menus_tags wagtailuserbar wagtailsettings_tags wagtailcore_tags wagtailimages_tags %}
+
+{% get_settings %}
 {% get_menu "main" as navigation %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
     <head>
         <meta charset="utf-8" />
         <title>
@@ -25,6 +27,9 @@
         {% endif %}
 
         {# Global stylesheets #}
+        <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="{% static 'css/src.css' %}">
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
         
@@ -37,25 +42,32 @@
         {% wagtailuserbar %}
 
         <!--Main Navbar-->
-
         <header>
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-              <div class="container-fluid">
-                <a class="navbar-brand" href="#">Fixed navbar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
+            <nav class="navbar navbar-expand-md p-0">                
+                <a class="navbar-brand p-2" href="/">
+                    {% image settings.site_settings.MySettings.header_logo original %}
+                </a>
+
+                <button class="navbar-toggler m-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
                 </button>
+
                 <div class="collapse navbar-collapse" id="navbarCollapse">
-                  <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                  <ul class="navbar-nav me-auto mb-md-0">
 
                     {% for item in navigation.menu_items.all %}
-                        <li class="nav-item">
-                            <a class="nav-link {% if request.path == item.link %}active{% endif %}" href="{{ item.link }}" {% if item.open_in_new_tab %} target="_blank"{% endif %}>{{ item.title }}</a>
+                        <li class="nav-item d-flex align-items-center {% if request.path == item.link %}active{% endif %}">
+                            <a class="nav-link" href="{{ item.link }}" {% if item.open_in_new_tab %} target="_blank"{% endif %}>{{ item.title }}</a>
                         </li>
                     {% endfor %}
 
                   </ul>
-                </div>
+
+                  {% if settings.site_settings.MySettings.book_appointment %}
+                    <nav class="navbar p-2">
+                        <a href="{{ settings.site_settings.MySettings.book_appointment.url }}" class="btn btn-primary">{{ settings.site_settings.MySettings.btn_text }}</a>
+                    </nav>
+                  {% endif %}
               </div>
             </nav>
         </header>
@@ -70,6 +82,7 @@
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/src.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/javascript.bundle.js' %}"></script>
 
         {% block extra_js %}
         {# Override this in templates to add extra javascript #}

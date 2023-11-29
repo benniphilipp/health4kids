@@ -27,6 +27,10 @@ class SocialMediaSettings(BaseSiteSetting):
 @register_setting
 class MySettings(BaseSiteSetting):
     
+    header_logo = models.ForeignKey(
+        'wagtailimages.Image', null=True, on_delete=models.SET_NULL, verbose_name="Header Logo", related_name='+'
+    )
+    
     book_appointment  = models.ForeignKey(
         'wagtailcore.Page', null=True, on_delete=models.SET_NULL, verbose_name="Seiten Auswahl", related_name='+'
     )
@@ -39,6 +43,7 @@ class MySettings(BaseSiteSetting):
     
     panels = [
         MultiFieldPanel([
+            FieldPanel("header_logo"),
             FieldPanel("book_appointment"),
             FieldPanel("btn_text"),
         ], heading="Header Button")
