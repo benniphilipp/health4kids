@@ -41,11 +41,12 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
+        
         <!--Main Navbar-->
         <header>
             <nav class="navbar navbar-light bg-ligh p-0">                
-                <div class="container-fluid justify-content-between align-items-stretch">
-                    <div class="d-flex nav-brand align-items-center p-2">
+                <div class="container justify-content-between align-items-stretch">
+                    <div class="d-flex nav-brand align-items-center py-2">
                         {% image settings.site_settings.MySettings.header_logo original %}
                     </div>
                     <div class="d-flex align-items-center justify-content-start flex-grow-1 ms-5 pw-display-none mobile">
@@ -91,7 +92,7 @@
             </nav>
         </header>
 
-        <div id="mobileMenuItem" class="d-flex flex-column align-items-start p-2">
+        <div id="mobileMenuItem" class="d-flex flex-column align-items-start">
             {% for item in navigation.menu_items.all %}
                 <a class="d-flex justify-content-center p-2 {% if request.path == item.link %}active{% endif %}" href="{{ item.link }}" {% if item.open_in_new_tab %} target="_blank"{% endif %}>
                     {{ item.title }}

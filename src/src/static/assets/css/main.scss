@@ -16,8 +16,31 @@
     width: 100%;
 }
 
-a{
-    text-decoration: none;
+@media (min-width: 576px){
+    .container, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
+        max-width: 1520px;
+    }
+}
+
+// Fonts Style
+h1{font-family: 'Playfair Display'; font-weight: bold; line-height: 1.3;}
+h2{}
+h3{}
+h4{}
+h5{}
+h6{}
+p{font-family:'Roboto', sans-serif;font-size:16px;font-weight: 300;line-height: 1.5;}
+span.pw-skyline{font-family: 'Playfair Display'; font-size: 26px;}
+a{text-decoration: none;}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
 }
 
 // BTN
@@ -49,10 +72,36 @@ a{
     border-color: var(--dark-blue);
 }
 
+.btn-secondary{
+    color: var(--white);
+    background-color: var(--red);
+    border-color: var(--red);
+}
+
 .btn-primary:hover {
     color: var(--white);
     background-color: var(--red);
     border-color: var(--red); 
+}
+
+.btn-secondary:hover{
+    color: var(--white);
+    background-color: var(--dark-blue);
+    border-color: var(--dark-blue);
+}
+
+
+
+// Startseite Hero
+.template-homepage .pw-skyline {
+    background-color: var(--brown);
+    padding: 5px 30px;
+    display: inline-block;
+}
+
+.template-homepage .pw-hero-headline{
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 

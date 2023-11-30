@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
@@ -7,5 +7,32 @@
 {% endblock extra_css %}
 
 {% block content %}
-Content Home
+
+{% image page.hero_image original format-webp-lossless as img %}
+<section style="position: relative; width: 100%; height: calc(100vh - 74px); overflow: hidden; background: url('{{ img.full_url }}') center/cover no-repeat; background-position: center top;">
+    <div class="overlay"></div>
+    <div class="container align-items-stretch h-100" style="position: relative; z-index: 1;">
+        <div class="row align-items-stretch h-100">
+            <div class="col-12 col-lg-6 col-md-12 text-white d-flex align-items-center">
+                
+                <div class="hero-body">
+                    <span class="pw-skyline">{{page.skyline}}</span>
+                    <div class="pw-hero-headline">
+                        {{page.headline|richtext}}
+                    </div>
+                    <div class="pw-hero-subline">
+                        {{page.subline|richtext}}
+                    </div>
+                    
+                    {% if page.link_url %}
+                        <a href="{{ page.link_url }}" class="btn btn-secondary mt-3">{{ page.btn_text }} <i class="fa-solid fa-arrow-right"></i></a>
+                    {% elif page.page_link %}
+                        <a href="{{ page.page_link.url }}" class="btn btn-secondary mt-3">{{ page.btn_text }} <i class="fa-solid fa-arrow-right"></i></a>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}
