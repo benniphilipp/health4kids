@@ -13,7 +13,7 @@
     <div class="overlay"></div>
     <div class="container align-items-stretch h-100" style="position: relative; z-index: 1;">
         <div class="row align-items-stretch h-100">
-            <div class="col-12 col-lg-6 col-md-12 text-white d-flex align-items-center">
+            <div class="col-12 col-xl-5 col-lg-7 col-md-12 text-white d-flex align-items-center">
                 
                 <div class="hero-body">
                     <span class="pw-skyline">{{page.skyline}}</span>
@@ -35,4 +35,9 @@
         </div>
     </div>
 </section>
+
+{% for block in page.content %}
+    {% include_block block %}
+{% endfor %}
+
 {% endblock content %}

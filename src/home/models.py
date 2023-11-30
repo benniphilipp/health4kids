@@ -1,9 +1,11 @@
 from django.db import models
 
 from wagtail.models import Page
-from wagtail.fields import RichTextField
+from wagtail.fields import RichTextField, StreamField
 from wagtail.images import get_image_model
 from wagtail.admin.panels import FieldPanel, TabbedInterface, ObjectList
+
+from streams.blocks import GalleryImageText
 
 class HomePage(Page):
     template = "home/home_page.html"
@@ -11,8 +13,8 @@ class HomePage(Page):
     subpage_types = ["coaching.Coaching"]
 
     skyline = models.CharField(blank=True, max_length=350, verbose_name="Skyline")
-    headline = RichTextField(blank=True, features=['h1', 'h2'])
-    subline = RichTextField(blank=True, features=['h1', 'h2'])
+    headline = RichTextField(blank=True, features=['h1', 'h2', 'custom-inline', 'custom-inline-blue'])
+    subline = RichTextField(blank=True, features=['h1', 'h2', 'custom-inline', 'custom-inline-blue'])
     
     # Hero Image
     hero_image = models.ForeignKey(
@@ -52,6 +54,17 @@ class HomePage(Page):
         verbose_name="Seiten Link Extern",
     )
     
+    # StreamField
+    content = StreamField([
+        ('headline_text_horizontal_line', GalleryImageText()),
+    ], 
+    blank=True,           
+    use_json_field=True)
+    
+    content_stream = Page.content_panels + [
+        FieldPanel('content'),
+    ]
+    
     content_panels = Page.content_panels + [
         FieldPanel('hero_image'),
         FieldPanel('skyline'),
@@ -65,6 +78,7 @@ class HomePage(Page):
 
     # Admin Tabs
     edit_handler = TabbedInterface([
+        ObjectList(content_stream, heading='Content'),
         ObjectList(content_panels, heading='Hero'),
         ObjectList(Page.promote_panels, heading='Promotional'),
     ])

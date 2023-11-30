@@ -33,6 +33,51 @@ p{font-family:'Roboto', sans-serif;font-size:16px;font-weight: 300;line-height: 
 span.pw-skyline{font-family: 'Playfair Display'; font-size: 26px;}
 a{text-decoration: none;}
 
+
+// Custom inline Rot
+span.image-underline{
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--brown); 
+    font-weight: bold;
+    &::after {
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('../../image/hover-image.png');
+        background-size: contain;
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        opacity: 1;
+    }
+}
+
+// Custom inline Blue
+span.image-underline-blue{
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--dark-blue);
+    font-weight: bold;
+    &::after {
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('../../image/hover-image.png');
+        background-size: contain;
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        opacity: 1;
+    }
+}
+
 .overlay {
     position: absolute;
     top: 0;
@@ -158,12 +203,10 @@ a{text-decoration: none;}
     }
 }
 
-
 /*Mobile Menu*/
 #mobileMenuItem{
     display: none;
 }
-
 #mobileMenuItem,
 #menuOpen{
     display: none!important;
