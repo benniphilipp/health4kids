@@ -23,5 +23,30 @@ document.addEventListener("DOMContentLoaded", function() {
 
     linkChoice.addEventListener("change", updateFieldVisibility);
 
+    // GalleryImageText
+    const selectButton = document.querySelector('#content-0-value-link_type');
+    const fieldButtonPage = document.querySelector('div[data-contentpath="button_page"]');
+    const fieldButtonUrl = document.querySelector('div[data-contentpath="button_url"]');
+
+    selectButton.value = "page";
+    updateFiledVisibilitySection();
+
+    function updateFiledVisibilitySection(){
+        if(selectButton.value == "page"){
+            fieldButtonUrl.style.display = 'none';
+            fieldButtonPage.style.display = 'block';
+        }else if (selectButton.value == "extern"){
+            fieldButtonPage.style.display = 'none';
+            fieldButtonUrl.style.display = 'block';
+        }else{
+            fieldButtonUrl.style.display = 'none';
+            fieldButtonPage.style.display = 'block'; 
+        }
+    };
+
+    selectButton.addEventListener("change", updateFiledVisibilitySection);
+
+
+
     
 });
