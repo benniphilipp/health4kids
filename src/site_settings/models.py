@@ -28,7 +28,11 @@ class SocialMediaSettings(BaseSiteSetting):
 class MySettings(BaseSiteSetting):
     
     header_logo = models.ForeignKey(
-        'wagtailimages.Image', null=True, on_delete=models.SET_NULL, verbose_name="Header Logo", related_name='+'
+        'wagtailimages.Image', null=True, on_delete=models.SET_NULL, verbose_name="logo quadratisch", related_name='+'
+    )
+    
+    around_logo = models.ForeignKey(
+        'wagtailimages.Image', null=True, on_delete=models.SET_NULL, verbose_name="Logo rund", related_name='+'
     )
     
     book_appointment  = models.ForeignKey(
@@ -44,6 +48,7 @@ class MySettings(BaseSiteSetting):
     panels = [
         MultiFieldPanel([
             FieldPanel("header_logo"),
+            FieldPanel("around_logo"),
             FieldPanel("book_appointment"),
             FieldPanel("btn_text"),
         ], heading="Header Button")

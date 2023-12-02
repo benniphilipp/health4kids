@@ -12,7 +12,7 @@ class GalleryImageText(blocks.StructBlock):
     subline = blocks.CharBlock(blank=True, max_length=350)
     paragraph = blocks.RichTextBlock(form_classname="Text", blank=True)
     
-    cards = blocks.ListBlock(
+    image_repeat = blocks.ListBlock(
         blocks.StructBlock(
             [
                 ("image", ImageChooserBlock(required=True)),

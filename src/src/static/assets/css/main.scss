@@ -8,6 +8,8 @@
     --red: #C7202D;
     --white: #ffffff;
     --brown: #B09B8A;
+    --pw-serif-font-family: 'Playfair Display';
+    --pw-font-family: Roboto 'sans-serif';
 }
 
 // Body Style
@@ -23,16 +25,39 @@
 }
 
 // Fonts Style
-h1{font-family: 'Playfair Display'; font-weight: bold; line-height: 1.3;}
-h2{}
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font-size:16px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+h1{font-family: var(--pw-serif-font-family); font-weight: bold; line-height: 1.3; font-size: 3.2rem;}
+h2{font-family: var(--pw-serif-font-family); color: var(--dark-blue); font-weight: bold; font-size: 2.475rem; line-height: 1.3;}
 h3{}
 h4{}
 h5{}
 h6{}
-p{font-family:'Roboto', sans-serif;font-size:16px;font-weight: 300;line-height: 1.5;}
+p{font-family:var(--pw-font-family); font-weight: 400;line-height: 1.5;}
 span.pw-skyline{font-family: 'Playfair Display'; font-size: 26px;}
 a{text-decoration: none;}
 
+.pw-content{
+    gap: 1.875rem;
+    padding: 0 1.875rem;
+}
+
+.pw-subline-text{
+    h3{
+        color: var(--red);
+        font-size: 1.875rem;
+        line-height: 1.3;
+        font-weight: bold;
+        font-family: var(--pw-font-family);
+    }
+}
 
 // Custom inline Rot
 span.image-underline{
@@ -135,6 +160,78 @@ span.image-underline-blue{
     border-color: var(--dark-blue);
 }
 
+
+// Section Gallery Image Text
+#section-gallery-image-text{
+    position: relative;
+    overflow: hidden;
+
+    .image-logo-rounde{
+        position: absolute;
+        right: 10%;
+        top: 50%;
+        margin-right: calc(var(--bs-gutter-x) * .5);
+        transform: translate(0, -50%);
+        border-radius: 500px;
+        padding: 0.5rem;
+        border: 1px dashed var(--red);
+    }
+
+    .image-counter,
+    .image-first{
+        border-radius: 0.63rem;
+        box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.20);
+        border: 5px solid var(--white);
+    }
+
+    // Hintergrund
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        z-index: -1;
+    }
+
+    &::before {
+        background-position: left;
+        background-image: url('../../image/abs-bg10.png');
+    }
+    
+    &::after{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 50%;
+        height: 50%;
+        background-size: contain;
+        background-position: bottom right;
+        background-repeat: no-repeat;
+        z-index: -1;
+        background-image: url('../../image/abs-bg30.png');
+    }
+
+    .bg-abs::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 50%;
+        background-size: contain;
+        background-position: top right;
+        background-repeat: no-repeat;
+        z-index: -1;
+        background-image: url('../../image/abs-bg20.png');
+    }
+
+
+}
 
 
 // Startseite Hero

@@ -1,12 +1,55 @@
-{% load wagtailcore_tags %}
+{% load static wagtailcore_tags wagtailimages_tags wagtailsettings_tags %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-12 col-lg-5 col-md-12">
-            Text
+<section id="section-gallery-image-text">
+    <div class="bg-abs"></div>
+    <div class="container my-3 my-lg-5">
+        <div class="row">
+            <div class="col-12 col-lg-6 col-md-12">
+                <div class="row">
+                    {% for card in self.image_repeat %}
+                        {% image card.image format-webp-lossless as img %}  
+                
+                        {% if forloop.first %}
+                            <div class="col-12 position-relative">
+                                <img src="{{ img.url }}" alt="{{ img.alt }}" class="image-first my-2" style="width: 80%; height: auto;" />
+    
+                                {% if settings.site_settings.MySettings.around_logo %}
+                                    {% image settings.site_settings.MySettings.around_logo format-webp-lossless as img %}
+                                    <img class="image-logo-rounde" width="140px" height="140px" src="{{ img.url }}" alt="">
+                                {% endif %}
+    
+                            </div>
+                        {% else %}
+    
+                            {% if forloop.counter == 2 %}
+                                <div class="col-6">
+                                    <img src="{{ img.url }}" alt="{{ img.alt }}" class="image-counter my-3" style="width: 100%; height: auto;" />
+                                </div>
+                            {% else %}
+                                <div class="col-6">
+                                    <img src="{{ img.url }}" alt="{{ img.alt }}" class="image-counter my-3" style="width: 100%; height: auto;" />
+                                </div>
+                            {% endif %}
+        
+                        {% endif %}
+    
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 col-md-12 d-flex align-items-center">
+                <div class="pw-content d-flex flex-column">
+                    <div class="pw-headline-text">
+                        {{self.heading|richtext}}
+                    </div>
+                    <div class="pw-subline-text">
+                        <h3>{{self.subline}}</h3>
+                    </div>
+                    <div class="pw-text">
+                        {{self.paragraph|richtext}}
+                    </div>
+                </div>
+            </div>
+            </div>
         </div>
-        <div class="col-12 col-lg-5 offset-lg-1 col-md-12">
-            Img
-        </div>
-    </div>
-</div>
+    </div>    
+</section>
