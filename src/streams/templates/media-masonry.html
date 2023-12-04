@@ -1,0 +1,33 @@
+{% load static wagtailcore_tags wagtailimages_tags wagtailsettings_tags %}
+<section id="media-masonry">
+    <div class="container py-3 py-lg-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-7">
+                <div class="pw-headline-text text-center">
+                    {{self.heading|richtext}}
+                </div>
+                <div class="pw-subline-text text-center">
+                    <h3>{{self.subline}}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-lg-5 mt-3">
+            <div class="col-12">
+
+
+                <div class="grid" id="image-grid">
+                    {% for card in self.image_repeat %}
+                    {% image card.image format-webp-lossless as img %}  
+            
+                    <div class="grid-item">
+                        <img src="{{ img.url }}" alt="{{ img.alt }}">
+                    </div>
+
+                {% endfor %}
+                </div>
+                              
+         
+            </div>
+        </div>
+    </div>
+</section>

@@ -4,6 +4,16 @@ import Swiper from 'swiper/bundle';
 document.addEventListener('DOMContentLoaded', function() {
 
 
+    var gridImage = document.getElementById('image-grid');
+    var items = gridImage.getElementsByClassName('grid-item');
+
+    items[1].classList.add('grid-item--width2');
+
+    for (var i = 4; i < items.length; i += 2) {
+        items[i].classList.add('grid-item--width2');
+    }
+
+
     const mySwiper = new Swiper('.mySwiper', {
         // Swiper-Konfiguration hier
         slidesPerView: 1,
