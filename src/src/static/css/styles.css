@@ -8074,20 +8074,38 @@ span.image-underline-blue {
   position: fixed;
   width: 100%; }
 
-.grid {
+#promo-box {
+  background-color: var(--brown);
+  position: relative;
+  overflow: hidden;
+  z-index: 0; }
+  #promo-box::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    background-image: url(../js/b48f9bdc140b678cae8e.png); }
+
+#media-masonry .grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto; }
 
-.grid-item {
+#media-masonry .grid-item {
   width: calc(25% - 20px);
   margin: 10px;
   box-sizing: border-box; }
-  .grid-item--width2 {
+  #media-masonry .grid-item--width2 {
     width: calc(50% - 20px); }
 
-.grid-item img {
+#media-masonry .grid-item img {
   width: 100%;
   height: 100%;
   display: block;

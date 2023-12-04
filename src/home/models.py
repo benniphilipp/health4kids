@@ -5,7 +5,7 @@ from wagtail.fields import RichTextField, StreamField
 from wagtail.images import get_image_model
 from wagtail.admin.panels import FieldPanel, TabbedInterface, ObjectList
 
-from streams.blocks import GalleryImageText, FancyBox, TestimonialSilder, ImageText, MediaMasonry
+from streams.blocks import GalleryImageText, FancyBox, TestimonialSilder, ImageText, MediaMasonry, PromoBox
 
 class HomePage(Page):
     template = "home/home_page.html"
@@ -61,6 +61,7 @@ class HomePage(Page):
         ('testimonial_silder', TestimonialSilder()),
         ('image_text', ImageText()),
         ('media_masonry', MediaMasonry()),
+        ('promo_box', PromoBox()),
     ], 
     blank=True,           
     use_json_field=True)

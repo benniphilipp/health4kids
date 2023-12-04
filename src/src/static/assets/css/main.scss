@@ -28,32 +28,55 @@
 //Header Style 
 @import "./module/Header.scss";
 
-//
+// Promo Box
+#promo-box{
+    background-color: var(--brown);
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
 
-.grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 auto;
-}
-
-.grid-item {
-    width: calc(25% - 20px);
-    margin: 10px;
-    box-sizing: border-box;
-    &--width2{
-        width: calc(50% - 20px);
+    &::after{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: -1;
+        background-image: url('../../image/abs-bg80.png');
     }
 }
 
-.grid-item img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
+
+// Media Masonry
+#media-masonry{
+    .grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0 auto;
+    }
+    
+    .grid-item {
+        width: calc(25% - 20px);
+        margin: 10px;
+        box-sizing: border-box;
+        &--width2{
+            width: calc(50% - 20px);
+        }
+    }
+    
+    .grid-item img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+    }
 }
 
-  
 
 // Bild Text Section
 #image-text{

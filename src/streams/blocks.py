@@ -6,6 +6,37 @@ from wagtail.fields import RichTextField
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.blocks import RichTextBlock
 
+
+#Promo Box
+class PromoBox(blocks.StructBlock):
+    heading = blocks.RichTextBlock(form_classname="Titel", blank=True)
+    paragraph = blocks.RichTextBlock(form_classname="Text", blank=True)
+    
+    #Button Auswahl
+    link_type = blocks.ChoiceBlock(
+        choices=[
+            ('page', 'Verlinkung Intern'),
+            ('extern', 'Verlinkung Extern'),
+        ],
+        label="Auswahl Verlinkung",
+        default='page',  # Setze den Standardwert nach Bedarf
+    ) 
+    
+    #Button Page
+    button_page = blocks.PageChooserBlock(required=False)
+    
+    #Button link
+    button_url = blocks.URLBlock(required=False)
+    
+    #Button Text
+    button_text = blocks.CharBlock(required=True, default='Mehr erfahren', max_length=40)    
+
+    class Meta:
+        template = 'promo-box.html'
+        icon = 'edit'
+        label = "Promo Box"
+    
+
 # Media Masonry
 class MediaMasonry(blocks.StructBlock):
     min_num = 3
@@ -68,7 +99,6 @@ class ImageText(blocks.StructBlock):
         template = 'bild-text.html'
         icon = 'edit'
         label = "Bild Text"
-    
     
     
 
