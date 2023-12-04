@@ -8074,6 +8074,19 @@ span.image-underline-blue {
   position: fixed;
   width: 100%; }
 
+#link-cards .card {
+  border: 0;
+  position: relative;
+  overflow: hidden; }
+  #link-cards .card img {
+    border-radius: .8rem; }
+
+#link-cards .card-body {
+  border-top-left-radius: 0.8rem;
+  margin-left: 1.678rem;
+  margin-top: -4rem;
+  background-color: var(--white); }
+
 #promo-box {
   background-color: var(--brown);
   position: relative;

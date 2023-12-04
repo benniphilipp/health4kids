@@ -6,6 +6,30 @@ from wagtail.fields import RichTextField
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.blocks import RichTextBlock
 
+#Link Cards
+class LinkCards(blocks.StructBlock):
+    min_num = 1
+    max_num = 3
+
+    skyline = blocks.CharBlock(blank=True, max_length=66)
+    heading = blocks.RichTextBlock(form_classname="Titel", blank=True)
+
+    slider_reapeat = blocks.ListBlock(
+        blocks.StructBlock(
+            [
+                ("image", ImageChooserBlock(required=False)),
+                ("headline", blocks.TextBlock(required=True, max_length=400)),
+                ("paragraph", blocks.TextBlock(required=False, max_length=100)),
+                ("button_page", blocks.PageChooserBlock(required=False)),
+            ]
+        )
+    )
+    
+    class Meta:
+        template = 'link-cards.html'
+        icon = 'edit'
+        label = "Link Cards"
+
 
 #Promo Box
 class PromoBox(blocks.StructBlock):
