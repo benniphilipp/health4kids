@@ -6,6 +6,27 @@ from wagtail.fields import RichTextField
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.blocks import RichTextBlock
 
+# Media Masonry
+class MediaMasonry(blocks.StructBlock):
+    min_num = 3
+    max_num = 9
+    
+    heading = blocks.RichTextBlock(form_classname="Titel", blank=True)
+    subline = blocks.CharBlock(blank=True, max_length=350)
+    
+    image_repeat = blocks.ListBlock(
+        blocks.StructBlock(
+            [
+                ("image", ImageChooserBlock(required=True)),
+            ]
+        )
+    )
+    
+    class Meta:
+        template = 'media-masonry.html'
+        icon = 'edit'
+        label = "Media Masonry"
+        
 
 #Bild Text
 class ImageText(blocks.StructBlock):
