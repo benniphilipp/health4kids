@@ -1,7 +1,18 @@
 import '../../../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
-
+import Swiper from 'swiper/bundle';
 
 document.addEventListener('DOMContentLoaded', function() {
+
+
+    const mySwiper = new Swiper('.mySwiper', {
+        // Swiper-Konfiguration hier
+        slidesPerView: 1,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
 
     const OpenMenu = document.querySelector('#menuOpen');
     if(OpenMenu){

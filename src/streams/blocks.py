@@ -6,7 +6,43 @@ from wagtail.fields import RichTextField
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.blocks import RichTextBlock
 
+#testimonial
+class TestimonialSilder(blocks.StructBlock):
+    min_mum = 1
+    max_num = 12
+    
+    skyline = blocks.CharBlock(form_classname="Skyline", blank=True, max_length=66)
+    headline = blocks.CharBlock(form_classname="Titel", blank=True, max_length=140)
+    testimonial_image = ImageChooserBlock(required=True)
+    
+    slider_type = blocks.ChoiceBlock(
+        choices=[
+            ('slider', 'Slider Inhalt'),
+            ('testimonial', 'Testimonial Slider'),
+        ],
+        label="Slider Auswahl",
+        default='slider',  # Setze den Standardwert nach Bedarf
+    )
+    
+    slider_reapeat = blocks.ListBlock(
+        blocks.StructBlock(
+            [
+                ("text", blocks.TextBlock(required=True, max_length=400)),
+                ("img_person", ImageChooserBlock(required=False)),
+                ("name_person", blocks.TextBlock(required=False, max_length=100)),
+                ("job_person", blocks.TextBlock(required=False, max_length=100)),
+            ]
+        )
+    )
+    
+    class Meta:
+        template = 'slider.html'
+        icon = 'edit'
+        label = "Slider"
+    
 
+
+    
 # Fancy Box Section
 class FancyBox(blocks.StructBlock):
     min_num = 1

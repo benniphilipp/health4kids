@@ -8073,6 +8073,103 @@ span.image-underline-blue {
   position: fixed;
   width: 100%; }
 
+#testimonial-silder .slider-main-image {
+  padding-right: 30px; }
+
+#testimonial-silder .swiper-wrapper {
+  width: 100%;
+  height: 100%; }
+
+#testimonial-silder .slide-content {
+  display: flex;
+  margin: 0 15px;
+  justify-content: space-between; }
+
+#testimonial-silder .slider-wrapper {
+  justify-content: space-between; }
+
+#testimonial-silder .slide-text {
+  width: 100%;
+  padding-left: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column; }
+
+#testimonial-silder .swiper-button-next, #testimonial-silder .swiper-button-prev {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: calc(90% - 15px); }
+
+#testimonial-silder .swiper-button-next {
+  right: 0; }
+
+#testimonial-silder .swiper-button-prev {
+  left: 0; }
+
+#testimonial-silder .animeslide-bottom {
+  position: absolute;
+  bottom: 0rem;
+  width: 100%;
+  max-width: 100px;
+  z-index: 1;
+  right: 0; }
+
+#testimonial-silder .swiper-button-next:after, #testimonial-silder .swiper-button-prev:after {
+  font-family: swiper-icons;
+  font-size: 1.4rem;
+  text-transform: none !important;
+  letter-spacing: 0;
+  font-variant: initial;
+  line-height: 1;
+  color: var(--red); }
+
+#testimonial-silder .testimonial-box {
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column; }
+
+#testimonial-silder .img-vector {
+  height: auto;
+  width: 73px; }
+
+#testimonial-silder .person-img-div {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+#testimonial-silder .person-img-div img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover; }
+
+#testimonial-silder .content-person {
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column; }
+  #testimonial-silder .content-person .name {
+    font-size: 1.7rem;
+    font-weight: bold; }
+  #testimonial-silder .content-person .job {
+    font-weight: 400;
+    color: var(--red); }
+
+@media (max-width: 768px) {
+  .slide-content {
+    flex-direction: column; }
+  .slider-main-image {
+    display: none; }
+  .slide-text {
+    width: 100%; } }
+
 #fancy-box {
   background-color: var(--dark-blue);
   position: relative;

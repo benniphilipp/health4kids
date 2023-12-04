@@ -46,7 +46,33 @@ document.addEventListener("DOMContentLoaded", function() {
 
     selectButton.addEventListener("change", updateFiledVisibilitySection);
 
+    // Testimonial Silder
+    const selectTestimonial = document.querySelector("#content-2-value-slider_type");
+    const imgPerson = document.querySelector('div[data-contentpath="img_person"]');
+    const namePerson = document.querySelector('div[data-contentpath="name_person"]');
+    const jobPerson = document.querySelector('div[data-contentpath="job_person"]');
 
+    console.log(selectTestimonial.value);
 
+    selectTestimonial.value === "slider";
+    TestimonialSilder();
+    function TestimonialSilder(){
+        if(selectTestimonial.value === "slider"){
+            imgPerson.style.display = "none";
+            namePerson.style.display = "none";
+            jobPerson.style.display = "none";
+        }else if(selectTestimonial.value ==="testimonial"){
+            imgPerson.style.display = "block";
+            namePerson.style.display = "block";
+            jobPerson.style.display = "block";
+        }else{
+            imgPerson.style.display = "none";
+            namePerson.style.display = "none";
+            jobPerson.style.display = "none";
+        }
+    }
+
+    selectTestimonial.addEventListener("change", TestimonialSilder);
     
+
 });

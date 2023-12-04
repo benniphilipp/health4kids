@@ -27,6 +27,136 @@
 //Header Style 
 @import "./module/Header.scss";
 
+
+
+// Swiper
+#testimonial-silder{
+    
+    .slider-main-image{
+        padding-right: 30px;
+    }
+    .swiper-wrapper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .slide-content {
+        display: flex;
+        margin: 0 15px;
+        justify-content: space-between;
+    }
+
+    .slider-wrapper{
+        justify-content: space-between;
+    }
+
+    .slide-text {
+        width: 100%;
+        padding-left: 0;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction:column;
+    }
+    
+    .swiper-button-next, .swiper-button-prev {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: calc(90% - 15px);
+    }
+    
+    .swiper-button-next {
+        right: 0;
+    }
+    
+    .swiper-button-prev {
+        left: 0;
+    }
+    
+    .animeslide-bottom {
+        position: absolute;
+        bottom: 0rem;
+        width: 100%;
+        max-width: 100px;
+        z-index: 1;
+        right: 0;
+    }
+
+    .swiper-button-next:after, .swiper-button-prev:after {
+        font-family: swiper-icons;
+        font-size: 1.4rem;
+        text-transform: none!important;
+        letter-spacing: 0;
+        font-variant: initial;
+        line-height: 1;
+        color: var(--red);
+    }
+
+    // Content
+    .testimonial-box{
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+        box-sizing: border-box;
+        display: flex;
+        flex-direction:column;
+    }
+
+    .img-vector{
+        height: auto;
+        width: 73px;
+    }
+
+    .person-img-div {
+        width: 100px; 
+        height: 100px; 
+        overflow: hidden; 
+        border-radius: 50%;
+        display: flex; 
+        justify-content: center;
+        align-items: center; 
+    }
+
+    .person-img-div img {
+        width: 100%; 
+        height: 100%; 
+        display: block;
+        object-fit: cover; 
+    }
+
+    .content-person{
+        padding: 0 30px;
+        display: flex;
+        flex-direction:column;
+        .name{
+            font-size: 1.7rem;
+            font-weight: bold;
+        }
+        .job{
+            font-weight: 400;
+            color: var(--red);
+        }
+    }
+
+}
+
+@media (max-width: 768px) {
+    .slide-content {
+        flex-direction: column;
+    }
+
+    .slider-main-image{
+        display: none;
+    }
+
+    .slide-text {
+        width: 100%;
+    }
+}
+
+
+
+
 // Fancy box
 #fancy-box{
     background-color: var(--dark-blue);
