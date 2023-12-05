@@ -12,9 +12,25 @@ class HomePage(Page):
     max_count = 1
     subpage_types = ["coaching.Coaching", "legal.legal"]
 
-    skyline = models.CharField(blank=True, max_length=350, verbose_name="Skyline")
-    headline = RichTextField(blank=True, features=['h1', 'h2', 'custom-inline', 'custom-inline-blue'])
-    subline = RichTextField(blank=True, features=['h1', 'h2', 'custom-inline', 'custom-inline-blue'])
+    skyline = models.CharField(
+        blank=True, 
+        max_length=96, 
+        verbose_name="Skyline",
+        help_text="Die Skyline ist kein kleiner Text mit braunen hintergund, mit 96 Zeichen.")
+    
+    headline = RichTextField(
+        blank=True, 
+        max_length=122, 
+        verbose_name="Überschrift",
+        help_text="Hier ist der Platz für eine aussagekräftige Überschrift, um deine Webseitenbesucher zu begeistern, mit 122 Zeichen.",
+        features=['h1', 'h2', 'custom-inline', 'custom-inline-blue'])
+    
+    subline = RichTextField(
+        blank=True,
+        max_length=550, 
+        verbose_name="Unterzeile", 
+        help_text="Die Unterzeile wird in Rot dargestellt, ist auf maximal 550 Zeichen begrenzt und kein Pflichtfeld. Du kannst es gerne leer lassen!",
+        features=['h1', 'h2', 'custom-inline', 'custom-inline-blue'])
     
     # Hero Image
     hero_image = models.ForeignKey(
@@ -29,13 +45,22 @@ class HomePage(Page):
     # Auswahl Link
     link_choice = models.CharField(
         max_length=20,
-        choices=[('page', 'Verlingung Intern'), ('extern', 'Verlinkung Extern')],
-        blank=True,
-        verbose_name="Auswahl Verlinkung",
+        choices=[
+            ('page', 'Verlinkung intern'),
+            ('extern', 'Verlinkung extern'),
+        ],
+        verbose_name="Auswahl",
+        default='page', 
+        help_text='Bitte wähle aus, was du verlinken möchtest: eine externe Seite oder eine interne Seite.'
     )   
     
     # BTN Text 
-    btn_text = models.CharField(blank=True, max_length=90, verbose_name="Button Text")
+    btn_text = models.CharField(
+        blank=True, 
+        max_length=90, 
+        verbose_name="Dein individueller Buttontext",
+        help_text="Denk dir einen ansprechenden Text aus, der den Benutzer nach mehr verlangen lässt.",
+        )
     
     # Link intern
     page_link = models.ForeignKey(
@@ -43,7 +68,8 @@ class HomePage(Page):
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
-        verbose_name="Seiten Verlinkung",
+        verbose_name="Seitenauswahl",
+        help_text="Die Seite muss öffentlich sein, damit Besucher deine Website erreichen können.",
         related_name='+',
     )
     
@@ -51,7 +77,8 @@ class HomePage(Page):
     link_url = models.CharField(
         max_length=500,
         blank=True,
-        verbose_name="Seiten Link Extern",
+        verbose_name="Websiten-URL",
+        help_text="Hier kannst du eine Wunschwebsite verlinken. Achte darauf, dass diese Seite unter https erreichbar ist."
     )
     
     # StreamField
@@ -73,13 +100,13 @@ class HomePage(Page):
     
     content_panels = Page.content_panels + [
         FieldPanel('hero_image'),
-        FieldPanel('skyline'),
-        FieldPanel('headline'),
-        FieldPanel('subline'),
+        FieldPanel('skyline', classname="max_length-96"),
+        FieldPanel('headline', classname="max_length-122"),
+        FieldPanel('subline', classname="max_length-550"),
         FieldPanel('link_choice'),
         FieldPanel('link_url'),
         FieldPanel('page_link'),
-        FieldPanel('btn_text'),
+        FieldPanel('btn_text', classname="max_length-90"),
     ]
 
     # Admin Tabs

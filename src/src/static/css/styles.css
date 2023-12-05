@@ -7829,7 +7829,10 @@ textarea.form-control-lg {
 @media (min-width: 992px) {
   .my-lg-5 {
     margin-top: 5rem !important;
-    margin-bottom: 5rem !important; } }
+    margin-bottom: 5rem !important; }
+  .py-lg-5 {
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important; } }
 
 @media (max-width: 576px) {
   .pw-custom-column {
@@ -8440,11 +8443,13 @@ footer {
   position: relative;
   overflow: hidden;
   z-index: 0; }
+  #fancy-box .card {
+    border: unset !important; }
   #fancy-box img.pw-image-fc {
     object-fit: cover;
     max-width: 100%;
     max-height: 100%;
-    position: absolute;
+    position: relative;
     height: 100%; }
   #fancy-box .pw-fb-headline {
     text-align: center;
@@ -8485,6 +8490,10 @@ footer {
     background-repeat: no-repeat;
     z-index: -1;
     background-image: url(../js/58a7d0be8a74ed9d420d.png); }
+  @media (max-width: 992px) {
+    #fancy-box .pw-content {
+      padding-top: 1rem;
+      padding-bottom: 1.875rem; } }
 
 #section-gallery-image-text {
   position: relative;

@@ -1,27 +1,28 @@
 /*Backend Page Select*/
 
 document.addEventListener("DOMContentLoaded", function() {
-    // const linkChoice = document.querySelector("#id_link_choice");
-    // const pageLabelField = document.querySelector("#panel-child-hero-link_url-section");
-    // const linkLabelField = document.querySelector("#panel-child-hero-page_link-section");
 
-    // linkChoice.value = "page";
-    // updateFieldVisibility();
 
-    // function updateFieldVisibility() {
-    //     if (linkChoice.value === "page") {
-    //         linkLabelField.style.display = "block";
-    //         pageLabelField.style.display = "none";
-    //     } else if (linkChoice.value === "extern") {
-    //         linkLabelField.style.display = "none";
-    //         pageLabelField.style.display = "block";
-    //     } else {
-    //         linkLabelField.style.display = "block";
-    //         pageLabelField.style.display = "none";
-    //     }
-    // }
+    const linkChoice = document.querySelector("#id_link_choice");
+    const linkLabelField = document.querySelector("#panel-child-startseiten_header-page_link-section");
+    const pageLabelField = document.querySelector("#panel-child-startseiten_header-link_url-section");
 
-    // linkChoice.addEventListener("change", updateFieldVisibility);
+    updateFieldVisibility();
+
+    function updateFieldVisibility() {
+        if (linkChoice.value === "page") {
+            linkLabelField.style.display = "block";
+            pageLabelField.style.display = "none";
+        } else if (linkChoice.value === "extern") {
+            linkLabelField.style.display = "none";
+            pageLabelField.style.display = "block";
+        } else {
+            linkLabelField.style.display = "block";
+            pageLabelField.style.display = "none";
+        }
+    }
+
+    linkChoice.addEventListener("change", updateFieldVisibility);
 
 
 
@@ -113,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     addCharacterCount('[data-contentpath="heading"] .max_length-66');
-    addCharacterCount('[data-contentpath="paragraph"] .max_length-264');
+    addCharacterCount('[data-contentpath="paragraph"] .max_length-364');
 
     function addCharacterCountForParagraph(elementSelector) {
         var element = document.querySelector(elementSelector);

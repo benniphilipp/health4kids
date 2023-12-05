@@ -1,11 +1,11 @@
 {% load static wagtailcore_tags wagtailimages_tags wagtailsettings_tags %}
 
 
-<section id="fancy-box" class="py-3 py-lg-5" style="color: var(--white);">
-    <div class="container">
+<section id="fancy-box" class="py-3 py-lg-5 pw-custom-column" style="color: var(--white);">
+    <div class="container pw-content">
         <div class="row justify-content-center">
 
-            <div class="col-12 col-md-5 d-flex flex-column align-items-center">
+            <div class="col-12 col-md-7 d-flex flex-column align-items-center">
                 <div class="d-flex flex-column pw-content">
                     <div class="pw-fb-headline" style="color: var(--white);">
                         {{self.headline|richtext}}
@@ -15,20 +15,20 @@
                     </div>
                 </div>
             </div>
-
+        </div>
             {% if self.cards_reapeat|length == 1 %}
                 {% with card=self.cards_reapeat.0 %}
                 {# Hier kommt der Code für den Fall, dass es nur ein Element gibt #}
                 <div class="row justify-content-center position-relative">
                     <div class="col-12 col-lg-6">
                     {% image card.image format-webp-lossless as img %}
-                        <div class="card mt-4">
+                        <div class="card mt-2">
                             <div class="row">
                                 <div class="col-md-4 col-3 position-relative d-flex align-items-center">
-                                    <img src="{{ img.url }}" class="pw-image-fc img-fluid " alt="...">
+                                    <img src="{{ img.url }}" class="pw-image-fc img-fluid rounded-start" alt="...">
                                 </div>
                                 <div class="col-md-8 col-9 my-3">
-                                    <div class="card-body">
+                                    <div class="card-body d-flex flex-column justify-content-between">
                                         <h5 class="card-title">{{ card.title }}</h5>
                                         <p class="card-text">{{ card.text }}</p>
                                         <a class="pw-fc-cta" href="{{ card.button_page.url }}">Mehr erfahren <i class="fa-solid fa-arrow-right"></i></a>
@@ -40,20 +40,20 @@
                 </div>
                 {% endwith %}
 
-                {% elif self.cards_reapeat|length == 2 %}
+                {% elif self.cards_repeat|length == 2 %}
                     {# Hier kommt der Code für den Fall, dass es zwei Elemente gibt #}
                     <div class="row justify-content-center position-relative">
-                    {% for card in self.cards_reapeat %}
+                    {% for card in self.cards_repeat %}
                     
                         <div class="col-12 col-md-6">
-                        {% image card.image format-webp-lossless as img %}
-                            <div class="card mt-4">
+                        {% image card.image format-webp-lossless width-800 as img %}
+                            <div class="card mt-2">
                                 <div class="row">
-                                    <div class="col-md-4 col-3 position-relative d-flex align-items-center">
-                                        <img src="{{ img.url }}" class="pw-image-fc img-fluid " alt="...">
+                                    <div class="col-md-4 col-5 position-relative d-flex align-items-center">
+                                        <img src="{{ img.url }}" class="pw-image-fc img-fluid rounded-start" alt="...">
                                     </div>
-                                    <div class="col-md-8 col-9 my-3">
-                                        <div class="card-body">
+                                    <div class="col-md-8 col-7 my-3">
+                                        <div class="card-body d-flex flex-column justify-content-between">
                                             <h5 class="card-title">{{ card.title }}</h5>
                                             <p class="card-text">{{ card.text }}</p>
                                             <a class="pw-fc-cta" href="{{ card.button_page.url }}">Mehr erfahren <i class="fa-solid fa-arrow-right"></i></a>
@@ -67,7 +67,7 @@
                     </div>
                 {% endif %}
 
-            </div>
+            
 
         </div>
     </div>

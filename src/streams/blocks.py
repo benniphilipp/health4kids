@@ -159,33 +159,58 @@ class TestimonialSilder(blocks.StructBlock):
         template = 'slider.html'
         icon = 'edit'
         label = "Slider"
-    
 
 
+class CustomCardBlock(blocks.StructBlock):
+    image = ImageChooserBlock(
+        required=True,
+        label="Bild",
+        help_text="Wähle ein Bild aus.")
     
+    title = blocks.CharBlock(
+        required=True,
+        max_length=33,
+        label="Titel",
+        help_text="Maximal 33 Zeichen.")
+    
+    text = blocks.TextBlock(
+        required=True,
+        label="Text",
+        help_text="Maximal 89 Zeichen.",
+        max_length=89)
+    
+    button_page = blocks.PageChooserBlock(
+        required=False,
+        label="Seitenauswahl",
+        help_text="Hier kannst du eine Wunschwebsite verlinken.")
+
+
 # Fancy Box Section
 class FancyBox(blocks.StructBlock):
     min_num = 1
     max_num = 2
     
-    headline = blocks.RichTextBlock(form_classname="Titel", blank=True)
-    paragraph = blocks.RichTextBlock(form_classname="Text", blank=True)
+    headline = blocks.RichTextBlock(
+        blank=True,
+        max_length=33,
+        form_classname="max_length-33", 
+        label="Überschrift klein",
+        help_text="Diese Überschrift ist nur dafür geeignet, den Website-Besucher neugierig zu machen, was es auf der nächsten Seite zu entdecken gibt.")
     
-    cards_reapeat = blocks.ListBlock(
-        blocks.StructBlock(
-            [
-                ("image", ImageChooserBlock(required=True)),
-                ("title", blocks.CharBlock(required=True, max_length=40)),
-                ("text", blocks.TextBlock(required=True, max_length=200)),
-                ("button_page", blocks.PageChooserBlock(required=False)),
-            ]
-        )
-    )
+    paragraph = blocks.RichTextBlock(
+        required=False,
+        max_length=178,
+        label="Fließtextfeld",
+        help_text="Die Unterzeile wird in Rot dargestellt, ist auf maximal 178 Zeichen begrenzt und kein Pflichtfeld. Du kannst es gerne leer lassen!", 
+        form_classname="max_length-178")
+    
+    cards_repeat = blocks.ListBlock(CustomCardBlock, label="Deine Bilder-Galerie", help_text="Du kannst die gewünschten Bilder entweder aus der Mediathek einbinden oder extern laden.")
     
     class Meta:
         template = 'fancy-box.html'
         icon = 'edit'
         label = "Fancy Box"
+        help_text= "Die Fancy Box ist perfekt geeignet, um deine Website-Besucher auf eine weitere Website von dir zu leiten"
 
 
 # Label feld Name anpassung
@@ -208,7 +233,7 @@ class GalleryImageText(blocks.StructBlock):
         max_length=66, 
         blank=True, 
         label="Überschrift", 
-        help_text="Hier Hilfe-Text einfügen",
+        help_text="Hier ist der Platz für eine aussagekräftige Überschrift, um deine Webseitenbesucher zu begeistern.",
         form_classname="max_length-66",
         features=['h2', 'custom-inline', 'custom-inline-blue'])
     
@@ -224,8 +249,8 @@ class GalleryImageText(blocks.StructBlock):
     paragraph = blocks.RichTextBlock(
         blank=True, 
         null=True,
-        max_length=264,
-        form_classname="max_length-264",
+        max_length=364,
+        form_classname="max_length-364",
         label="Fließtextfeld",
         help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst.",
         features=['h2', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'])
