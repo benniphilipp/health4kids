@@ -10,7 +10,8 @@ from streams.blocks import GalleryImageText, FancyBox, TestimonialSilder, ImageT
 class HomePage(Page):
     template = "home/home_page.html"
     max_count = 1
-    subpage_types = ["coaching.Coaching"]
+    subpage_types = ["coaching.Coaching", "legal.legal"]
+
 
     skyline = models.CharField(blank=True, max_length=350, verbose_name="Skyline")
     headline = RichTextField(blank=True, features=['h1', 'h2', 'custom-inline', 'custom-inline-blue'])
