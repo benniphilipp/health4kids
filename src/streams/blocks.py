@@ -127,10 +127,10 @@ class ImageText(blocks.StructBlock):
 
 # Personen Block
 class PersonBlock(blocks.StructBlock):
-    text = blocks.TextBlock(required=True, max_length=400, label="Text")
+    text = blocks.TextBlock(required=True, help_text="Maximal 400 Zeichen.", max_length=400, label="Text")
     img_person = ImageChooserBlock(required=False, label="Bild der Person")
-    name_person = blocks.TextBlock(required=False, max_length=100, label="Name der Person")
-    job_person = blocks.TextBlock(required=False, max_length=100, label="Beruf der Person")
+    name_person = blocks.TextBlock(required=False, max_length=33, help_text="Maximal 33 Zeichen.", label="Name der Person")
+    job_person = blocks.TextBlock(required=False, max_length=33, help_text="Maximal 33 Zeichen.", label="Beruf der Person")
     
 
 # Testimonial Slider
@@ -142,14 +142,14 @@ class TestimonialSilder(blocks.StructBlock):
         required=True,
         max_length=66,
         label="Skyline",
-        help_text="Skyline als kleine Überschrift",
+        help_text="Skyline als kleine Überschrift, maximal 66 Zeichen.",
         form_classname="max_length-66")
     
     headline = blocks.CharBlock(
         blank=True, 
-        max_length=140,
+        max_length=79,
         label="Überschrift",
-        help_text="Überzeuge deine Website durch sozialen Beweis",
+        help_text="Überzeuge deine Website durch sozialen Beweis, maximal 79 Zeichen.",
         form_classname="max_length-140")
     
     testimonial_image = ImageChooserBlock(

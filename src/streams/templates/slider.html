@@ -23,7 +23,7 @@
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper mt-3">
                             {% for slider in self.slider_reapeat %}
-                                {% image slider.image format-webp-lossless as img %} 
+                                {% image slider.img_person format-webp-lossless as img %} 
                                 <div class="swiper-slide">
                                     <div class="slide-content">
                                         <div class="slide-text">
@@ -35,11 +35,11 @@
                                     </div>
                                     <div class="person d-flex mt-3">
                                         <div class="person-img-div">
-                                            <img src="https://placehold.co/600x400" alt="">
+                                            <img src="{{img.url}}" alt="{{img.alt}}">
                                         </div>
                                         <div class="content-person d-flex align-self-center">
-                                            <span class="name">Name</span>
-                                            <span class="job">Job</span>
+                                            <span class="name">{{slider.name_person}}</span>
+                                            <span class="job">{{slider.job_person}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -51,6 +51,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>
