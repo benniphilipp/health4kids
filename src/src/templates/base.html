@@ -2,6 +2,7 @@
 
 {% get_settings %}
 {% get_menu "main" as navigation %}
+{% get_menu "footer" as navigation_footer %}
 
 <!DOCTYPE html>
 <html lang="de">
@@ -73,18 +74,18 @@
 
                         <div class="d-flex align-items-center pw-display-none">
                             <div class="d-flex p-2">
-                                {% if settings.site_settings.SocialMediaSettings.facebook %}
-                                <a href="{{ settings.site_settings.SocialMediaSettings.facebook }}">
+                                {% if settings.site_settings.MySettings.facebook %}
+                                <a href="{{ settings.site_settings.SocialMediaSettings.facebook }}" aria-label="facebook öffnen">
                                     <i class="pw-icon fa-brands fa-square-facebook"></i>
                                 </a>
                                 {% endif %}
-                                {% if settings.site_settings.SocialMediaSettings.instagram %}
-                                <a href="{{ settings.site_settings.SocialMediaSettings.instagram }}">
+                                {% if settings.site_settings.MySettings.instagram %}
+                                <a href="{{ settings.site_settings.SocialMediaSettings.instagram }}" aria-label="instagram öffnen">
                                     <i class="pw-icon fa-brands fa-instagram"></i>
                                 </a>
                                 {% endif %}
-                                {% if settings.site_settings.SocialMediaSettings.whatsapp %}
-                                    <a href="{{ settings.site_settings.SocialMediaSettings.whatsapp }}">
+                                {% if settings.site_settings.MySettings.whatsapp %}
+                                    <a href="{{ settings.site_settings.SocialMediaSettings.whatsapp }}" aria-label="Whatsapp öffnen">
                                         <i class="pw-icon fa-brands fa-whatsapp"></i>
                                     </a>
                                 {% endif %}
@@ -114,18 +115,18 @@
             {% endfor %}
 
             <div class="d-flex p-2">
-                {% if settings.site_settings.SocialMediaSettings.facebook %}
-                <a href="{{ settings.site_settings.SocialMediaSettings.facebook }}">
+                {% if settings.site_settings.MySettings.facebook %}
+                <a href="{{ settings.site_settings.SocialMediaSettings.facebook }}" aria-label="facebook öffnen">
                     <i class="pw-icon fa-brands fa-square-facebook"></i>
                 </a>
                 {% endif %}
-                {% if settings.site_settings.SocialMediaSettings.instagram %}
-                <a href="{{ settings.site_settings.SocialMediaSettings.instagram }}">
+                {% if settings.site_settings.MySettings.instagram %}
+                <a href="{{ settings.site_settings.SocialMediaSettings.instagram }}" aria-label="instagram öffnen">
                     <i class="pw-icon fa-brands fa-instagram"></i>
                 </a>
                 {% endif %}
-                {% if settings.site_settings.SocialMediaSettings.whatsapp %}
-                    <a href="{{ settings.site_settings.SocialMediaSettings.whatsapp }}">
+                {% if settings.site_settings.MySettings.whatsapp %}
+                    <a href="{{ settings.site_settings.SocialMediaSettings.whatsapp }}" aria-label="Whatsapp öffnen">
                         <i class="pw-icon fa-brands fa-whatsapp"></i>
                     </a>
                 {% endif %}
@@ -134,6 +135,114 @@
         </div>
 
         {% block content %}{% endblock %}
+        {# Footer #}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-12 d-flex justify-content-center position-relative">
+                    {% if settings.site_settings.MySettings.around_logo %}
+
+                    {% image settings.site_settings.MySettings.around_logo format-webp-lossless as img %}
+                        <img class="image-logo-rounde-footer" width="140px" height="140px" src="{{ img.url }}" alt="">
+                    {% endif %}
+
+                    <div id="scrollToTopBtn" class="pw-arrow-up">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-12">
+                        <div class="pw-footer-navbar">
+                            <nav>
+                                <ul>
+                                    {% for item in navigation_footer.menu_items.all %}
+                                    <li>
+                                        <a href="{{ item.link }}" class="{% if request.path == item.link %}active{% endif %}">
+                                            {{ item.title }}
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                {% if settings.site_settings.MySettings.phone_number %}
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-3 col-md-12 my-3">
+                        <div class="contact-email d-flex">
+                            <div class="contact-icon">
+                                <i class="fa-solid fa-phone-volume"></i>
+                            </div>
+                            <div class="contact-content">
+                                <div class="name">
+                                    Kontakt
+                                </div>
+                                <div class="content">
+                                    <a href="tel:{{settings.site_settings.MySettings.phone_number}}">{{settings.site_settings.MySettings.phone_number}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %} 
+
+                    {% if settings.site_settings.MySettings.email %}
+                    <div class="col-12 col-lg-3 col-md-12 my-3">
+                        <div class="contact-email d-flex">
+                            <div class="contact-icon">
+                                <i class="fa-regular fa-envelope"></i>
+                            </div>
+                            <div class="contact-content">
+                                <div class="name">
+                                    E-Mail-Adresse
+                                </div>
+                                <div class="content">
+                                    <a href="mailto:{{settings.site_settings.MySettings.email}}">{{settings.site_settings.MySettings.email}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    {% endif %}   
+
+                </div>
+
+                <div class="row my-3">
+                    <div class="container">
+                        <hr>
+                        <div class="col-12 col-md-12 d-flex justify-content-between copy-div">
+                            <div class="d-flex copyright">
+                                Copyright © 2023 <span>&nbsp; Health4Kids</span>. Alle Rechte vorbehalten.
+                            </div>
+                            <div class="d-flex">
+                                {% if settings.site_settings.MySettings.facebook %}
+                                <a href="{{ settings.site_settings.SocialMediaSettings.facebook }}" aria-label="facebook öffnen">
+                                    <i class="pw-icon fa-brands fa-square-facebook"></i>
+                                </a>
+                                {% endif %}
+                                {% if settings.site_settings.MySettings.instagram %}
+                                <a href="{{ settings.site_settings.SocialMediaSettings.instagram }}" aria-label="instagram öffnen">
+                                    <i class="pw-icon fa-brands fa-instagram"></i>
+                                </a>
+                                {% endif %}
+                                {% if settings.site_settings.MySettings.whatsapp %}
+                                    <a href="{{ settings.site_settings.SocialMediaSettings.whatsapp }}" aria-label="Whatsapp öffnen">
+                                        <i class="pw-icon fa-brands fa-whatsapp"></i>
+                                    </a>
+                                {% endif %}
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </footer>
+
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/src.js' %}"></script>
