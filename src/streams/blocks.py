@@ -123,42 +123,51 @@ class ImageText(blocks.StructBlock):
         template = 'bild-text.html'
         icon = 'edit'
         label = "Bild Text"
-    
+
+
+# Personen Block
+class PersonBlock(blocks.StructBlock):
+    text = blocks.TextBlock(required=True, max_length=400, label="Text")
+    img_person = ImageChooserBlock(required=False, label="Bild der Person")
+    name_person = blocks.TextBlock(required=False, max_length=100, label="Name der Person")
+    job_person = blocks.TextBlock(required=False, max_length=100, label="Beruf der Person")
     
 
-#Testimonial
+# Testimonial Slider
 class TestimonialSilder(blocks.StructBlock):
     min_mum = 1
     max_num = 12
     
-    skyline = blocks.CharBlock(form_classname="Skyline", blank=True, max_length=66)
-    headline = blocks.CharBlock(form_classname="Titel", blank=True, max_length=140)
-    testimonial_image = ImageChooserBlock(required=True)
+    skyline = blocks.CharBlock(
+        required=True,
+        max_length=66,
+        label="Skyline",
+        help_text="Skyline als kleine Überschrift",
+        form_classname="max_length-66")
     
-    slider_type = blocks.ChoiceBlock(
-        choices=[
-            ('slider', 'Slider Inhalt'),
-            ('testimonial', 'Testimonial Slider'),
-        ],
-        label="Slider Auswahl",
-        default='slider',  # Setze den Standardwert nach Bedarf
+    headline = blocks.CharBlock(
+        blank=True, 
+        max_length=140,
+        label="Überschrift",
+        help_text="Überzeuge deine Website durch sozialen Beweis",
+        form_classname="max_length-140")
+    
+    testimonial_image = ImageChooserBlock(
+        required=True,
+        label="Bilde",
+        help_text="Ein Bild, wer für die tollen Ergebnisse verantwortlich ist.",
     )
     
     slider_reapeat = blocks.ListBlock(
-        blocks.StructBlock(
-            [
-                ("text", blocks.TextBlock(required=True, max_length=400)),
-                ("img_person", ImageChooserBlock(required=False)),
-                ("name_person", blocks.TextBlock(required=False, max_length=100)),
-                ("job_person", blocks.TextBlock(required=False, max_length=100)),
-            ]
-        )
+        PersonBlock(),
+        label="Slider Repeat"
     )
-    
+        
     class Meta:
         template = 'slider.html'
         icon = 'edit'
         label = "Slider"
+        help_text="Der Slider ist geeignet, um die Stimmen deiner Kunden deinen Website-Besuchern zu zeigen."
 
 
 class CustomCardBlock(blocks.StructBlock):
