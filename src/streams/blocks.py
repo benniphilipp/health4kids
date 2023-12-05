@@ -188,45 +188,84 @@ class FancyBox(blocks.StructBlock):
         label = "Fancy Box"
 
 
+# Label feld Name anpassung
+class YourRenamedStructBlock(blocks.StructBlock):
+    image = ImageChooserBlock(
+        required=True,
+        label="Bild",
+        help_text="Wähle ein Bild aus."
+    )
 
+
+# Label-Feldname Anpassung
 class GalleryImageText(blocks.StructBlock):
     
     min_num = 1
     max_num = 3
     
-    heading = blocks.RichTextBlock(form_classname="Titel", blank=True)
-    subline = blocks.CharBlock(blank=True, max_length=350)
-    paragraph = blocks.RichTextBlock(form_classname="Text", blank=True)
+    # Überschrift
+    heading = blocks.RichTextBlock(
+        max_length=66, 
+        blank=True, 
+        label="Überschrift", 
+        help_text="Hier Hilfe-Text einfügen",
+        form_classname="max_length-66",
+        features=['h2', 'custom-inline', 'custom-inline-blue'])
+    
+    # Unterzeile
+    subline = blocks.CharBlock(
+        required=False,
+        max_length=89, 
+        label="Unterzeile", 
+        help_text="Die Unterzeile wird in Rot dargestellt, ist auf maximal 89 Zeichen begrenzt und kein Pflichtfeld. Du kannst es gerne leer lassen!", 
+        form_classname="max_length-89")
+    
+    # Fließtextfeld
+    paragraph = blocks.RichTextBlock(
+        blank=True, 
+        null=True,
+        max_length=264,
+        form_classname="max_length-264",
+        label="Fließtextfeld",
+        help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst.",
+        features=['h2', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'])
     
     #Button Auswahl
     link_type = blocks.ChoiceBlock(
         choices=[
-            ('page', 'Verlinkung Intern'),
-            ('extern', 'Verlinkung Extern'),
+            ('page', 'Verlinkung intern'),
+            ('extern', 'Verlinkung extern'),
         ],
-        label="Auswahl Verlinkung",
-        default='page',  # Setze den Standardwert nach Bedarf
+        label="Auswahl",
+        default='page', 
+        help_text='Bitte wähle aus, was du verlinken möchtest: eine externe Seite oder eine interne Seite.'
     ) 
     
     #Button Page
-    button_page = blocks.PageChooserBlock(required=False)
+    button_page = blocks.PageChooserBlock(
+        required=False,
+        label="Seitenauswahl",
+        help_text="Die Seite muss öffentlich sein, damit Besucher deine Website erreichen können.")
     
     #Button link
-    button_url = blocks.URLBlock(required=False)
+    button_url = blocks.URLBlock(
+        required=False,
+        label="Websiten-URL",
+        help_text="Hier kannst du eine Wunschwebsite verlinken. Achte darauf, dass diese Seite unter https erreichbar ist.")
     
     #Button Text
-    button_text = blocks.CharBlock(required=True, default='Mehr erfahren', max_length=40)
+    button_text = blocks.CharBlock(
+        required=True, 
+        default='Mehr erfahren', 
+        label="Dein individueller Buttontext",
+        help_text="Denk dir einen ansprechenden Text aus, der den Benutzer nach mehr verlangen lässt.",
+        max_length=90,
+        form_classname="max_length-90")
 
-    
-    image_repeat = blocks.ListBlock(
-        blocks.StructBlock(
-            [
-                ("image", ImageChooserBlock(required=True)),
-            ]
-        )
-    )
+    image_repeat = blocks.ListBlock(YourRenamedStructBlock, label="Deine Bilder-Galerie", help_text="Du kannst die gewünschten Bilder entweder aus der Mediathek einbinden oder extern laden.")
     
     class Meta:
         template = 'gallery-image-text.html'
         icon = 'edit'
-        label = "Galerie Bild Text"
+        label = "Galerie-Bild- und Text"
+        help_text= "Galerie-Bild- und Textabschnitt mit einem CTA-Button."

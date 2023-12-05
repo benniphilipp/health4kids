@@ -12,7 +12,6 @@ class HomePage(Page):
     max_count = 1
     subpage_types = ["coaching.Coaching", "legal.legal"]
 
-
     skyline = models.CharField(blank=True, max_length=350, verbose_name="Skyline")
     headline = RichTextField(blank=True, features=['h1', 'h2', 'custom-inline', 'custom-inline-blue'])
     subline = RichTextField(blank=True, features=['h1', 'h2', 'custom-inline', 'custom-inline-blue'])
@@ -85,20 +84,11 @@ class HomePage(Page):
 
     # Admin Tabs
     edit_handler = TabbedInterface([
-        ObjectList(content_stream, heading='Content'),
-        ObjectList(content_panels, heading='Hero'),
-        ObjectList(Page.promote_panels, heading='Promotional'),
+        ObjectList(content_stream, heading='Inhalt deiner Website'),
+        ObjectList(content_panels, heading='Startseiten-Header'),
+        ObjectList(Page.promote_panels, heading='SEO-Optionen'),
     ])
     
-    # Image right
-    # image_right = models.ForeignKey(
-    # "wagtailimages.Image",
-    # null=True,
-    # blank=True,
-    # on_delete= models.SET_NULL,
-    # verbose_name="Hintergrund Rechts"
-    # related_name="+"
-    # )
     
     
     

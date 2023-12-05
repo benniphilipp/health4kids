@@ -1,21 +1,21 @@
 {% load static wagtailcore_tags wagtailimages_tags wagtailsettings_tags %}
 
-<section id="section-gallery-image-text">
+<section class="pw-custom-column pw-custom-column-tablet" id="section-gallery-image-text">
     <div class="bg-abs"></div>
     <div class="container my-3 my-lg-5">
         <div class="row">
             <div class="col-12 col-lg-6 col-md-12">
-                <div class="row">
+                <div class="row g-0">
                     {% for card in self.image_repeat %}
                         {% image card.image format-webp-lossless as img %}  
                 
                         {% if forloop.first %}
                             <div class="col-12 position-relative">
-                                <img src="{{ img.url }}" alt="{{ img.alt }}" class="image-first my-2" style="width: 80%; height: auto;" />
+                                <img src="{{ img.url }}" alt="{{ img.alt }}" class="image-first" style="width: 80%; height: auto;" />
     
                                 {% if settings.site_settings.MySettings.around_logo %}
                                     {% image settings.site_settings.MySettings.around_logo format-webp-lossless as img %}
-                                    <img class="image-logo-rounde" width="140px" height="140px" src="{{ img.url }}" alt="">
+                                    <img class="image-logo-rounde" src="{{ img.url }}" alt="">
                                 {% endif %}
     
                             </div>
@@ -23,11 +23,11 @@
     
                             {% if forloop.counter == 2 %}
                                 <div class="col-6">
-                                    <img src="{{ img.url }}" alt="{{ img.alt }}" class="image-counter my-3" style="width: 100%; height: auto;" />
+                                    <img src="{{ img.url }}" alt="{{ img.alt }}" class="image-counter image-padding-right" style="width: 100%; height: auto;" />
                                 </div>
                             {% else %}
                                 <div class="col-6">
-                                    <img src="{{ img.url }}" alt="{{ img.alt }}" class="image-counter my-3" style="width: 100%; height: auto;" />
+                                    <img src="{{ img.url }}" alt="{{ img.alt }}" class="image-counter image-padding-left" style="width: 100%; height: auto;" />
                                 </div>
                             {% endif %}
         

@@ -1,34 +1,37 @@
 /*Backend Page Select*/
 
 document.addEventListener("DOMContentLoaded", function() {
-    const linkChoice = document.querySelector("#id_link_choice");
-    const pageLabelField = document.querySelector("#panel-child-hero-link_url-section");
-    const linkLabelField = document.querySelector("#panel-child-hero-page_link-section");
+    // const linkChoice = document.querySelector("#id_link_choice");
+    // const pageLabelField = document.querySelector("#panel-child-hero-link_url-section");
+    // const linkLabelField = document.querySelector("#panel-child-hero-page_link-section");
 
-    linkChoice.value = "page";
-    updateFieldVisibility();
+    // linkChoice.value = "page";
+    // updateFieldVisibility();
 
-    function updateFieldVisibility() {
-        if (linkChoice.value === "page") {
-            linkLabelField.style.display = "block";
-            pageLabelField.style.display = "none";
-        } else if (linkChoice.value === "extern") {
-            linkLabelField.style.display = "none";
-            pageLabelField.style.display = "block";
-        } else {
-            linkLabelField.style.display = "block";
-            pageLabelField.style.display = "none";
-        }
-    }
+    // function updateFieldVisibility() {
+    //     if (linkChoice.value === "page") {
+    //         linkLabelField.style.display = "block";
+    //         pageLabelField.style.display = "none";
+    //     } else if (linkChoice.value === "extern") {
+    //         linkLabelField.style.display = "none";
+    //         pageLabelField.style.display = "block";
+    //     } else {
+    //         linkLabelField.style.display = "block";
+    //         pageLabelField.style.display = "none";
+    //     }
+    // }
 
-    linkChoice.addEventListener("change", updateFieldVisibility);
+    // linkChoice.addEventListener("change", updateFieldVisibility);
 
-    // GalleryImageText
+
+
+
+    // Backend GalleryImageText
     const selectButton = document.querySelector('#content-0-value-link_type');
     const fieldButtonPage = document.querySelector('div[data-contentpath="button_page"]');
     const fieldButtonUrl = document.querySelector('div[data-contentpath="button_url"]');
 
-    selectButton.value = "page";
+    // selectButton.value = "page";
     updateFiledVisibilitySection();
 
     function updateFiledVisibilitySection(){
@@ -46,7 +49,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     selectButton.addEventListener("change", updateFiledVisibilitySection);
 
-    // Testimonial Silder
+
+
+    
+    // Backend Testimonial Silder
     const selectTestimonial = document.querySelector("#content-2-value-slider_type");
     const imgPerson = document.querySelector('div[data-contentpath="img_person"]');
     const namePerson = document.querySelector('div[data-contentpath="name_person"]');
@@ -73,6 +79,74 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     selectTestimonial.addEventListener("change", TestimonialSilder);
+
+
+
+    
+
+    // Feld Validator
+    function addCharacterCount(elementSelector) {
+        var element = document.querySelector(elementSelector);
+    
+        if (element) {
+            var classNames = element.className.split(' ');
+            var maxLengthClass = classNames.find(function(className) {
+                return className.startsWith('max_length-');
+            });
+    
+            if (maxLengthClass) {
+                var maxChars = parseInt(maxLengthClass.split('-')[1]);
+    
+                // Extrahiere den Textinhalt aus dem Datenattribut data-text="true"
+                var textContentElement = element.querySelector('[data-text="true"]');
+    
+                // Füge die Anzahl der Zeichen direkt in das HTML des Elements ein
+                var charCountElement = document.createElement('span');
+    
+                // Setze die Schriftfarbe auf Grau (hex: #808080)
+                charCountElement.style.color = '#808080';
+    
+                charCountElement.innerText = ' Eingegebene Zeichen: ' + textContentElement.innerText.length + ' von ' + maxChars;
+                element.appendChild(charCountElement);
+            }
+        }
+    }
+
+    addCharacterCount('[data-contentpath="heading"] .max_length-66');
+    addCharacterCount('[data-contentpath="paragraph"] .max_length-264');
+
+    function addCharacterCountForParagraph(elementSelector) {
+        var element = document.querySelector(elementSelector);
+    
+        if (element) {
+            var classNames = element.className.split(' ');
+            var maxLengthClass = classNames.find(function(className) {
+                return className.startsWith('max_length-');
+            });
+    
+            if (maxLengthClass) {
+                var maxChars = parseInt(maxLengthClass.split('-')[1]);
+            
+                // Extrahiere den Textinhalt direkt aus dem inneren <div>
+                var innerDivElement = element.querySelector('div'); // Hier musst du den richtigen Selektor verwenden
+                var textContent = innerDivElement ? innerDivElement.textContent || innerDivElement.innerText : '';
+            
+                // Füge die Anzahl der Zeichen direkt in das HTML des Elements ein
+                var charCountElement = document.createElement('span');
+            
+                // Setze die Schriftfarbe auf Grau (hex: #808080)
+                charCountElement.style.color = '#808080';
+            
+                charCountElement.innerText = ' Eingegebene Zeichen: ' + textContent.length + ' von ' + maxChars;
+                element.appendChild(charCountElement);
+            }
+        }
+    }
+
+    addCharacterCountForParagraph('[data-contentpath="subline"] .max_length-89');
+    addCharacterCountForParagraph('[data-contentpath="button_text"] .max_length-90');
+
+
     
 
 });
