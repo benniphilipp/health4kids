@@ -71,4 +71,33 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
+
+
+
+    // Function to open the popup
+    function openPopup(src) {
+        var popup = document.getElementById('imagePopup');
+        var popupImage = document.getElementById('popupImage');
+        
+        popupImage.src = src;
+        popup.style.display = 'flex';
+    }
+
+    // Function to close the popup
+    function closePopup() {
+        document.getElementById('imagePopup').style.display = 'none';
+    }
+
+    // Add event listeners to the images
+    var galleryImages = document.querySelectorAll('.gallery img');
+    galleryImages.forEach(function(image) {
+        image.addEventListener('click', function() {
+            openPopup(image.src);
+        });
+    });
+
+    // Add event listener to the close button
+    document.getElementById('closePopup').addEventListener('click', closePopup);
+
+
 });

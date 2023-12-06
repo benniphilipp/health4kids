@@ -1,13 +1,13 @@
 {% load static wagtailcore_tags wagtailimages_tags wagtailsettings_tags %}
 
-<section id="promo-box" class="py-3 py-lg-5">
+<section id="promo-box" class="py-3 py-lg-5 pw-custom-column-tablet pw-custom-column">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-7">
-                <div class="pw-headline-text text-center">
+                <div class="pw-headline-text text-center" style="color: #fff;">
                     {{self.heading|richtext}}
                 </div>
-                <div class="pw-fb-text text-center">
+                <div class="pw-fb-text text-center" style="color: #fff;">
                     {{self.paragraph|richtext}}
                 </div>
 

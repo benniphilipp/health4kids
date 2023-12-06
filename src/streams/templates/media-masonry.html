@@ -1,5 +1,5 @@
 {% load static wagtailcore_tags wagtailimages_tags wagtailsettings_tags %}
-<section id="media-masonry">
+<section id="media-masonry" class="pw-custom-column-tablet pw-custom-column">
     <div class="container py-3 py-lg-5">
         <div class="row justify-content-center">
             <div class="col-12 col-md-7">
@@ -15,7 +15,7 @@
             <div class="col-12">
 
 
-                <div class="grid" id="image-grid">
+                <div class="grid gallery" id="image-grid">
                     {% for card in self.image_repeat %}
                     {% image card.image format-webp-lossless as img %}  
             
@@ -31,3 +31,9 @@
         </div>
     </div>
 </section>
+
+<!-- Popup container -->
+<div id="imagePopup" class="popup">
+    <span class="close" id="closePopup">&times;</span>
+    <img id="popupImage" src="" alt="Popup Image">
+</div>

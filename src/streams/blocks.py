@@ -83,46 +83,85 @@ class MediaMasonry(blocks.StructBlock):
         label = "Media Masonry"
         
 
+class CustomImageRepeatBlock(blocks.StructBlock):
+    image = ImageChooserBlock(
+        required=True,
+        label="Dein Bild",
+        help_text="Hier kannst du ein Bild auswählen."
+    )
+    
 #Bild Text
 class ImageText(blocks.StructBlock):
     min_num = 1
     max_num = 3
     
-    heading = blocks.RichTextBlock(form_classname="Titel", blank=True)
-    subline = blocks.CharBlock(blank=True, max_length=350)
-    paragraph = blocks.RichTextBlock(form_classname="Text", blank=True)
+    # Überschrift
+    heading = blocks.RichTextBlock(
+        max_length=139, 
+        blank=True, 
+        label="Überschrift", 
+        help_text="Hier ist der Platz für eine aussagekräftige Überschrift, um deine Webseitenbesucher zu begeistern, maximal 33 Zeichen..",
+        form_classname="max_length-66",
+        features=['h2', 'custom-inline', 'custom-inline-blue']
+    )
+    
+    # Subline
+    subline = blocks.CharBlock(
+        required=True,
+        max_length=96,
+        label="Skyline",
+        help_text="Skyline als kleine Überschrift, maximal 96 Zeichen.",
+        form_classname="max_length-66"
+    )
+    
+    # Fließtextfeld 280
+    paragraph = blocks.RichTextBlock(
+        required=False,
+        max_length=280,
+        label="Fließtextfeld",
+        help_text="Die Unterzeile wird in Rot dargestellt, ist auf maximal 280 Zeichen begrenzt und kein Pflichtfeld. Du kannst es gerne leer lassen!", 
+        form_classname="max_length-280"
+    )
     
     #Button Auswahl
     link_type = blocks.ChoiceBlock(
         choices=[
-            ('page', 'Verlinkung Intern'),
-            ('extern', 'Verlinkung Extern'),
+            ('page', 'Verlinkung intern'),
+            ('extern', 'Verlinkung extern'),
         ],
-        label="Auswahl Verlinkung",
-        default='page',  # Setze den Standardwert nach Bedarf
+        label="Auswahl",
+        default='page', 
+        help_text='Bitte wähle aus, was du verlinken möchtest: eine externe Seite oder eine interne Seite.'
     ) 
     
     #Button Page
-    button_page = blocks.PageChooserBlock(required=False)
+    button_page = blocks.PageChooserBlock(
+        required=False,
+        label="Seitenauswahl",
+        help_text="Die Seite muss öffentlich sein, damit Besucher deine Website erreichen können.")
     
     #Button link
-    button_url = blocks.URLBlock(required=False)
+    button_url = blocks.URLBlock(
+        required=False,
+        label="Websiten-URL",
+        help_text="Hier kannst du eine Wunschwebsite verlinken. Achte darauf, dass diese Seite unter https erreichbar ist.")
     
     #Button Text
-    button_text = blocks.CharBlock(required=True, default='Mehr erfahren', max_length=40)
+    button_text = blocks.CharBlock(
+        required=True, 
+        default='Mehr erfahren', 
+        label="Dein individueller Buttontext",
+        help_text="Denk dir einen ansprechenden Text aus, der den Benutzer nach mehr verlangen lässt.",
+        max_length=90,
+        form_classname="max_length-90")
     
-    image_repeat = blocks.ListBlock(
-        blocks.StructBlock(
-            [
-                ("image", ImageChooserBlock(required=True)),
-            ]
-        )
-    )
+    image_repeat = blocks.ListBlock(CustomImageRepeatBlock)
     
     class Meta:
         template = 'bild-text.html'
         icon = 'edit'
         label = "Bild Text"
+        help_text= "Der Bild-Text ist dafür geeignet, reichlich Informationen mit ansprechenden Bildern bereitzustellen und sie von deiner Dienstleistung zu überzeugen."
 
 
 # Personen Block

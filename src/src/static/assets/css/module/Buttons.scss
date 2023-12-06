@@ -35,6 +35,17 @@
     border-color: var(--red);
 }
 
+.btn-outline-primary{
+    color: var(--red);
+    border-color: var(--red);
+}
+
+.btn-outline-primary:hover{
+    color: var(--white);
+    background-color: var(--dark-blue);
+    border-color: var(--dark-blue);
+}
+
 .btn-primary:hover {
     color: var(--white);
     background-color: var(--red);

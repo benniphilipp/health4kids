@@ -7,8 +7,8 @@
                 <div class="pw-subline-text mt-3">
                     <h3>{{self.skyline}}</h3>
                 </div>
-                <div class="pw-headline-text">
-                    <h2>{{self.heading}}</h2>
+                <div class="pw-headline-text h-color-dark-blue">
+                    {{self.heading}}
                 </div>
             </div>
         </div>
@@ -19,16 +19,32 @@
                 {% if slider_count == 1 %}
 
                     {% for slider in self.slider_reapeat %}
+                        {% image slider.image format-webp-lossless as img %}
                         <div class="col-12 col-md-12">
-                            Es gibt nur ein Element im Slider.
+                            <div class="card mb-3">
+                                <img src="{{ img.url }}" class="card-img-top" alt="{{ img.alt }}">
+                                <div class="card-body">
+                                  <span class="card-title">{{ slider.headline }}</span>
+                                  <p class="card-text">{{slider.paragraph}}</p>
+                                  <a class="btn btn-outline-primary" href="{{slider.button_page}}">Mehr erfahren</a>
+                                </div>
+                            </div>
                         </div>
                     {% endfor %}
 
                 {% elif slider_count == 2 %}
 
                     {% for slider in self.slider_reapeat %}
+                        {% image slider.image format-webp-lossless as img %}
                         <div class="col-12 col-md-6">
-                            Es gibt zwei Elemente im Slider.
+                            <div class="card mb-3">
+                                <img src="{{ img.url }}" class="card-img-top" alt="{{ img.alt }}">
+                                <div class="card-body">
+                                  <span class="card-title">{{ slider.headline }}</span>
+                                  <p class="card-text">{{slider.paragraph}}</p>
+                                  <a class="btn btn-outline-primary" href="{{slider.button_page}}">Mehr erfahren</a>
+                                </div>
+                            </div>
                         </div>
                     {% endfor %}
 
@@ -40,9 +56,9 @@
                             <div class="card mb-3">
                                 <img src="{{ img.url }}" class="card-img-top" alt="{{ img.alt }}">
                                 <div class="card-body">
-                                  <h5 class="card-title">{{ slider.headline }}</h5>
+                                  <span class="card-title">{{ slider.headline }}</span>
                                   <p class="card-text">{{slider.paragraph}}</p>
-                                  <a href="{{slider.button_page}}">Mehr erfahren</a>
+                                  <a class="btn btn-outline-primary" href="{{slider.button_page}}">Mehr erfahren</a>
                                 </div>
                             </div>
                         </div>

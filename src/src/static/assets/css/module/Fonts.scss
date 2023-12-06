@@ -20,9 +20,9 @@ h1{
     --min-size: 25;
     font-size: var(--responsive);
 }
+
 h2{
     font-family: var(--pw-serif-font-family); 
-    color: var(--dark-blue); 
     font-weight: bold; 
     --max-size: 35;
     --min-size: 25;
@@ -64,15 +64,12 @@ a{
     text-decoration: none;
 }
 
-// Golbal Gap
-.pw-content{
-    gap: 1.875rem;
+.h-color-red{
+    color: var(--red);
 }
 
-@media (max-width: 576px) {
-    .pw-content{
-        gap: .8rem;
-    } 
+.h-color-dark-blue{
+    color: var(--dark-blue);
 }
 
 .pw-subline-text{
