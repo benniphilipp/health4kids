@@ -6,6 +6,85 @@ from wagtail.fields import RichTextField
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.blocks import RichTextBlock
 
+# Accordion
+
+class AccordionBlock(blocks.StructBlock):
+    titel = blocks.TextBlock(required=False, max_length=33, help_text="Maximal 33 Zeichen.", label="Titel Accordion")
+    text = blocks.TextBlock(required=True, help_text="Maximal 400 Zeichen.", max_length=400, label="Text Accordion")
+
+    
+class Accordion(blocks.StructBlock):
+    
+    # Überschrift
+    headline = blocks.RichTextBlock(
+        required=True,
+        max_length=96,
+        label="Überschrift",
+        features=['h2', 'custom-inline', 'custom-inline-blue'],
+        help_text="Kreiere eine überzeugende Überschrift, um deine Website-Besucher auf deiner Website zu halten. Maximal 96 Zeichen."
+    )
+    
+    # Fließtextfeld
+    paragraph = blocks.RichTextBlock(
+        blank=True, 
+        null=True,
+        max_length=164,
+        form_classname="max_length-364",
+        label="Fließtextfeld",
+        help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst.",
+        features=['h2', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'])
+    
+    accordion_reapeat = blocks.ListBlock(
+        AccordionBlock(),
+        label="Accordion",
+        help_text="Perfekt geeignet, um viel Text übersichtlich zu präsentieren."
+    )
+    
+    #Button Auswahl
+    link_type = blocks.ChoiceBlock(
+        choices=[
+            ('page', 'Verlinkung intern'),
+            ('extern', 'Verlinkung extern'),
+        ],
+        label="Auswahl",
+        default='page', 
+        help_text='Bitte wähle aus, was du verlinken möchtest: eine externe Seite oder eine interne Seite.'
+    ) 
+    
+    #Button Page
+    button_page = blocks.PageChooserBlock(
+        required=False,
+        label="Seitenauswahl",
+        help_text="Die Seite muss öffentlich sein, damit Besucher deine Website erreichen können.")
+    
+    #Button link
+    button_url = blocks.URLBlock(
+        required=False,
+        label="Websiten-URL",
+        help_text="Hier kannst du eine Wunschwebsite verlinken. Achte darauf, dass diese Seite unter https erreichbar ist.")
+    
+    #Button Text
+    button_text = blocks.CharBlock(
+        required=True, 
+        default='Mehr erfahren', 
+        label="Dein individueller Buttontext",
+        help_text="Denk dir einen ansprechenden Text aus, der den Benutzer nach mehr verlangen lässt.",
+        max_length=90,
+        form_classname="max_length-90")
+    
+    class Meta:
+        template = 'accordion.html'
+        icon = 'edit'
+        label = "Accordion"
+        help_text="Das Accordion ist dazu da, viel Text auf wenig Raum übersichtlich zu präsentieren."
+    
+    
+
+
+
+
+
+
 # Text One Image mit Wechsle bild links oder rechts
 class TextOneImage(blocks.StructBlock):
     

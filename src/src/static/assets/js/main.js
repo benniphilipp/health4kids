@@ -3,14 +3,15 @@ import Swiper from 'swiper/bundle';
 
 document.addEventListener('DOMContentLoaded', function() {
 
-
     var gridImage = document.getElementById('image-grid');
-    var items = gridImage.getElementsByClassName('grid-item');
+    
+    if(gridImage){
+        var items = gridImage.getElementsByClassName('grid-item');
+        items[1].classList.add('grid-item--width2');
 
-    items[1].classList.add('grid-item--width2');
-
-    for (var i = 4; i < items.length; i += 2) {
-        items[i].classList.add('grid-item--width2');
+        for (var i = 4; i < items.length; i += 2) {
+            items[i].classList.add('grid-item--width2');
+        }
     }
 
 
@@ -38,8 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         })
     }
-
-
 
     // Get Up button
     var mybutton = document.getElementById("scrollToTopBtn");
@@ -71,35 +70,39 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-
-
-
     // Function to open the popup
     function openPopup(src) {
         var popup = document.getElementById('imagePopup');
         var popupImage = document.getElementById('popupImage');
         
-        popupImage.src = src;
-        popup.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Disable scrolling
+        if (popup && popupImage) {
+            popupImage.src = src;
+            popup.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Disable scrolling
+        }
     }
 
-    // Function to close the popup
     function closePopup() {
-        document.getElementById('imagePopup').style.display = 'none';
-        document.body.style.overflow = 'auto'; // Enable scrolling
+        var popup = document.getElementById('imagePopup');
+        if (popup) {
+            popup.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Enable scrolling
+        }
     }
 
-    // Add event listeners to the images
     var galleryImages = document.querySelectorAll('.gallery img');
+
     galleryImages.forEach(function(image) {
         image.addEventListener('click', function() {
             openPopup(image.src);
         });
     });
 
-    // Add event listener to the close button
-    document.getElementById('closePopup').addEventListener('click', closePopup);
+    var closeButton = document.getElementById('closePopup');
+    if (closeButton) {
+        closeButton.addEventListener('click', closePopup);
+    }
+
 
 
 });
