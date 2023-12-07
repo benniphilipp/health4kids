@@ -33,6 +33,23 @@
 // Footer Sytle
 @import "./module/Footer.scss";
 
+
+// Text One Image
+#text-one-image{
+    .pw-content{
+        padding-right: 1.875rem;
+    }
+    .pw-content-left{
+        padding-right: 0;
+        padding-left: 1.875rem;
+    }
+    .btn-left{
+        margin-right: 0;
+        margin-left: 1.875rem;
+    }
+}
+
+
 // PopUp
 .popup {
     display: none;

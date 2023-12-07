@@ -6,6 +6,96 @@ from wagtail.fields import RichTextField
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.blocks import RichTextBlock
 
+# Text One Image mit Wechsle bild links oder rechts
+class TextOneImage(blocks.StructBlock):
+    
+    # Image
+    image = ImageChooserBlock(
+        required=True,
+        label="Bild",
+        help_text="Wähle ein Bild aus."
+    )
+    
+    # Überschrift
+    headline = blocks.RichTextBlock(
+        required=True,
+        max_length=96,
+        label="Überschrift",
+        features=['h2', 'custom-inline', 'custom-inline-blue'],
+        help_text="Kreiere eine überzeugende Überschrift, um deine Website-Besucher auf deiner Website zu halten. Maximal 96 Zeichen."
+    ) 
+    
+    # Unterzeile
+    subline = blocks.CharBlock(
+        required=False,
+        max_length=89, 
+        label="Unterzeile", 
+        help_text="Die Unterzeile wird in Rot dargestellt, ist auf maximal 89 Zeichen begrenzt und kein Pflichtfeld. Du kannst es gerne leer lassen!", 
+        form_classname="max_length-89")
+    
+    # Fließtextfeld
+    paragraph = blocks.RichTextBlock(
+        blank=True, 
+        null=True,
+        max_length=364,
+        form_classname="max_length-364",
+        label="Fließtextfeld",
+        help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst.",
+        features=['h2', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'])
+    
+    #Button Auswahl
+    link_type = blocks.ChoiceBlock(
+        choices=[
+            ('page', 'Verlinkung intern'),
+            ('extern', 'Verlinkung extern'),
+        ],
+        label="Auswahl",
+        default='page', 
+        help_text='Bitte wähle aus, was du verlinken möchtest: eine externe Seite oder eine interne Seite.'
+    ) 
+    
+    text_position = blocks.ChoiceBlock(
+        choices=[
+            ('order-first', 'Bild Links & Text Rechts'),
+            ('order-last', 'Bild Rechts & Text Links'),
+        ],
+        label="Auswahl",
+        default='order-first', 
+        help_text='Hier kannst du ganz leicht das Bild links oder rechts platzieren.'
+    ) 
+    
+    #Button Page
+    button_page = blocks.PageChooserBlock(
+        required=False,
+        label="Seitenauswahl",
+        help_text="Die Seite muss öffentlich sein, damit Besucher deine Website erreichen können.")
+    
+    #Button link
+    button_url = blocks.URLBlock(
+        required=False,
+        label="Websiten-URL",
+        help_text="Hier kannst du eine Wunschwebsite verlinken. Achte darauf, dass diese Seite unter https erreichbar ist.")
+    
+    #Button Text
+    button_text = blocks.CharBlock(
+        required=True, 
+        default='Mehr erfahren', 
+        label="Dein individueller Buttontext",
+        help_text="Denk dir einen ansprechenden Text aus, der den Benutzer nach mehr verlangen lässt.",
+        max_length=90,
+        form_classname="max_length-90")
+    
+    
+    class Meta:
+       template = 'text_one-image.html' 
+       icon = 'edit'
+       label = "Fließtext mit Bild einfach."
+       help_text="Fließtext mit Bild einfach, mit einem Bild und der Möglichkeit, das Bild links und den Text rechts oder das Bild rechts und den Text links zu platzieren."
+    
+    
+
+
+
 # Textfield Full Width
 class TextfieldFullWidth(blocks.StructBlock):
     text = blocks.RichTextBlock(
