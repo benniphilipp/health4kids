@@ -6,6 +6,23 @@ from wagtail.fields import RichTextField
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.blocks import RichTextBlock
 
+# Textfield Full Width
+class TextfieldFullWidth(blocks.StructBlock):
+    text = blocks.RichTextBlock(
+        required=True,
+        max_length=10000,
+        label="Fließtextfeld",
+        features=['h2', 'custom-inline', 'custom-inline-blue'],
+        help_text="Textfeld gesamte Breite, maximal 10.000 Zeichen."
+    ) 
+    
+    class Meta:
+        template = 'textfield_full_width.html'
+        icon = 'edit'
+        label = "Fließtextfeld"
+        help_text = "Textfeld gesamte Breite, gut geeignet, um viel Fließtext zu platzieren."
+
+
 #Link Cards
 class CustomLinkCardBlock(blocks.StructBlock):
     image = ImageChooserBlock(

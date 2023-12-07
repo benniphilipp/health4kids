@@ -8144,6 +8144,52 @@ span.image-underline-blue {
   position: fixed;
   width: 100%; }
 
+.hero-pages {
+  color: var(--white);
+  background-color: var(--dark-blue);
+  position: relative;
+  overflow: hidden;
+  z-index: 0; }
+  .hero-pages::before {
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: -1;
+    background-image: url(../js/810ebc9c54a8035ed161.png); }
+  .hero-pages::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    background-image: url(../js/58a7d0be8a74ed9d420d.png); }
+  .hero-pages .abs-bg110::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: top left;
+    background-repeat: no-repeat;
+    z-index: -1;
+    background-image: url(../js/b2be6a360f12835f9993.png); }
+  .hero-pages .breadcrumb li, .hero-pages .breadcrumb a {
+    color: var(--white);
+    font-weight: 500; }
+
 footer {
   background-color: var(--dark-blue);
   position: relative;
