@@ -81,11 +81,13 @@ document.addEventListener('DOMContentLoaded', function() {
         
         popupImage.src = src;
         popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Disable scrolling
     }
 
     // Function to close the popup
     function closePopup() {
         document.getElementById('imagePopup').style.display = 'none';
+        document.body.style.overflow = 'auto'; // Enable scrolling
     }
 
     // Add event listeners to the images

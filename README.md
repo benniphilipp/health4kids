@@ -14,7 +14,6 @@ git branch <Name>
 git checkout <Name>
 
 # CLI
-
 source env/bin/activate
 deactivate
 
@@ -31,8 +30,12 @@ python manage.py startapp snippets
 python manage.py startapp coaching
 python manage.py startapp menu
 python manage.py startapp site_settings
+python manage.py startapp streams
+python manage.py startapp legal
 
 
+legal-page
+Cookiebanner
 
 
 

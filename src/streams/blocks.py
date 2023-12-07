@@ -7,53 +7,111 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.blocks import RichTextBlock
 
 #Link Cards
+class CustomLinkCardBlock(blocks.StructBlock):
+    image = ImageChooserBlock(
+        required=False,
+        label="Bild",
+        help_text="Hier kannst du ein Bild auswählen."
+    )
+
+    headline = blocks.TextBlock(
+        required=True,
+        max_length=400,
+        label="Überschrift",
+        help_text="Hier kannst du eine Überschrift eingeben."
+    )
+
+    paragraph = blocks.TextBlock(
+        required=False,
+        max_length=100,
+        label="Absatz",
+        help_text="Hier kannst du einen Absatz eingeben."
+    )
+
+    button_page = blocks.PageChooserBlock(
+        required=False,
+        label="Button-Seite",
+        help_text="Hier kannst du eine Seite für den Button auswählen."
+    )
+
 class LinkCards(blocks.StructBlock):
     min_num = 1
     max_num = 3
-
-    skyline = blocks.CharBlock(blank=True, max_length=66)
-    heading = blocks.RichTextBlock(form_classname="Titel", blank=True)
+    
+    skyline = blocks.CharBlock(
+        blank=True,
+        max_length=66,
+        label="Skyline",
+        help_text="Hier kannst du eine Skyline eingeben, maximal 66 Zeichen."
+    )
+    
+    heading = blocks.RichTextBlock(
+        blank=True,
+        label="Überschrift",
+        help_text="Hier kannst du eine Überschrift eingeben."
+    )
 
     slider_reapeat = blocks.ListBlock(
-        blocks.StructBlock(
-            [
-                ("image", ImageChooserBlock(required=False)),
-                ("headline", blocks.TextBlock(required=True, max_length=400)),
-                ("paragraph", blocks.TextBlock(required=False, max_length=100)),
-                ("button_page", blocks.PageChooserBlock(required=False)),
-            ]
-        )
-    )
+        CustomLinkCardBlock,
+        label="Benutzerdefinierte Link-Karte",
+        help_text="Hier kannst du eine benutzerdefinierte Link-Karte hinzufügen.")
+
     
     class Meta:
         template = 'link-cards.html'
         icon = 'edit'
-        label = "Link Cards"
+        label = "Link-Karte"
+        help_text = "Benutzerdefinierte Link-Karten sind gut geeignet, um dem Benutzer eine Orientierung zu geben und ihn dorthin zu leiten, wo es für dich wichtig ist."
 
 
 #Promo Box
 class PromoBox(blocks.StructBlock):
-    heading = blocks.RichTextBlock(form_classname="Titel", blank=True)
-    paragraph = blocks.RichTextBlock(form_classname="Text", blank=True)
+    heading = blocks.RichTextBlock(
+        max_length=66,
+        label="Überschrift",
+        form_classname="max_length-66", 
+        required=True,
+        help_text="Eine aussagekräftige Überschrift, um deine Website-Besucher zu animieren, weiter zu klicken, maximal 66 Zeichen.",
+        features=['h2', 'custom-inline', 'custom-inline-blue'])
+    
+    paragraph = blocks.RichTextBlock(
+        max_length=192,
+        form_classname="max_length-192", 
+        required=False,
+        label="Fließtextfeld",
+        help_text="Beschreibe noch einmal, um was es auf der Seite gibt, die du verlinkt hast. Maximal 66 Zeichen.",
+        features=['h2', 'h3', 'custom-inline', 'custom-inline-blue'])
     
     #Button Auswahl
     link_type = blocks.ChoiceBlock(
         choices=[
-            ('page', 'Verlinkung Intern'),
-            ('extern', 'Verlinkung Extern'),
+            ('page', 'Verlinkung intern'),
+            ('extern', 'Verlinkung extern'),
         ],
-        label="Auswahl Verlinkung",
-        default='page',  # Setze den Standardwert nach Bedarf
+        label="Auswahl",
+        default='page', 
+        help_text='Bitte wähle aus, was du verlinken möchtest: eine externe Seite oder eine interne Seite.'
     ) 
     
     #Button Page
-    button_page = blocks.PageChooserBlock(required=False)
+    button_page = blocks.PageChooserBlock(
+        required=False,
+        label="Seitenauswahl",
+        help_text="Hier kannst du eine Wunschwebsite verlinken.")
     
     #Button link
-    button_url = blocks.URLBlock(required=False)
+    button_url = blocks.URLBlock(
+        required=False,
+        label="Websiten-URL",
+        help_text="Hier kannst du eine Wunschwebsite verlinken. Achte darauf, dass diese Seite unter https erreichbar ist.")
     
     #Button Text
-    button_text = blocks.CharBlock(required=True, default='Mehr erfahren', max_length=40)    
+    button_text = blocks.CharBlock(
+        required=True, 
+        default='Mehr erfahren', 
+        max_length=40,
+        label="Dein individueller Buttontext",
+        help_text="Denk dir einen ansprechenden Text aus, der den Benutzer nach mehr verlangen lässt.")    
 
     class Meta:
         template = 'promo-box.html'
@@ -98,7 +156,7 @@ class ImageText(blocks.StructBlock):
     # Überschrift
     heading = blocks.RichTextBlock(
         max_length=139, 
-        blank=True, 
+        required=True, 
         label="Überschrift", 
         help_text="Hier ist der Platz für eine aussagekräftige Überschrift, um deine Webseitenbesucher zu begeistern, maximal 33 Zeichen..",
         form_classname="max_length-66",
