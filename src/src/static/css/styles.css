@@ -8313,6 +8313,21 @@ footer {
     font-size: 1rem;
     color: var(--white); }
 
+.custom-form {
+  max-width: 400px;
+  margin: 0 auto; }
+
+.custom-form label {
+  display: block;
+  margin-bottom: 5px; }
+
+.custom-form input,
+.custom-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box; }
+
 .popup {
   display: none;
   position: fixed;
