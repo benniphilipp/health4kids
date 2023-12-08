@@ -27,5 +27,6 @@ class Coaching(Page):
     edit_handler = TabbedInterface([
         ObjectList(content_stream, heading='Inhalt deiner Website'),
         ObjectList(Page.promote_panels, heading='Promotional'),
+        ObjectList(Page.promote_panels, heading='Seo-Einstellungen'),
     ])
     

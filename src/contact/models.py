@@ -18,9 +18,9 @@ class FormField(AbstractFormField):
 
 class FormPage(AbstractEmailForm):
     
-    template = "contact/contact_page.html"
+    template = "contact_page.html"
 
-    landing_page_template = "contact/contact_page_landing.html"
+    landing_page_template = "contact_page_landing.html"
     
     intro = RichTextField(blank=True)
     thank_you_text = RichTextField(blank=True)
@@ -38,19 +38,6 @@ class FormPage(AbstractEmailForm):
         ], "Email"),
     ]
 
-    # def get_data_fields(self):
-    #     data_fields = [
-    #         ('username', 'Username'),
-    #     ]
-    #     data_fields += super().get_data_fields()
-
-    #     return data_fields
-
-    # def process_form_submission(self, form):
-    #     return self.get_submission_class().objects.create(
-    #         form_data=form.cleaned_data,
-    #         page=self, user=form.user
-    #     )
         
 
 

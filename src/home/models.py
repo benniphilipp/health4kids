@@ -113,7 +113,8 @@ class HomePage(Page):
     edit_handler = TabbedInterface([
         ObjectList(content_stream, heading='Inhalt deiner Website'),
         ObjectList(content_panels, heading='Startseiten-Header'),
-        ObjectList(Page.promote_panels, heading='SEO-Optionen'),
+        ObjectList(Page.promote_panels, heading='Seo-Einstellungen'),
+        ObjectList(Page.settings_panels, heading='Einstellungen'),
     ])
     
     
