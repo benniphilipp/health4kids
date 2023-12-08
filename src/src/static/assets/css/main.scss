@@ -33,6 +33,109 @@
 // Footer Sytle
 @import "./module/Footer.scss";
 
+
+// PopUp Cookie
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.close-cookie {
+    color: var(--black);
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+
+
+// Cookie banner
+#cookie-banner{
+    bottom: 0;
+    left: 50%;
+    position: fixed;
+    max-width: 690px;
+    padding: 1rem;
+    z-index: 1;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: var(--pw-bg-white);
+    transform: translateX(-50%);
+
+    &::after{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 50%;
+        height: 50%;
+        background-size: contain;
+        background-position: bottom right;
+        background-repeat: no-repeat;
+        z-index: -1;
+        background-image: url('../../image/abs-bg30.png');
+    }
+
+    .headline{
+        font-family: var(--pw-serif-font-family);
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    .cookie-content{
+        margin-top: .9rem;
+        font-size: .9rem;
+        font-weight: 400;
+        a {
+            font-weight: 400;
+            color: var(--red);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            &:hover {
+                color: var(--dark-blue);
+            }
+        }
+    }
+}
+
+.cookie-icon{
+    bottom: 1.875rem;
+    left: 1.875rem;
+    position: fixed;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    padding: .2rem;
+    background-color: var(--white);
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+
+
 // Liststyle
 .textliste{
     ul{

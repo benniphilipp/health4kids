@@ -7860,7 +7860,8 @@ body {
   font-size: 100%;
   font-size: 16px;
   font-weight: 300;
-  line-height: 1.5; }
+  line-height: 1.5;
+  position: relative; }
 
 * {
   --diff: calc(var(--max-size) - var(--min-size));
@@ -8311,6 +8312,87 @@ footer {
   .pw-arrow-up .fa-solid {
     font-size: 1rem;
     color: var(--white); }
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); }
+
+.close-cookie {
+  color: var(--black);
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer; }
+
+#cookie-banner {
+  bottom: 0;
+  left: 50%;
+  position: fixed;
+  max-width: 690px;
+  padding: 1rem;
+  z-index: 1;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: var(--pw-bg-white);
+  transform: translateX(-50%); }
+  #cookie-banner::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background-size: contain;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    z-index: -1;
+    background-image: url(../js/6cc848a57123cc6026e6.png); }
+  #cookie-banner .headline {
+    font-family: var(--pw-serif-font-family);
+    font-size: 1.2rem;
+    font-weight: bold; }
+  #cookie-banner .cookie-content {
+    margin-top: .9rem;
+    font-size: .9rem;
+    font-weight: 400; }
+    #cookie-banner .cookie-content a {
+      font-weight: 400;
+      color: var(--red);
+      text-decoration: none;
+      transition: color 0.3s ease; }
+      #cookie-banner .cookie-content a:hover {
+        color: var(--dark-blue); }
+
+.cookie-icon {
+  bottom: 1.875rem;
+  left: 1.875rem;
+  position: fixed;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  padding: .2rem;
+  background-color: var(--white); }
+  .cookie-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
 
 .textliste ul {
   list-style: none;

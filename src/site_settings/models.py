@@ -6,23 +6,21 @@ from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 
 
 @register_setting
-class SocialMediaSettings(BaseSiteSetting):
-    """Social media settings for our custom website."""
+class CookieBannerSettings(BaseSiteSetting):
+    banner_text = models.TextField(verbose_name="Text des Cookie Banners")
+    banner_accept_button_text = models.CharField(max_length=255, default="Cookies akzeptieren", verbose_name="Text des Akzeptieren-Buttons")
+    banner_decline_button_text = models.CharField(max_length=255, default="Ablehnen", verbose_name="Text des Ablehnen-Buttons")
 
-    facebook = models.URLField(blank=True, null=True, help_text="Facebook URL")
-    instagram = models.URLField(blank=True, null=True, help_text="Instagram URL")
-    whatsapp = models.URLField(blank=True, null=True, help_text="Whatsapp URL")
+    privacy_policy  = models.ForeignKey(
+        'wagtailcore.Page', null=True,blank=True, on_delete=models.SET_NULL, verbose_name="Datenschutz Seite", related_name='+', help_text="Wähle deine Datenschutzseite aus."
+    )
 
-    panels = [
-        MultiFieldPanel([
-            FieldPanel("facebook"),
-            FieldPanel("instagram"),
-            FieldPanel("whatsapp"),
-        ], heading="Social Media")
-    ]
-    
+    marketing = models.CharField(max_length=255, default="Marketing Code Beschreibung", verbose_name="Marketing")
+    javascript_code = models.TextField(blank=True, null=True, verbose_name="JavaScript-Code")
+
     class Meta:
-        verbose_name = "Einstellungen Social Media"
+        verbose_name = "Cookie Banner Einstellungen"
+
     
 @register_setting
 class MySettings(BaseSiteSetting):

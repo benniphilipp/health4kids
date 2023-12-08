@@ -243,6 +243,75 @@
                 </div>
         </footer>
 
+        <section id="cookie-banner">
+            <div class="cookie-wrapper">
+                <div class="headline">Diese Webseite verwendet Cookies</div>
+                <div class="cookie-content">
+                    {% if settings.site_settings.CookieBannerSettings.banner_text %}
+                        {{settings.site_settings.CookieBannerSettings.banner_text}}
+                    {% endif %}
+
+                    {% if settings.site_settings.CookieBannerSettings.privacy_policy %}
+                        <br><a href="{{ settings.site_settings.CookieBannerSettings.privacy_policy.url }}">Hier geht es zu unseren Seite: {{ settings.site_settings.CookieBannerSettings.privacy_policy.title }}</a>
+                    {% endif %}
+                </div>
+
+                <div class="cookie-buttons-wrapper">
+
+                    <div class="cookie-buttons mt-3 py-2">
+                        {% if settings.site_settings.CookieBannerSettings.banner_accept_button_text %}
+                            <button type="button" class="btn btn-secondary cookie-accept-button">
+                                {{settings.site_settings.CookieBannerSettings.banner_accept_button_text}}
+                            </button>
+                        {% endif %}
+            
+                        {% if settings.site_settings.CookieBannerSettings.banner_decline_button_text %}
+                            <button type="button" class="btn btn-outline-primary mx-3 cookie-decline-button">
+                                {{settings.site_settings.CookieBannerSettings.banner_decline_button_text}}
+                            </button>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <div id="openPopupButton" class="cookie-icon">
+            <img src="{% static 'image/cookies.png' %}" alt="cookie">
+        </div>
+
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close-cookie" id="closePopupButton">&times;</span>
+
+                <div class="mb-3">
+                    {% if settings.site_settings.CookieBannerSettings.marketing %}
+                        {{settings.site_settings.CookieBannerSettings.marketing}}
+                    {% endif %}
+                </div>
+
+                {% if settings.site_settings.CookieBannerSettings.banner_accept_button_text %}
+                    <button type="button" class="btn btn-secondary cookie-accept-button">
+                        {{settings.site_settings.CookieBannerSettings.banner_accept_button_text}}
+                    </button>
+                {% endif %}
+
+                <button id="cookie-delete-button" type="button" class="btn btn-primary mx-3">
+                    Alle Cookies widerrufen.
+                </button>
+
+                {% if settings.site_settings.CookieBannerSettings.banner_decline_button_text %}
+                    <button type="button" class="btn btn-outline-primary cookie-decline-button">
+                        {{settings.site_settings.CookieBannerSettings.banner_decline_button_text}}
+                    </button>
+                {% endif %}
+
+
+
+            </div>
+        </div>
+
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/src.js' %}"></script>
