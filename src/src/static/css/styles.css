@@ -8312,6 +8312,174 @@ footer {
     font-size: 1rem;
     color: var(--white); }
 
+.textliste ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap; }
+
+.textliste li {
+  flex: 0 0 50%;
+  box-sizing: border-box;
+  padding: 5px;
+  text-align: left;
+  position: relative;
+  font-family: var(--pw-serif-font-family); }
+
+.textliste li::before {
+  content: "\f061";
+  color: var(--red);
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-right: 5px; }
+
+@media (max-width: 768px) {
+  .textliste li {
+    flex: 0 0 100%; } }
+
+#contact-steps .abs-bg170 {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  width: 100%;
+  height: 100%; }
+  #contact-steps .abs-bg170::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: top;
+    background-repeat: no-repeat;
+    z-index: -1;
+    background-image: url(../js/934bc94b15968614a713.png); }
+
+#contact-steps .pw-image-rounde {
+  border-radius: 50%;
+  border: 5px solid var(--white);
+  box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.3);
+  display: block;
+  margin: 0 auto;
+  position: relative; }
+
+#contact-steps .conter {
+  top: 0.875rem;
+  right: 0.875rem;
+  position: absolute;
+  padding: 1rem;
+  z-index: 1;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: var(--white);
+  font-family: var(--pw-serif-font-family);
+  color: var(--brown);
+  font-weight: bold;
+  line-height: 5px;
+  font-size: 26px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box; }
+  #contact-steps .conter span {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 26px;
+    transform: translateY(-50%); }
+
+#contact-steps .image-round-wrapper {
+  display: inline-block;
+  position: relative;
+  max-width: max-content;
+  margin: 0 auto; }
+
+#contact-steps .titel {
+  --max-size: 22;
+  --min-size: 18;
+  font-size: var(--responsive);
+  line-height: 1.3;
+  font-weight: bold;
+  font-family: var(--pw-serif-font-family); }
+
+#contact-steps .text {
+  max-width: 330px;
+  margin: 0 auto; }
+
+@media (max-width: 992px) {
+  #contact-steps .abs-bg170::after {
+    background-image: url(../js/12188134edefe113bc8b.png); } }
+
+#pw-video {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  background-color: var(--dark-blue); }
+  #pw-video::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 50%;
+    background-size: contain;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    z-index: -1;
+    background-image: url(../js/4ca6cf0b1b7b6b6e64df.png); }
+  #pw-video::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 30%;
+    background-size: contain;
+    background-position: left top;
+    background-repeat: no-repeat;
+    z-index: -1;
+    background-image: url(../js/e01e5d23e021bab82ac5.png); }
+  #pw-video .abs-bg160::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 30%;
+    background-size: contain;
+    background-position: top right;
+    background-repeat: no-repeat;
+    z-index: -1;
+    background-image: url(../js/e01e5d23e021bab82ac5.png); }
+  #pw-video .abs-bg170 {
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    box-shadow: 0px 5px 14px 3px rgba(0, 0, 0, 0.2); }
+  #pw-video .pw-content {
+    padding-left: 1.875rem; }
+  #pw-video .pw-btn {
+    margin-left: 1.875rem; }
+  @media (max-width: 992px) {
+    #pw-video .pw-content {
+      padding-left: 0; }
+    #pw-video .pw-btn {
+      margin-left: 0; } }
+  #pw-video .videoplayer {
+    position: relative;
+    height: 0;
+    padding-bottom: 56.25%;
+    box-shadow: 0px 5px 14px 3px rgba(0, 0, 0, 0.2); }
+  #pw-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+
 #pw-accordion {
   position: relative;
   overflow: hidden;

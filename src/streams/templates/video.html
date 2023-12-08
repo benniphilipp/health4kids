@@ -1,0 +1,38 @@
+{% load static wagtailcore_tags wagtailimages_tags wagtailsettings_tags %}
+
+<section id="pw-video" class="pw-custom-column pw-custom-column-tablet">
+    <div class="abs-bg160"></div>
+    <div class="container py-3 py-lg-5">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-12 col-lg-6">
+
+                <div class='pw-content d-flex flex-column' style="color: var(--white);">
+                    <div class="pw-headline-text h-color-dark-blue" style="color: var(--white);">
+                        {{self.headline|richtext}}
+                    </div>
+                    <div class="pw-text pb-4" style="color: var(--white);">
+                        {{self.paragraph|richtext}}
+                    </div>
+                </div>
+
+
+                {% if self.button_url %}
+                    <a href="{{self.button_url}}" class='btn btn-secondary pw-btn'>{{ self.button_text }} <i class="fa-solid fa-arrow-right"></i></a>
+                {% elif self.button_page %}
+                    <a href="{{self.button_page}}" class='btn btn-secondary pw-btn'>{{ self.button_text }} <i class='fa-solid fa-arrow-right'></i></a>
+                {% endif %}
+
+            </div>
+            <div class="col-12 col-md-12 col-lg-6">
+                <div class="row align-items-center justify-content-center abs-bg170">
+                    <div class="col-12 col-md-12 col-lg-11">
+                        <div class="videoplayer">
+                            {{self.video_url | safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

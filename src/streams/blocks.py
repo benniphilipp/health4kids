@@ -6,8 +6,209 @@ from wagtail.fields import RichTextField
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.blocks import RichTextBlock
 
-# Accordion
+# Imagebulletpoints
+class ImageBulletPoints(blocks.StructBlock):
+    
+    # Image
+    image = ImageChooserBlock(
+        required=True,
+        label="Bild",
+        help_text="Wähle ein Bild aus."
+    )
+    
+    # Überschrift
+    headline = blocks.RichTextBlock(
+        required=True,
+        max_length=96,
+        label="Überschrift",
+        features=['h2', 'custom-inline', 'custom-inline-blue'],
+        help_text="Kreiere eine überzeugende Überschrift, um deine Website-Besucher auf deiner Website zu halten. Maximal 96 Zeichen."
+    )
+    
+    # Fließtextfeld
+    paragraph = blocks.RichTextBlock(
+        blank=True, 
+        null=True,
+        max_length=750,
+        form_classname="max_length-364",
+        label="Fließtextfeld",
+        help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst. Maximal 550 Zeichen.",
+        features=['h2', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'])
+    
+    
+    class Meta:
+       template = 'image_bullet_points.html' 
+       icon = 'edit'
+       label = "Ein Bild mit Aufzählungspunkten"
+       help_text="Fließtext mit Bild einfach, mit einem Bild und der Möglichkeit, das Bild links und den Text rechts oder das Bild rechts und den Text links zu platzieren."
 
+
+
+
+
+
+
+# Contact steps
+class ContactStepsBlock(blocks.StructBlock):
+    titel = blocks.TextBlock(
+        required=False, 
+        max_length=33, 
+        help_text="Maximal 33 Zeichen.", 
+        label="Titel Accordion")
+    
+    text = blocks.TextBlock(
+        required=True, 
+        help_text="Maximal 120 Zeichen.", 
+        max_length=120, 
+        label="Text Accordion")
+    
+    image = ImageChooserBlock(
+        required=False,
+        label="Bild",
+        help_text="Hier kannst du ein Bild auswählen."
+    )
+
+class ContactSteps(blocks.StructBlock):
+    
+    min_num = 1
+    max_num = 3
+    
+    # Überschrift
+    headline = blocks.RichTextBlock(
+        required=True,
+        max_length=96,
+        label="Überschrift",
+        features=['h2', 'custom-inline', 'custom-inline-blue'],
+        help_text="Kreiere eine überzeugende Überschrift, um deine Website-Besucher auf deiner Website zu halten. Maximal 96 Zeichen."
+    )
+    
+    # Fließtextfeld
+    paragraph = blocks.RichTextBlock(
+        blank=True, 
+        null=True,
+        max_length=164,
+        form_classname="max_length-364",
+        label="Fließtextfeld",
+        help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst.",
+        features=['h2', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'])
+    
+    # Contact Steps
+    contact_steps_reapeat = blocks.ListBlock(
+        ContactStepsBlock,
+        label="Kontaktschritte Karten",
+        help_text="Hier kannst du die Schritte aufzeigen, die deine Website-Besucher gehen müssen, um mit dir in Kontakt zu treten.")
+
+    #Button Auswahl
+    link_type = blocks.ChoiceBlock(
+        choices=[
+            ('page', 'Verlinkung intern'),
+            ('extern', 'Verlinkung extern'),
+        ],
+        label="Auswahl",
+        default='page', 
+        help_text='Bitte wähle aus, was du verlinken möchtest: eine externe Seite oder eine interne Seite.'
+    ) 
+    
+    #Button Page
+    button_page = blocks.PageChooserBlock(
+        required=False,
+        label="Seitenauswahl",
+        help_text="Die Seite muss öffentlich sein, damit Besucher deine Website erreichen können.")
+    
+    #Button link
+    button_url = blocks.URLBlock(
+        required=False,
+        label="Websiten-URL",
+        help_text="Hier kannst du eine Wunschwebsite verlinken. Achte darauf, dass diese Seite unter https erreichbar ist.")
+    
+    #Button Text
+    button_text = blocks.CharBlock(
+        required=True, 
+        default='Mehr erfahren', 
+        label="Dein individueller Buttontext",
+        help_text="Denk dir einen ansprechenden Text aus, der den Benutzer nach mehr verlangen lässt.",
+        max_length=90,
+        form_classname="max_length-90")
+    
+    class Meta:
+        template = 'contact-steps.html'
+        icon = 'edit'
+        label = "Kontaktschritte"
+
+    
+
+
+# Video
+class Video(blocks.StructBlock):
+    video_url = blocks.CharBlock(
+        required=True, 
+        label="Video URL",
+        help_text="Binde Videos von Youtbue oder Vimeo ein.")
+    
+    # Überschrift
+    headline = blocks.RichTextBlock(
+        required=True,
+        max_length=96,
+        label="Überschrift",
+        features=['h2', 'custom-inline', 'custom-inline-blue'],
+        help_text="Kreiere eine überzeugende Überschrift, um deine Website-Besucher auf deiner Website zu halten. Maximal 96 Zeichen."
+    )
+    
+    # Fließtextfeld
+    paragraph = blocks.RichTextBlock(
+        blank=True, 
+        null=True,
+        max_length=164,
+        form_classname="max_length-364",
+        label="Fließtextfeld",
+        help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst.",
+        features=['h2', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'])
+    
+    #Button Auswahl
+    link_type = blocks.ChoiceBlock(
+        choices=[
+            ('page', 'Verlinkung intern'),
+            ('extern', 'Verlinkung extern'),
+        ],
+        label="Auswahl",
+        default='page', 
+        help_text='Bitte wähle aus, was du verlinken möchtest: eine externe Seite oder eine interne Seite.'
+    ) 
+    
+        #Button Page
+    button_page = blocks.PageChooserBlock(
+        required=False,
+        label="Seitenauswahl",
+        help_text="Die Seite muss öffentlich sein, damit Besucher deine Website erreichen können.")
+    
+    #Button link
+    button_url = blocks.URLBlock(
+        required=False,
+        label="Websiten-URL",
+        help_text="Hier kannst du eine Wunschwebsite verlinken. Achte darauf, dass diese Seite unter https erreichbar ist.")
+    
+    #Button Text
+    button_text = blocks.CharBlock(
+        required=True, 
+        default='Mehr erfahren', 
+        label="Dein individueller Buttontext",
+        help_text="Denk dir einen ansprechenden Text aus, der den Benutzer nach mehr verlangen lässt.",
+        max_length=90,
+        form_classname="max_length-90")
+
+    class Meta:
+        template = 'video.html'
+        icon = 'media'
+        label = 'Video Block'
+        help_text = "Ein Video hilft deinen Website-Besuchern, deine Botschaft noch intensiver zu vermitteln und sie länger auf deiner Website zu halten."
+
+
+
+
+
+
+
+# Accordion
 class AccordionBlock(blocks.StructBlock):
     titel = blocks.TextBlock(required=False, max_length=33, help_text="Maximal 33 Zeichen.", label="Titel Accordion")
     text = blocks.TextBlock(required=True, help_text="Maximal 400 Zeichen.", max_length=400, label="Text Accordion")

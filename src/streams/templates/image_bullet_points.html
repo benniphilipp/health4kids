@@ -1,0 +1,17 @@
+{% load static wagtailcore_tags wagtailimages_tags wagtailsettings_tags %}
+
+
+<section id="imagebulletpoints" class="pw-custom-column pw-custom-column-tablet">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-12 col-lg-6">
+                {% image self.image format-webp-lossless as img %}
+                <img src="{{ img.url }}" class="img-fluid" alt="{{ img.alt }}">
+            </div>
+            <div class="col-12 col-md-12 col-lg-6 textliste h-color-dark-blue">
+                {{self.headline|richtext}}
+                {{self.paragraph|richtext}}
+            </div>
+        </div>
+    </div>
+</section>
