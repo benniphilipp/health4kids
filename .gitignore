@@ -3,4 +3,6 @@
 # Ignoriere die Datei env
 env
 node_modules
+datenbank_sicherung.json
 
+media/*

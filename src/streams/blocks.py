@@ -6,6 +6,16 @@ from wagtail.fields import RichTextField
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.blocks import RichTextBlock
 
+
+
+
+# Fragebogen Iframe
+class QuestionnaireIframe(blocks.StructBlock):
+    pass
+
+
+
+
 # Imagebulletpoints
 class ImageBulletPoints(blocks.StructBlock):
     
@@ -41,10 +51,6 @@ class ImageBulletPoints(blocks.StructBlock):
        icon = 'edit'
        label = "Ein Bild mit Aufzählungspunkten"
        help_text="Fließtext mit Bild einfach, mit einem Bild und der Möglichkeit, das Bild links und den Text rechts oder das Bild rechts und den Text links zu platzieren."
-
-
-
-
 
 
 

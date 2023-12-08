@@ -8337,6 +8337,78 @@ footer {
   .textliste li {
     flex: 0 0 100%; } }
 
+#imagebulletpoints .abs-bg190 {
+  position: absolute;
+  overflow: hidden;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  left: 0; }
+  #imagebulletpoints .abs-bg190::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 40%;
+    background-size: contain;
+    background-position: top;
+    background-repeat: no-repeat;
+    z-index: -1;
+    background-image: url(../js/dae5fc1eaacf3a7bf0a4.png); }
+
+#imagebulletpoints .image-wrapper {
+  display: inline-block;
+  position: relative;
+  max-width: max-content; }
+  #imagebulletpoints .image-wrapper .image-label-wrapper {
+    width: 360px;
+    height: 80px;
+    border-radius: .875rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    position: absolute;
+    left: 1.875rem;
+    bottom: 4.875rem;
+    padding: 1rem;
+    z-index: 1;
+    background-color: var(--white); }
+    @media (max-width: 576px) {
+      #imagebulletpoints .image-wrapper .image-label-wrapper {
+        left: .875rem;
+        bottom: 2.875rem;
+        width: 290px;
+        height: 60px; } }
+  #imagebulletpoints .image-wrapper .label {
+    padding: 1rem;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    color: var(--white);
+    font-size: 2rem;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--red); }
+    @media (max-width: 576px) {
+      #imagebulletpoints .image-wrapper .label {
+        height: 50px;
+        width: 50px;
+        font-size: 1rem; } }
+  #imagebulletpoints .image-wrapper a {
+    color: var(--red);
+    --max-size: 19;
+    --min-size: 15;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: var(--responsive); }
+  #imagebulletpoints .image-wrapper .pw-image {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 50%; }
+
 #contact-steps .abs-bg170 {
   position: relative;
   overflow: hidden;

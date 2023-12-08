@@ -10,7 +10,7 @@ from streams.blocks import GalleryImageText, FancyBox, TestimonialSilder, ImageT
 class HomePage(Page):
     template = "home/home_page.html"
     max_count = 1
-    subpage_types = ["coaching.Coaching", "legal.legal"]
+    subpage_types = ["coaching.Coaching", "legal.legal", "contact.FormPage"]
 
     skyline = models.CharField(
         blank=True, 

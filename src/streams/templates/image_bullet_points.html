@@ -1,15 +1,23 @@
 {% load static wagtailcore_tags wagtailimages_tags wagtailsettings_tags %}
 
-
 <section id="imagebulletpoints" class="pw-custom-column pw-custom-column-tablet">
-    <div class="container">
+    <div class="container py-3 py-lg-5">
         <div class="row">
-            <div class="col-12 col-md-12 col-lg-6">
+            <div class="col-12 col-md-12 col-lg-6 position-relative d-flex flex-column justify-content-center align-items-center">
+                <div class="abs-bg190"></div>
                 {% image self.image format-webp-lossless as img %}
-                <img src="{{ img.url }}" class="img-fluid" alt="{{ img.alt }}">
+                <div class="image-wrapper m-2 m-lg-4">
+                    <img src="{{ img.url }}" class="img-fluid pw-image" alt="{{ img.alt }}">
+                    <div class="image-label-wrapper">
+                        <div class="label d-flex">
+                            <i class="fa-regular fa-envelope"></i>
+                        </div>
+                        <a href="mailto:{{settings.site_settings.MySettings.email}}">{{settings.site_settings.MySettings.email}}</a>
+                    </div>
+                </div>
             </div>
-            <div class="col-12 col-md-12 col-lg-6 textliste h-color-dark-blue">
-                {{self.headline|richtext}}
+            <div class="col-12 col-md-12 col-lg-6 textliste h-color-dark-blue d-flex flex-column justify-content-center">
+                <div class="mb-4">{{self.headline|richtext}}</div>
                 {{self.paragraph|richtext}}
             </div>
         </div>
