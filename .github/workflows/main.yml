@@ -1,0 +1,41 @@
+name: Deploy to Production
+
+on:
+  pull_request:
+    types:
+      - closed
+  push:
+    branches:
+      - main
+jobs:
+
+  deploy:
+    name: Deploy to Production job
+    runs-on: ubuntu-latest
+    # needs: sync-branch
+    if: ${{ github.event.pull_request.merged == true || github.ref == 'refs/heads/main' }}
+    steps:
+
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.PROD_PRIVATE_KEY }}
+          known_hosts: unnecessary
+
+      - name: Adding Known Hosts
+        run: ssh-keyscan -p 22 -H 185.163.118.173  >> ~/.ssh/known_hosts
+        
+      - name: Restart Django App
+        uses: appleboy/ssh-action@master
+        with:
+          host: 185.163.118.173
+          username: root
+          key: ${{ secrets.PROD_PRIVATE_KEY}}
+          port: 22
+          script: |
+            cd /opt/health4kids && git checkout main && git reset --hard origin/main && git pull origin main
+            /opt/health4kids/env/bin/pip install -r /opt/health4kids/src/requirements.txt
+            cd /opt/health4kids && /opt/health4kids/env/bin/python manage.py migrate --settings=src.settings.production
+            cd /opt/health4kids && /opt/health4kids/env/bin/python manage.py collectstatic  --noinput --settings=src.settings.production
+            sudo systemctl restart gunicorn
+            
