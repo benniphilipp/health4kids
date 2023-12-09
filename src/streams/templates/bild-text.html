@@ -1,0 +1,60 @@
+{% load static wagtailcore_tags wagtailimages_tags wagtailsettings_tags %}
+
+<section id="image-text" class="pw-custom-column pw-custom-column-tablet">
+    <div class="container py-3 my-lg-4">
+        <div class="row">
+            <div class="col-12 col-lg-6 col-md-12 d-flex align-items-center"> <!---order-last-->
+                <div class="pw-content d-flex flex-column">
+                    <div class="pw-headline-text h-color-dark-blue">
+                        {{self.heading|richtext}}
+                    </div>
+                    <div class="pw-subline-text">
+                        <h3>{{self.subline}}</h3>
+                    </div>
+                    <div class="pw-text">
+                        {{self.paragraph|richtext}}
+                    </div>
+                    <div class="pw-cta">
+                        {% if self.button_url %}
+                            <a href="{{self.button_url}}" class="btn btn-secondary">{{ self.button_text }} <i class="fa-solid fa-arrow-right"></i></a>
+                        {% elif self.button_page %}
+                            <a href="{{self.button_page}}" class="btn btn-secondary">{{ self.button_text }} <i class="fa-solid fa-arrow-right"></i></a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 col-md-12 bg-abs-60">
+                <div class="row p-3 m-lg-4">
+                    {% for card in self.image_repeat %}
+                        {% image card.image format-webp-lossless as img %}  
+                
+                        {% if forloop.first %}
+                            <div class="col-12 position-relative d-flex justify-content-center">
+                                <img src="{{ img.url }}" alt="{{ img.alt }}" class="image-first my-2" style="width: 80%; height: auto;" />
+    
+                                {% if settings.site_settings.MySettings.around_logo %}
+                                    {% image settings.site_settings.MySettings.around_logo format-webp-lossless as img %}
+                                {% endif %}
+    
+                            </div>
+                        {% else %}
+    
+                            {% if forloop.counter == 2 %}
+                                <div class="col-6">
+                                    <img src="{{ img.url }}" alt="{{ img.alt }}" class="image-counter my-3" style="width: 100%; height: auto;" />
+                                </div>
+                            {% else %}
+                                <div class="col-6">
+                                    <img src="{{ img.url }}" alt="{{ img.alt }}" class="image-counter my-3" style="width: 100%; height: auto;" />
+                                </div>
+                            {% endif %}
+        
+                        {% endif %}
+    
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,52 @@
+{% load static wagtailcore_tags wagtailimages_tags wagtailsettings_tags %}
+
+<section id="contact-steps" class="pw-custom-column pw-custom-column-tablet">
+    <div class="container py-3 py-lg-5 d-flex pw-content flex-column">
+
+        <div class="row">
+            <div class="col-12 col-md-12 col-md-4">
+                <div class='pw-content d-flex flex-column position-relative'>
+                    <div class="pw-headline-text h-color-dark-blue text-center">
+                        {{self.headline|richtext}}
+                    </div>
+                    <div class="pw-text text-center">
+                        {{self.paragraph|richtext}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row position-relative abs-bg170">
+            {% for steps_reapeat  in self.contact_steps_reapeat %}
+                {% image steps_reapeat.image format-webp-lossless width-800 as img %}
+
+                <div class="col-12 col-md-4 col-lg-4">
+                    <div class="d-flex flex-column justify-content-center position-relative flex-column pw-content">
+                        <div class="image-round-wrapper">
+                            <div class="conter">
+                                <span>{{ forloop.counter }}</span>
+                            </div>
+                            <img src="{{ img.url }}" class="img-fluid pw-image-rounde" alt="{{ img.alt }}">
+                        </div>
+                        <div class="d-flex flex-column pw-content">
+                            <div class="titel text-center">{{ steps_reapeat.titel }}</div>
+                            <div class="text text-center">{{ steps_reapeat.text }}</div>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-12 d-flex justify-content-center">
+                {% if self.button_url %}
+                    <a href="{{self.button_url}}" class="btn btn-secondary">{{ self.button_text }} <i class="fa-solid fa-arrow-right"></i></a>
+                {% elif self.button_page %}
+                    <a href="{{self.button_page}}" class="btn btn-secondary">{{ self.button_text }} <i class="fa-solid fa-arrow-right"></i></a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</section>

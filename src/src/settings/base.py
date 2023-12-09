@@ -17,7 +17,6 @@ import environ
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 env = environ.Env(
@@ -27,12 +26,18 @@ env = environ.Env(
 # Take environment variables from .env file
 environ.Env.read_env(os.path.join(os.path.dirname(BASE_DIR), '.env'))
 
-
 # Application definition
 
 INSTALLED_APPS = [
     "home",
+    "legal",
+    "snippets",
+    "coaching",
+    "site_settings",
+    "menu",
     "search",
+    "streams",
+    "contact",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",
     "wagtail.embeds",
@@ -52,6 +57,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "wagtail.contrib.settings",
+    "fontawesomefree",
 ]
 
 MIDDLEWARE = [
@@ -80,6 +87,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "webp_converter.context_processors.webp_support",
+                "wagtail.contrib.settings.context_processors.settings",
             ],
         },
     },
@@ -123,7 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = 'Europe/Berlin'
 
 USE_I18N = True
 

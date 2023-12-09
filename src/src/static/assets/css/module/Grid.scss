@@ -1,0 +1,53 @@
+
+@media (min-width: 576px){
+    .container, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
+        max-width: 1520px;
+    }
+}
+
+// Golbal Gap
+.pw-content{
+    gap: 1.875rem;
+}
+
+@media (max-width: 576px) {
+    .pw-content{
+        gap: .8rem;
+    } 
+}
+
+
+.pw-custom-column {
+    padding-right: var(--pw-global-gutter-large);
+    padding-left: var(--pw-global-gutter-large);
+}
+
+@media (min-width: 992px){
+    .my-lg-5 {
+        margin-top: 5rem !important;
+        margin-bottom: 5rem !important;
+    }
+    .py-lg-5 {
+        padding-top: 5rem !important;
+        padding-bottom: 5rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .pw-custom-column {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 992px){
+    .pw-custom-column {
+        padding-right: 1.875rem;
+        padding-left: 1.875rem;
+    }
+    .pw-custom-column-tablet{
+        padding-top: 1.875rem !important;
+        padding-bottom: 1.875rem !important;
+    }
+}
+

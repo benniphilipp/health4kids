@@ -1,8 +1,35 @@
-{% load static wagtailcore_tags wagtailuserbar %}
+{% load static wagtailcore_tags menus_tags wagtailuserbar wagtailsettings_tags wagtailcore_tags wagtailimages_tags %}
+
+{% get_settings %}
+
+{% if "main"|menu_exists == False %}
+    {# Hier wird Code ausgeführt, wenn das Menü mit dem Slug "main" nicht existiert #}
+    Das Menü mit dem Slug "main" existiert nicht!
+    {% else %}
+    {% get_menu "main" as navigation %}
+{% endif %}
+
+{% if "footer"|menu_exists == False %}
+    {# Hier wird Code ausgeführt, wenn das Menü mit dem Slug "main" nicht existiert #}
+    Das Menü mit dem Footer "main" existiert nicht!
+    {% else %}
+    {% get_menu "footer" as navigation_footer %}
+{% endif %}
+
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
     <head>
+
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon.ico' %}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+        <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
+        <link rel="mask-icon" href="{% static 'favicon/safari-pinned-tab.svg' %}" color="#B09B8A">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#B09B8A">
+
         <meta charset="utf-8" />
         <title>
             {% block title %}
@@ -24,8 +51,16 @@
         {% endif %}
 
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/src.css' %}">
+        <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+        <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/src.css' %}">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        
         {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
         {% endblock %}
@@ -34,10 +69,270 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
+        
+        <!--Main Navbar-->
+        {% if navigation %}
+        <header>
+            <nav class="navbar navbar-light bg-ligh p-0">                
+                <div class="container justify-content-between align-items-stretch">
+                    <div class="d-flex nav-brand align-items-center py-2">
+                        {% image settings.site_settings.MySettings.header_logo original %}
+                    </div>
+                    <div class="d-flex align-items-center justify-content-start flex-grow-1 ms-5 pw-display-none mobile">
+                        {% for item in navigation.menu_items.all %}
+                            <a class="d-flex pw-nav-link flex-column align-items-center justify-content-center h-100 p-4 {% if request.path == item.link %}active{% endif %}" href="{{ item.link }}" {% if item.open_in_new_tab %} target="_blank"{% endif %}>
+                                {{ item.title }}
+                            </a>
+                        {% endfor %}
+                    </div>
+
+                        <div class="d-flex align-items-center pw-display-none">
+                            <div class="d-flex p-2">
+                                {% if settings.site_settings.MySettings.facebook %}
+                                <a href="{{ settings.site_settings.SocialMediaSettings.facebook }}" aria-label="facebook öffnen">
+                                    <i class="pw-icon fa-brands fa-square-facebook"></i>
+                                </a>
+                                {% endif %}
+                                {% if settings.site_settings.MySettings.instagram %}
+                                <a href="{{ settings.site_settings.SocialMediaSettings.instagram }}" aria-label="instagram öffnen">
+                                    <i class="pw-icon fa-brands fa-instagram"></i>
+                                </a>
+                                {% endif %}
+                                {% if settings.site_settings.MySettings.whatsapp %}
+                                    <a href="{{ settings.site_settings.SocialMediaSettings.whatsapp }}" aria-label="Whatsapp öffnen">
+                                        <i class="pw-icon fa-brands fa-whatsapp"></i>
+                                    </a>
+                                {% endif %}
+                            </div>
+                            {% if settings.site_settings.MySettings.book_appointment %}
+                                <a href="{{ settings.site_settings.MySettings.book_appointment.url }}" class="align-self-center btn btn-primary">{{ settings.site_settings.MySettings.btn_text }}</a>
+                            {% endif %}
+                        </div>
+                    
+
+                    <div class="d-flex align-items-center" id="menuOpen">
+                        <div class="burger-menu">
+                            <span class="line1"></span>
+                            <span class="line2"></span>
+                            <span class="line3"></span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        {% endif %}
+
+        {% if navigation_footer %}
+        <div id="mobileMenuItem" class="d-flex flex-column align-items-start">
+            {% for item in navigation.menu_items.all %}
+                <a class="d-flex justify-content-center p-2 {% if request.path == item.link %}active{% endif %}" href="{{ item.link }}" {% if item.open_in_new_tab %} target="_blank"{% endif %}>
+                    {{ item.title }}
+                </a>
+            {% endfor %}
+
+            <div class="d-flex p-2">
+                {% if settings.site_settings.MySettings.facebook %}
+                <a href="{{ settings.site_settings.SocialMediaSettings.facebook }}" aria-label="facebook öffnen">
+                    <i class="pw-icon fa-brands fa-square-facebook"></i>
+                </a>
+                {% endif %}
+                {% if settings.site_settings.MySettings.instagram %}
+                <a href="{{ settings.site_settings.SocialMediaSettings.instagram }}" aria-label="instagram öffnen">
+                    <i class="pw-icon fa-brands fa-instagram"></i>
+                </a>
+                {% endif %}
+                {% if settings.site_settings.MySettings.whatsapp %}
+                    <a href="{{ settings.site_settings.SocialMediaSettings.whatsapp }}" aria-label="Whatsapp öffnen">
+                        <i class="pw-icon fa-brands fa-whatsapp"></i>
+                    </a>
+                {% endif %}
+            </div>
+
+        </div>
+        {% endif %}
+
         {% block content %}{% endblock %}
+        {# Footer #}
+
+        <div class="container pw-custom-column">
+            <div class="row">
+                <div class="col-12 col-md-12 d-flex justify-content-center position-relative">
+                    {% if settings.site_settings.MySettings.around_logo %}
+
+                    {% image settings.site_settings.MySettings.around_logo format-webp-lossless as img %}
+                        <img class="image-logo-rounde-footer" width="140px" height="140px" src="{{ img.url }}" alt="">
+                    {% endif %}
+
+                    <div id="scrollToTopBtn" class="pw-arrow-up">
+                        <i class="fa-solid fa-arrow-up"></i>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-12">
+                        <div class="pw-footer-navbar">
+                            <nav>
+                                <ul>
+                                    {% for item in navigation_footer.menu_items.all %}
+                                    <li>
+                                        <a href="{{ item.link }}" class="{% if request.path == item.link %}active{% endif %}">
+                                            {{ item.title }}
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                {% if settings.site_settings.MySettings.phone_number %}
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-3 col-md-12 my-3">
+                        <div class="contact-email d-flex">
+                            <div class="contact-icon">
+                                <i class="fa-solid fa-phone-volume"></i>
+                            </div>
+                            <div class="contact-content">
+                                <div class="name">
+                                    Kontakt
+                                </div>
+                                <div class="content">
+                                    <a href="tel:{{settings.site_settings.MySettings.phone_number}}">{{settings.site_settings.MySettings.phone_number}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %} 
+
+                    {% if settings.site_settings.MySettings.email %}
+                    <div class="col-12 col-lg-3 col-md-12 my-3">
+                        <div class="contact-email d-flex">
+                            <div class="contact-icon">
+                                <i class="fa-regular fa-envelope"></i>
+                            </div>
+                            <div class="contact-content">
+                                <div class="name">
+                                    E-Mail-Adresse
+                                </div>
+                                <div class="content">
+                                    <a href="mailto:{{settings.site_settings.MySettings.email}}">{{settings.site_settings.MySettings.email}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    {% endif %}   
+
+                </div>
+
+                <div class="row my-3">
+                    <div class="container">
+                        <hr>
+                        <div class="col-12 col-md-12 d-flex justify-content-between copy-div">
+                            <div class="d-flex copyright">
+                                Copyright © 2023 <span>&nbsp; Health4Kids</span>. Alle Rechte vorbehalten.
+                            </div>
+                            <div class="d-flex">
+                                {% if settings.site_settings.MySettings.facebook %}
+                                <a href="{{ settings.site_settings.SocialMediaSettings.facebook }}" aria-label="facebook öffnen">
+                                    <i class="pw-icon fa-brands fa-square-facebook"></i>
+                                </a>
+                                {% endif %}
+                                {% if settings.site_settings.MySettings.instagram %}
+                                <a href="{{ settings.site_settings.SocialMediaSettings.instagram }}" aria-label="instagram öffnen">
+                                    <i class="pw-icon fa-brands fa-instagram"></i>
+                                </a>
+                                {% endif %}
+                                {% if settings.site_settings.MySettings.whatsapp %}
+                                    <a href="{{ settings.site_settings.SocialMediaSettings.whatsapp }}" aria-label="Whatsapp öffnen">
+                                        <i class="pw-icon fa-brands fa-whatsapp"></i>
+                                    </a>
+                                {% endif %}
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </footer>
+
+        <section id="cookie-banner">
+            <div class="cookie-wrapper">
+                <div class="headline">Diese Webseite verwendet Cookies</div>
+                <div class="cookie-content">
+                    {% if settings.site_settings.CookieBannerSettings.banner_text %}
+                        {{settings.site_settings.CookieBannerSettings.banner_text}}
+                    {% endif %}
+
+                    {% if settings.site_settings.CookieBannerSettings.privacy_policy %}
+                        <br><a href="{{ settings.site_settings.CookieBannerSettings.privacy_policy.url }}">Hier geht es zu unseren Seite: {{ settings.site_settings.CookieBannerSettings.privacy_policy.title }}</a>
+                    {% endif %}
+                </div>
+
+                <div class="cookie-buttons-wrapper">
+
+                    <div class="cookie-buttons mt-3 py-2">
+                        {% if settings.site_settings.CookieBannerSettings.banner_accept_button_text %}
+                            <button type="button" class="btn btn-secondary cookie-accept-button">
+                                {{settings.site_settings.CookieBannerSettings.banner_accept_button_text}}
+                            </button>
+                        {% endif %}
+            
+                        {% if settings.site_settings.CookieBannerSettings.banner_decline_button_text %}
+                            <button type="button" class="btn btn-outline-primary mx-3 cookie-decline-button">
+                                {{settings.site_settings.CookieBannerSettings.banner_decline_button_text}}
+                            </button>
+                        {% endif %}
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <div id="openPopupButton" class="cookie-icon">
+            <img src="{% static 'image/cookies.png' %}" alt="cookie">
+        </div>
+
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close-cookie" id="closePopupButton">&times;</span>
+
+                <div class="mb-3">
+                    {% if settings.site_settings.CookieBannerSettings.marketing %}
+                        {{settings.site_settings.CookieBannerSettings.marketing}}
+                    {% endif %}
+                </div>
+
+                {% if settings.site_settings.CookieBannerSettings.banner_accept_button_text %}
+                    <button type="button" class="btn btn-secondary cookie-accept-button">
+                        {{settings.site_settings.CookieBannerSettings.banner_accept_button_text}}
+                    </button>
+                {% endif %}
+
+                <button id="cookie-delete-button" type="button" class="btn btn-primary mx-3">
+                    Alle Cookies widerrufen.
+                </button>
+
+                {% if settings.site_settings.CookieBannerSettings.banner_decline_button_text %}
+                    <button type="button" class="btn btn-outline-primary cookie-decline-button">
+                        {{settings.site_settings.CookieBannerSettings.banner_decline_button_text}}
+                    </button>
+                {% endif %}
+
+
+
+            </div>
+        </div>
+
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/src.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/javascript.bundle.js' %}"></script>
 
         {% block extra_js %}
         {# Override this in templates to add extra javascript #}

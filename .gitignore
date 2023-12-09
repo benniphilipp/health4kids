@@ -4,8 +4,15 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
+# Ignoriere die Datei env
+env
+node_modules
+datenbank_sicherung.json
+
 # C extensions
 *.so
+
 
 # Distribution / packaging
 .Python
