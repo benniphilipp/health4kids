@@ -1,6 +1,6 @@
 from .base import *
 
-DEBUG = False
+DEBUG = env.bool('DEBUG', default=True)
 
 DATABASES = {
     'default': env.db(),
