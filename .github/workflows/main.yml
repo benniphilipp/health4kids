@@ -34,7 +34,7 @@ jobs:
           port: 22
           script: |
             cd /opt/health4kids && git checkout main && git reset --hard origin/main && git pull origin main
-            /opt/.env/health4kids/bin/bin/pip install -r /opt/health4kids/src/requirements.txt
+            /opt/.env/health4kids/bin/pip install -r /opt/health4kids/src/requirements.txt
             cd /opt/health4kids && /opt/.env/health4kids/bin/python src/manage.py migrate --settings=src.settings.production
             cd /opt/health4kids && /opt/.env/health4kids/bin/python src/manage.py collectstatic  --noinput --settings=src.settings.production
             sudo systemctl restart gunicorn
