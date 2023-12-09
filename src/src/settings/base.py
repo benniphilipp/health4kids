@@ -132,7 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = 'Europe/Berlin'
 
 USE_I18N = True
 
@@ -179,9 +179,7 @@ WAGTAILSEARCH_BACKENDS = {
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-WAGTAILADMIN_BASE_URL = "http://127.0.0.1:8000"
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+WAGTAILADMIN_BASE_URL = "http://example.com"
 WAGTAILADMIN_BASE_URL = env.str('WAGTAILADMIN_BASE_URL',
                                 default='http://health4kids.pixel-west.com/')
 SECRET_KEY = env.str('SECRET_KEY', default='very$ec^et')
