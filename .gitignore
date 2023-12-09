@@ -3,3 +3,6 @@
 # Ignoriere die Datei env
 env
 
+.idea/
+.env
+src/db.sqlite3
