@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 env = environ.Env(
     # set casting, default value
-    DEBUG=(bool, False)
+    DEBUG=(bool, True)
 )
 # Take environment variables from .env file
 environ.Env.read_env(os.path.join(os.path.dirname(BASE_DIR), '.env'))
