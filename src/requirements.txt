@@ -1,2 +1,6 @@
-Django>=3.2
-wagtail>=5.0
+Django>=4.2,<4.3
+wagtail>=5.2,<5.3
+django-environ==0.11.2
+gunicorn==21.2.0
+psycopg2-binary==2.9.9
+

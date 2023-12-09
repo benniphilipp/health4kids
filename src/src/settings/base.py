@@ -12,14 +12,19 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import environ
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+# Take environment variables from .env file
+environ.Env.read_env(os.path.join(os.path.dirname(BASE_DIR), '.env'))
 
 # Application definition
 
@@ -177,3 +182,6 @@ WAGTAILSEARCH_BACKENDS = {
 WAGTAILADMIN_BASE_URL = "http://127.0.0.1:8000"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+WAGTAILADMIN_BASE_URL = env.str('WAGTAILADMIN_BASE_URL',
+                                default='http://health4kids.pixel-west.com/')
+SECRET_KEY = env.str('SECRET_KEY', default='very$ec^et')
