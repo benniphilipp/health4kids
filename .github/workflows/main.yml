@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     # needs: sync-branch
     #if: ${{ github.event.pull_request.merged == true || github.ref == 'refs/heads/main' }}
-    if: ${{ github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true
     steps:
 
       - name: Install SSH Key
