@@ -19,7 +19,7 @@
                 {% if self.button_url %}
                     <a href="{{self.button_url}}" class='btn btn-secondary pw-btn'>{{ self.button_text }} <i class="fa-solid fa-arrow-right"></i></a>
                 {% elif self.button_page %}
-                    <a href="{{self.button_page}}" class='btn btn-secondary pw-btn'>{{ self.button_text }} <i class='fa-solid fa-arrow-right'></i></a>
+                    <a href="{{self.button_page.url}}" class='btn btn-secondary pw-btn'>{{ self.button_text }} <i class='fa-solid fa-arrow-right'></i></a>
                 {% endif %}
 
             </div>

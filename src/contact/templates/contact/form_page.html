@@ -39,12 +39,13 @@
         <div class="row">
             <div class="col-12">
 
-                <div>{{ page.intro|richtext }}</div>
+                <h3 class="intro">{{ page.intro|richtext }}</h3>
 
                 <form class="custom-form" action="{% pageurl page %}?p={{ fields_step.number|add:"1" }}" method="POST">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <button type="submit" class="btn btn-primary">Absenden</button>
+                    <input type="hidden" name="_name_pw" value="">
                 </form>
 
             </div>

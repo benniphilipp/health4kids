@@ -191,4 +191,22 @@ document.addEventListener('DOMContentLoaded', function() {
     CookieFunctionsPw();
 
 
+
+
+    // Formular Honypot
+    var form = document.querySelector('.custom-form');
+
+    if(form){
+        form.addEventListener('submit', function(event) {
+            var hiddenInput = document.querySelector('input[name="_name_pw"]');
+            if (hiddenInput.value.trim() !== '') {
+                //alert('Das Formular kann nicht abgesendet werden, wenn etwas im versteckten Feld steht.');
+                event.preventDefault();
+            }
+        });
+    }
+
+
+
+
 });
