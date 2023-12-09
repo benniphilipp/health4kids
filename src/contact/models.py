@@ -18,6 +18,8 @@ class FormField(AbstractFormField):
 
 
 class FormPage(AbstractEmailForm):
+    page_description = "Hier kannst du individuelle Kontaktseiten nach deinem Bedarf erstellen."
+    
     intro = RichTextField(blank=True)
     thank_you_text = RichTextField(blank=True)
     # template = "contact_page.html"
@@ -45,6 +47,12 @@ class FormPage(AbstractEmailForm):
         subject = f"{self.subject} - {submitted_date_str}"
 
         send_mail(subject, self.render_email(form), addresses, self.from_address,)
+        
+        
+    class Meta:
+        verbose_name = "Kontaktseite"
+
+
     
         
 

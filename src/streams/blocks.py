@@ -7,12 +7,38 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.blocks import RichTextBlock
 
 
-
-
 # Fragebogen Iframe
 class QuestionnaireIframe(blocks.StructBlock):
-    pass
-
+    
+    # Überschrift
+    headline = blocks.RichTextBlock(
+        required=True,
+        max_length=96,
+        label="Überschrift",
+        features=['h2', 'custom-inline', 'custom-inline-blue'],
+        help_text="Kreiere eine überzeugende Überschrift, um deine Website-Besucher auf deiner Website zu halten. Maximal 96 Zeichen."
+    )
+    
+    # Fließtextfeld
+    paragraph = blocks.RichTextBlock(
+        blank=True, 
+        null=True,
+        max_length=750,
+        form_classname="max_length-364",
+        label="Fließtextfeld",
+        help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst. Maximal 550 Zeichen.",
+        features=['h2', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'])
+    
+    # Iframe
+    typeform = blocks.CharBlock(
+        required=True, 
+        label="Typeform iframe",
+        help_text="Hier kannst du dein Fragebogen einbinden.")
+    
+    class Meta:
+        template = 'typeform.html'
+        icon = 'edit'
+        label = "Typeform Fragebogen"
 
 
 
@@ -734,7 +760,7 @@ class GalleryImageText(blocks.StructBlock):
         label="Überschrift", 
         help_text="Hier ist der Platz für eine aussagekräftige Überschrift, um deine Webseitenbesucher zu begeistern.",
         form_classname="max_length-66",
-        features=['h2', 'custom-inline', 'custom-inline-blue'])
+        features=['h2', 'custom-inline', 'custom-inline-blue', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown'])
     
     # Unterzeile
     subline = blocks.CharBlock(

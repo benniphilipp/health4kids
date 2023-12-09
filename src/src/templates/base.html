@@ -1,8 +1,21 @@
 {% load static wagtailcore_tags menus_tags wagtailuserbar wagtailsettings_tags wagtailcore_tags wagtailimages_tags %}
 
 {% get_settings %}
-{% get_menu "main" as navigation %}
-{% get_menu "footer" as navigation_footer %}
+
+{% if "main"|menu_exists == False %}
+    {# Hier wird Code ausgeführt, wenn das Menü mit dem Slug "main" nicht existiert #}
+    Das Menü mit dem Slug "main" existiert nicht!
+    {% else %}
+    {% get_menu "main" as navigation %}
+{% endif %}
+
+{% if "footer"|menu_exists == False %}
+    {# Hier wird Code ausgeführt, wenn das Menü mit dem Slug "main" nicht existiert #}
+    Das Menü mit dem Footer "main" existiert nicht!
+    {% else %}
+    {% get_menu "footer" as navigation_footer %}
+{% endif %}
+
 
 <!DOCTYPE html>
 <html lang="de">
@@ -58,6 +71,7 @@
 
         
         <!--Main Navbar-->
+        {% if navigation %}
         <header>
             <nav class="navbar navbar-light bg-ligh p-0">                
                 <div class="container justify-content-between align-items-stretch">
@@ -106,7 +120,9 @@
                 </div>
             </nav>
         </header>
+        {% endif %}
 
+        {% if navigation_footer %}
         <div id="mobileMenuItem" class="d-flex flex-column align-items-start">
             {% for item in navigation.menu_items.all %}
                 <a class="d-flex justify-content-center p-2 {% if request.path == item.link %}active{% endif %}" href="{{ item.link }}" {% if item.open_in_new_tab %} target="_blank"{% endif %}>
@@ -133,6 +149,7 @@
             </div>
 
         </div>
+        {% endif %}
 
         {% block content %}{% endblock %}
         {# Footer #}

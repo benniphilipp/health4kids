@@ -2,6 +2,8 @@ from wagtail import hooks
 import wagtail.admin.rich_text.editors.draftail.features as draftail_features
 from wagtail.admin.rich_text.converters.html_to_contentstate import InlineStyleElementHandler
 from draftjs_exporter.dom import DOM
+from django.utils.html import format_html
+
 
 @hooks.register('register_rich_text_features')
 def register_custom_inline_feature(features):
@@ -12,8 +14,7 @@ def register_custom_inline_feature(features):
 
     control = {
         'type': type_,
-        'label': 'Red',
-        'description': 'Image underline',
+        'label': 'BTFU',
         'style': {'color': '#B09B8A'},
     }
 
@@ -38,7 +39,7 @@ def register_custom_inline_feature(features):
 
     control = {
         'type': type_,
-        'label': 'Blue',
+        'label': 'TFBU',
         'description': 'Image underline blue',
         'style': {'color': '#0B2948'},
     }
@@ -55,160 +56,150 @@ def register_custom_inline_feature(features):
     features.default_features.append('custom-inline-blue')
 
 
+# Text Color
+# pw-dark-blue
+# pw-red
+# pw-white
+# pw-brown
 
-# from wagtail import hooks
+@hooks.register('register_rich_text_features')
+def register_bluehighlight_feature(features):  
+        
+    feature_name = 'pw-brown'
+    type_ = 'PW_BROWN'
+    tag = f'span{feature_name}'
 
-# import wagtail.admin.rich_text.editors.draftail.features as draftail_features
-# from wagtail.admin.rich_text.converters.html_to_contentstate import InlineStyleElementHandler
-
-
-# from wagtail import hooks
-# from wagtail import blocks
-# from wagtail.admin.rich_text.converters.html_to_contentstate import InlineStyleElementHandler
-
-# import wagtail.admin.rich_text.editors.draftail.features as draftail_features
-# from wagtail.admin.rich_text.converters.html_to_contentstate import InlineStyleElementHandler
-
-# @hooks.register('register_rich_text_features')
-# def register_custom_feature(features):
-#     feature_name = 'custom-attribute'
-#     type_ = 'span'
-#     tag = 'span'
-
-#     # Konfigurieren Sie, wie Draftail das Feature in seiner Symbolleiste behandelt.
-#     control = {
-#         'type': type_,
-#         'label': 'C',
-#         'description': 'Custom Attribute',
-#     }
-
-#     class CustomInlineStyleElementHandler(InlineStyleElementHandler):
-#         def create_inline_style(self, state, style, contentstate):
-#             # Hinzufügen des Datenattributs "custom-attribute" zum Stil
-#             return super().create_inline_style(state, {'data-custom-attribute': 'custom-value'}, contentstate)
-
-#     features.register_editor_plugin(
-#         'draftail', feature_name, draftail_features.InlineStyleFeature(control)
-#     )
-
-#     features.register_converter_rule('contentstate', feature_name, {
-#         'from_database_format': {tag: CustomInlineStyleElementHandler(type_)},
-#         'to_database_format': {type_: {'element': tag, 'props': {'data-custom-attribute': 'custom-value'}}},
-#     })
-
-
-
-
-# @hooks.register('register_rich_text_features')
-# def register_custom_underline_feature(features):
-#     feature_name = 'UnderlineSpan'
-#     type_ = 'span'
-#     tag = 'span'
-
-#     class CustomUnderlineStyle(blocks.RichTextBlock):
-#         def get_api_representation(self, value, context=None):
-#             api_representation = super().get_api_representation(value, context=context)
-#             api_representation['type'] = 'underline_span'
-#             return api_representation
-
-#     # Konfigurieren Sie, wie Draftail das Feature in seiner Symbolleiste behandelt.
-#     control = {
-#         'type': type_,
-#         'label': '☆',
-#         'description': 'span',
-#         'element': 'span',  # Hier wird die element-Eigenschaft auf 'span' gesetzt
-#         'style': {'textDecoration': 'underline'},
-#     }
-
-#     # Registrieren Sie das Feature-Plugin für Draftail
-#     features.register_editor_plugin(
-#         'draftail', feature_name, draftail_features.InlineStyleFeature(control)
-#     )
-
-#     # Konfigurieren Sie die Content-Transformation zwischen DB und Editor
-#     db_conversion = {
-#         'from_database_format': {tag: InlineStyleElementHandler(type_)},
-#         'to_database_format': {'style_map': {type_: tag}},
-#     }
-
-#     # Registrieren Sie die Content-Transformation-Regel
-#     features.register_converter_rule('contentstate', feature_name, db_conversion)
-
-#     # (optional) Fügen Sie das Feature zur Standard-Feature-Liste hinzu
-#     features.default_features.append('UnderlineSpan')
-
-
-
-
-# # @hooks.register('register_rich_text_features')
-# # def register_mark_feature(features):
-# #     feature_name = 'Underline span'
-# #     type_ = 'span'
-# #     tag = 'span'
-
-# #     # Fügen Sie Ihre CSS-Klasse hinzu
-# #     css_class = 'my-custom-class'
-
-# #     # Konfigurieren Sie, wie Draftail das Feature in seiner Symbolleiste behandelt.
-# #     control = {
-# #         'type': type_,
-# #         'label': '☆',
-# #         'description': 'span',
-# #         'style': {'textDecoration': 'line-through'},
-# #     }
-
-# #     # Registrieren Sie das Feature-Plugin für Draftail
-# #     features.register_editor_plugin(
-# #         'draftail', feature_name, draftail_features.InlineStyleFeature(control)
-# #     )
-
-# #     # Konfigurieren Sie die Content-Transformation zwischen DB und Editor
-# #     db_conversion = {
-# #         'from_database_format': {tag: InlineStyleElementHandler(type_)},
-# #         'to_database_format': {'style_map': {type_: tag}},
-# #     }
-
-# #     # Registrieren Sie die Content-Transformation-Regel
-# #     features.register_converter_rule('contentstate', feature_name, db_conversion)
-
-# #     # (optional) Fügen Sie das Feature zur Standard-Feature-Liste hinzu
-# #     features.default_features.append('Underline span')
-
-
-# # 1. Use the register_rich_text_features hook.
-# # @hooks.register('register_rich_text_features')
-# # def register_mark_feature(features):
-# #     feature_name = 'Underline span'
-# #     type_ = 'span'
-# #     tag = 'span'
-
-# #     # Fügen Sie Ihre CSS-Klasse hinzu
-# #     css_class = 'my-custom-class'
-
-# #     # Konfigurieren Sie, wie Draftail das Feature in seiner Symbolleiste behandelt.
-# #     control = {
-# #         'type': type_,
-# #         'label': '☆',
-# #         'description': 'span',
-# #         'style': {'textDecoration': 'underline', 'className': css_class},
-# #     }
-
-# #     # Registrieren Sie das Feature-Plugin für Draftail
-# #     features.register_editor_plugin(
-# #         'draftail', feature_name, draftail_features.InlineStyleFeature(control)
-# #     )
-
-# #     # Konfigurieren Sie die Content-Transformation zwischen DB und Editor
-# #     db_conversion = {
-# #         'from_database_format': {tag: InlineStyleElementHandler(type_)},
-# #         'to_database_format': {'style_map': {type_: tag}},
-# #     }
-
-# #     # Registrieren Sie die Content-Transformation-Regel
-# #     features.register_converter_rule('contentstate', feature_name, db_conversion)
-
-
-# #     # 6. (optional) Add the feature to the default features list to make it available
-# #     # on rich text fields that do not specify an explicit 'features' list
-# #     features.default_features.append('Underline span')
+    control = {
+        'type': type_,
+        'label': 'TFW', 
+        'style': {'color': '#B09B8A'},
+    }
     
+    features.register_editor_plugin(
+        'draftail', feature_name, draftail_features.InlineStyleFeature(control)
+    )
+
+    db_conversion = {
+        'from_database_format': {tag: InlineStyleElementHandler(type_)},
+        'to_database_format': {
+            'style_map': {
+                type_: {
+                    'element': tag,
+                    'props': {
+                        'class': 'pw-brown'
+                    }
+                }
+            }
+        },
+    }
+
+    features.register_converter_rule('contentstate', feature_name, db_conversion)
+
+
+
+
+
+
+@hooks.register('register_rich_text_features')
+def register_bluehighlight_feature(features):  
+        
+    feature_name = 'pw-white'
+    type_ = 'PW_WHITE'
+    tag = f'span{feature_name}'
+
+    control = {
+        'type': type_,
+        'label': 'TFW', 
+        'style': {'color': '#808080'},
+    }
+    
+    features.register_editor_plugin(
+        'draftail', feature_name, draftail_features.InlineStyleFeature(control)
+    )
+
+    db_conversion = {
+        'from_database_format': {tag: InlineStyleElementHandler(type_)},
+        'to_database_format': {
+            'style_map': {
+                type_: {
+                    'element': tag,
+                    'props': {
+                        'class': 'pw-white'
+                    }
+                }
+            }
+        },
+    }
+
+    features.register_converter_rule('contentstate', feature_name, db_conversion)
+
+
+
+
+
+@hooks.register('register_rich_text_features')
+def register_bluehighlight_feature(features):  
+        
+    feature_name = 'pw-red'
+    type_ = 'PW_RED'
+    tag = f'span{feature_name}'
+
+    control = {
+        'type': type_,
+        'label': 'TFR', 
+        'style': {'color': '#C7202D'},
+    }
+    
+    features.register_editor_plugin(
+        'draftail', feature_name, draftail_features.InlineStyleFeature(control)
+    )
+
+    db_conversion = {
+        'from_database_format': {tag: InlineStyleElementHandler(type_)},
+        'to_database_format': {
+            'style_map': {
+                type_: {
+                    'element': tag,
+                    'props': {
+                        'class': 'pw-red'
+                    }
+                }
+            }
+        },
+    }
+
+    features.register_converter_rule('contentstate', feature_name, db_conversion)
+
+
+@hooks.register('register_rich_text_features')
+def register_bluehighlight_feature(features):  
+        
+    feature_name = 'pw-dark-blue'
+    type_ = 'PW_DARK_BLUE'
+    tag = f'span{feature_name}'
+
+    control = {
+        'type': type_,
+        'label': 'TFB', 
+        'style': {'color': '#0B2948'},
+    }
+    
+    features.register_editor_plugin(
+        'draftail', feature_name, draftail_features.InlineStyleFeature(control)
+    )
+
+    db_conversion = {
+        'from_database_format': {tag: InlineStyleElementHandler(type_)},
+        'to_database_format': {
+            'style_map': {
+                type_: {
+                    'element': tag,
+                    'props': {
+                        'class': 'pw-dark-blue'
+                    }
+                }
+            }
+        },
+    }
+
+    features.register_converter_rule('contentstate', feature_name, db_conversion)    

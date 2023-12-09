@@ -33,7 +33,61 @@
 // Footer Sytle
 @import "./module/Footer.scss";
 
-// Form Style!
+// Iframe
+#questionnaire-iframe{
+    position: relative;
+    overflow: hidden;
+
+    // Hintergrund
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        z-index: -1;
+    }
+
+    &::before {
+        background-position: left;
+        background-image: url('../../image/abs-bg10.png');
+    }
+    
+    &::after{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 50%;
+        height: 50%;
+        background-size: contain;
+        background-position: bottom right;
+        background-repeat: no-repeat;
+        z-index: -1;
+        background-image: url('../../image/abs-bg30.png');
+    }
+
+    .bg-abs::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 50%;
+        background-size: contain;
+        background-position: top right;
+        background-repeat: no-repeat;
+        z-index: -1;
+        background-image: url('../../image/abs-bg20.png');
+    }
+
+}
+
+
+// Form Style
 .custom-form {
     max-width: 400px;
     margin: 0 auto;

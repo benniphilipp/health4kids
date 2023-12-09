@@ -116,7 +116,4 @@ document.addEventListener("DOMContentLoaded", function() {
     addCharacterCountForParagraph('[data-contentpath="subline"] .max_length-89');
     addCharacterCountForParagraph('[data-contentpath="button_text"] .max_length-90');
 
-
-    
-
 });

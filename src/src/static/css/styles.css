@@ -8313,6 +8313,47 @@ footer {
     font-size: 1rem;
     color: var(--white); }
 
+#questionnaire-iframe {
+  position: relative;
+  overflow: hidden; }
+  #questionnaire-iframe::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: -1; }
+  #questionnaire-iframe::before {
+    background-position: left;
+    background-image: url(../js/44e7fce864fc890526f7.png); }
+  #questionnaire-iframe::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background-size: contain;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    z-index: -1;
+    background-image: url(../js/6cc848a57123cc6026e6.png); }
+  #questionnaire-iframe .bg-abs::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 50%;
+    background-size: contain;
+    background-position: top right;
+    background-repeat: no-repeat;
+    z-index: -1;
+    background-image: url(../js/326031c9b89c7253c004.png); }
+
 .custom-form {
   max-width: 400px;
   margin: 0 auto; }

@@ -8,6 +8,7 @@ from streams.blocks import TextfieldFullWidth
 
 class legal(Page):
     template = "legal_page.html"
+    page_description = "Erstelle nicht nur Datenschutz- oder Impressum-Seiten. Hier kannst du auch einfach reine Fließtextseiten erstellen."
     
     content = StreamField([
         ('textfield_full_width', TextfieldFullWidth()),
@@ -23,3 +24,6 @@ class legal(Page):
         ObjectList(content_stream, heading='Inhalt Webseite'),
         ObjectList(Page.promote_panels, heading='Promotional'),
     ])
+    
+    class Meta:
+        verbose_name = "Fließtextseite"

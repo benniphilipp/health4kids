@@ -8,7 +8,7 @@
 
 {% block content %}
 
-
+{% if page.headline %}
 {% image page.hero_image original format-webp-lossless as img %}
 <section class="pw-custom-column" style="position: relative; width: 100%; height: calc(100vh - 74px); overflow: hidden; background: url('{{ img.full_url }}') center/cover no-repeat; background-position: center top;">
     <div class="overlay"></div>
@@ -36,6 +36,8 @@
         </div>
     </div>
 </section>
+
+{% endif %}
 
 {% for block in page.content %}
     {% include_block block %}

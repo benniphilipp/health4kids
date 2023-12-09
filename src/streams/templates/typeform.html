@@ -1,0 +1,29 @@
+<!-- typeform.html -->
+{% load static wagtailcore_tags wagtailimages_tags wagtailsettings_tags %}
+
+<section id="questionnaire-iframe" class="pw-custom-column pw-custom-column-tablet">
+    <div class="bg-abs"></div>
+    <div class="container py-3 py-lg-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8 col-md-12">
+
+                <div class='pw-content d-flex flex-column position-relative'>
+                    <div class="pw-headline-text h-color-dark-blue text-center">
+                        {{self.headline|richtext}}
+                    </div>
+                    <div class="pw-text text-center">
+                        {{self.paragraph|richtext}}
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8 col-md-12">
+                    {{self.typeform | safe}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
