@@ -88,23 +88,50 @@
 
 
 // Form Style
-.custom-form {
-    max-width: 400px;
-    margin: 0 auto;
+#contact-form{
+    .custom-form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .custom-form label {
+        display: block;
+        font-family: var(--pw-serif-font-family);
+        margin-bottom: 5px;
+    }
+    
+    .custom-form input,
+    .custom-form textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        text-rendering: auto;
+        color: fieldtext;
+        letter-spacing: normal;
+        word-spacing: normal;
+        line-height: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        text-align: start;
+        -webkit-rtl-ordering: logical;
+        cursor: text;
+        border: 2px solid var(--brown);
+        border-radius: 5px;
+    }
+
+    .custom-form input[type="checkbox"] {
+        width: unset;
+    }
+
+    input:focus {
+    border-color: blue;
+    }
+
+
 }
 
-.custom-form label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.custom-form input,
-.custom-form textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-}
 
 
 

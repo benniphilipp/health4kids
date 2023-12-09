@@ -36,9 +36,13 @@ python manage.py startapp legal
 
 legal-page !erledigt
 
-Cookiebanner 
-Contact
+Cookiebanner !erledigt
+Contact !erledigt
 
-Farben als auswahl hinzufühgen
+Farben als auswahl hinzufühgen 
+Contact Style 
+Irame hinzufühgen
+
+@ Testing
 
 

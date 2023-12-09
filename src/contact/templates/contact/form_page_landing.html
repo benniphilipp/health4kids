@@ -8,11 +8,35 @@
 
 {% block content %}
 
-<div class="container mt-5 mb-5 text-center">
-    <h1>{{ page.title }}</h1>
+<section class="hero-pages">
+    <div class="abs-bg110"></div>
+    <div class="container py-0 py-md-3">
+        <div class="row">
+            <div class="col-12 py-5 d-flex justify-content-center align-items-center flex-column">
+                <div class="breadcrumb-content">
+                    {% if self.get_ancestors|length > 1 %}
+                        <ul class="breadcrumb">
+                            {% for p in self.get_ancestors %}
+                                {% if p.is_root == False %}
+                                    <li><a href="{{ p.url }}">{{ p.title }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                
+                            <li class="active">&nbsp; /&nbsp; {{ self.title }}</li>
+                        </ul>
+                    {% endif %}
+                </div>
+                <h2 class="text-center"> {{ page.title }}</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container mt-5 mb-5 text-center" style="height: 35vh;">
     <p>
         {{ self.thank_you_text|richtext }}
     </p>
+    <a href="/" type="submit" class="btn btn-primary">Zurück zur Startseite</a>
 </div>
 
 {% endblock content %}
