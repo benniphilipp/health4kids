@@ -167,8 +167,6 @@ class ContactSteps(blocks.StructBlock):
         icon = 'edit'
         label = "Kontaktschritte"
 
-    
-
 
 # Video
 class Video(blocks.StructBlock):
@@ -205,7 +203,7 @@ class Video(blocks.StructBlock):
         label="Auswahl",
         default='page', 
         help_text='Bitte wähle aus, was du verlinken möchtest: eine externe Seite oder eine interne Seite.'
-    ) 
+    )
     
     #Button Page
     button_page = blocks.PageChooserBlock(
@@ -738,7 +736,8 @@ class FancyBox(blocks.StructBlock):
         help_text= "Die Fancy Box ist perfekt geeignet, um deine Website-Besucher auf eine weitere Website von dir zu leiten"
 
 
-# Label feld Name anpassung
+'''Gallery Image Text'''
+# Label-Feldname Anpassung
 class YourRenamedStructBlock(blocks.StructBlock):
     image = ImageChooserBlock(
         required=True,
@@ -746,8 +745,6 @@ class YourRenamedStructBlock(blocks.StructBlock):
         help_text="Wähle ein Bild aus."
     )
 
-
-# Label-Feldname Anpassung
 class GalleryImageText(blocks.StructBlock):
     
     min_num = 1
@@ -760,7 +757,7 @@ class GalleryImageText(blocks.StructBlock):
         label="Überschrift", 
         help_text="Hier ist der Platz für eine aussagekräftige Überschrift, um deine Webseitenbesucher zu begeistern.",
         form_classname="max_length-66",
-        features=['h2', 'custom-inline', 'custom-inline-blue', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown'])
+        features=['h2', 'custom-inline', 'custom-inline-blue', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown']) # Test Überschrift auswahl
     
     # Unterzeile
     subline = blocks.CharBlock(
@@ -774,11 +771,11 @@ class GalleryImageText(blocks.StructBlock):
     paragraph = blocks.RichTextBlock(
         blank=True, 
         null=True,
-        max_length=364,
+        max_length=464,
         form_classname="max_length-364",
         label="Fließtextfeld",
-        help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst.",
-        features=['h2', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'])
+        help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst. Maximal 464 Zeichen.",
+        features=['h2', 'h3', 'h4', 'p', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'])
     
     #Button Auswahl
     link_type = blocks.ChoiceBlock(
@@ -788,6 +785,7 @@ class GalleryImageText(blocks.StructBlock):
         ],
         label="Auswahl",
         default='page', 
+        form_classname="select-gallery-image-text",
         help_text='Bitte wähle aus, was du verlinken möchtest: eine externe Seite oder eine interne Seite.'
     ) 
     
@@ -795,12 +793,14 @@ class GalleryImageText(blocks.StructBlock):
     button_page = blocks.PageChooserBlock(
         required=False,
         label="Seitenauswahl",
+        form_classname="select-gallery-image-text-page",
         help_text="Die Seite muss öffentlich sein, damit Besucher deine Website erreichen können.")
     
     #Button link
     button_url = blocks.URLBlock(
         required=False,
         label="Websiten-URL",
+        form_classname="select-gallery-image-text-url",
         help_text="Hier kannst du eine Wunschwebsite verlinken. Achte darauf, dass diese Seite unter https erreichbar ist.")
     
     #Button Text
