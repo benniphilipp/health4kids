@@ -64,6 +64,38 @@
         {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
         {% endblock %}
+
+        {# Google Tag Manager #}
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                function trechingPW(cookieName) {
+                    var name = cookieName + "=";
+                    var decodedCookie = decodeURIComponent(document.cookie);
+                    var cookieArray = decodedCookie.split(';');
+            
+                    for (var i = 0; i < cookieArray.length; i++) {
+                        var cookie = cookieArray[i].trim();
+                        if (cookie.indexOf(name) === 0) {
+                            return cookie.substring(name.length, cookie.length);
+                        }
+                    }
+                    return null;
+                }
+                var datenschutz_nicht_einverstanden = trechingPW("datenschutz_akzeptiert");
+
+                if(datenschutz_nicht_einverstanden){
+
+                    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','{{settings.site_settings.CookieBannerSettings.javascript_code}}');
+
+                }
+                console.log(datenschutz_nicht_einverstanden);
+            });
+        </script>        
+
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
@@ -319,8 +351,8 @@
                     </button>
                 {% endif %}
 
-                <button id="cookie-delete-button" type="button" class="btn btn-primary mx-3">
-                    Alle Cookies widerrufen.
+                <button id="cookie-delete-button" type="button" class="btn btn-primary mx-lg-3 mx-0 my-2">
+                    Alle Cookies widerrufen
                 </button>
 
                 {% if settings.site_settings.CookieBannerSettings.banner_decline_button_text %}

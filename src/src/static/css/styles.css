@@ -8436,6 +8436,9 @@ a.footer-link-logo {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); }
+  @media (max-width: 768px) {
+    .popup-content {
+      width: 95%; } }
 
 .close-cookie {
   color: var(--black);
@@ -8456,6 +8459,9 @@ a.footer-link-logo {
   border-top-right-radius: 10px;
   background-color: var(--pw-bg-white);
   transform: translateX(-50%); }
+  @media (max-width: 768px) {
+    #cookie-banner {
+      width: 95%; } }
   #cookie-banner::after {
     content: "";
     position: absolute;

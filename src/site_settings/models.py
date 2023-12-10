@@ -16,7 +16,7 @@ class CookieBannerSettings(BaseSiteSetting):
     )
 
     marketing = models.CharField(max_length=255, default="Marketing Code Beschreibung", verbose_name="Marketing")
-    javascript_code = models.TextField(blank=True, null=True, verbose_name="JavaScript-Code")
+    javascript_code = models.TextField(blank=True, null=True, verbose_name="Google Tag Manager Code GTM-KLTQ3K72")
 
     class Meta:
         verbose_name = "Cookie Banner Einstellungen"
