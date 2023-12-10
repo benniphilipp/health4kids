@@ -2,8 +2,211 @@
 
 document.addEventListener("DOMContentLoaded", function() {
 
-    // 
+    // Contact steps
+    const selectContactSteps = document.querySelector(".select-contact-steps");
+    const selectContactStepsPage = document.querySelector(".select-contact-steps-page");
+    const selectContactStepsUrl = document.querySelector(".select-contact-steps-url");
 
+    selectContactStepsFunc();
+
+    function selectContactStepsFunc(){
+        const selectContactStepsValue = document.querySelector(".select-contact-steps select");
+        
+        if (!selectContactStepsValue) {
+            return;
+        }
+
+        const selectContactStPage = findLabel(selectContactStepsPage);
+        const selectContactStUrl = findLabel(selectContactStepsUrl);
+
+        if(selectContactStepsValue.value === "page"){
+            if (selectContactStPage) {
+                selectContactStepsUrl.style.display = 'none';
+                selectContactStUrl.style.display = 'none';
+                selectContactStepsPage.style.display = 'block';
+                selectContactStPage.style.display = 'block';
+            }
+        }else if(selectContactStepsValue.value === "extern"){
+            if (selectContactStUrl) {
+                selectContactStepsPage.style.display = 'none';
+                selectContactStPage.style.display = 'none';
+                selectContactStepsUrl.style.display = 'block';
+                selectContactStUrl.style.display = 'block';
+            }
+        }
+
+    }
+
+    const selectContactStepsValue = document.querySelector(".select-contact-steps");
+    if(selectContactStepsValue){
+        selectContactSteps.addEventListener('click', selectContactStepsFunc);
+    }
+
+
+
+    // Video
+    const selectVideo = document.querySelector(".select-video");
+    const selectVideoPage = document.querySelector(".select-video-page");
+    const selectVideoUrl = document.querySelector(".select-video-url");
+
+    selectVideoFunc();
+    function selectVideoFunc(){
+        const selectVideoValue = document.querySelector(".select-video select");
+        
+        if (!selectVideoValue) {
+            return;
+        }
+
+        const selectViPage = findLabel(selectVideoPage);
+        const selectViUrl = findLabel(selectVideoUrl);
+
+        if(selectVideoValue.value === "page"){
+            if (selectViPage) {
+                selectViUrl.style.display = 'none';
+                selectVideoUrl.style.display = 'none';
+                selectVideoPage.style.display = 'block';
+                selectViPage.style.display = 'block';
+            }
+        }else if(selectVideoValue.value === "extern"){
+            if (selectViUrl) {
+                selectVideoPage.style.display = 'none';
+                selectViPage.style.display = 'none';
+                selectVideoUrl.style.display = 'block';
+                selectViUrl.style.display = 'block';
+            }
+        }
+
+    }
+
+    const selectVideoValue = document.querySelector(".select-video");
+    if(selectVideoValue){
+        selectVideo.addEventListener('click', selectVideoFunc)
+    }
+
+    // Text Image Einfach
+    const selectTextImageOne = document.querySelector(".select-text-image-one");
+    const selectTextImageOnePage = document.querySelector(".select-text-image-one-page");
+    const selectTextImageOneUrl = document.querySelector(".select-text-image-one-url");
+
+    selectTextOneFun();
+
+    function selectTextOneFun(){
+        
+        const selectTextImageOneValue = document.querySelector(".select-text-image-one select");
+
+        if (!selectTextImageOneValue) {
+            return;
+        }
+
+        const selectTextOnePage = findLabel(selectTextImageOnePage);
+        const selectTextOneUrl = findLabel(selectTextImageOneUrl);
+
+        if(selectTextImageOneValue.value == "page"){
+            if (selectTextOnePage) {
+                selectTextOneUrl.style.display = 'none';
+                selectTextImageOneUrl.style.display = 'none';
+                selectTextImageOnePage.style.display = 'block';
+                selectTextOnePage.style.display = 'block';
+            }
+        } else if(selectTextImageOneValue.value == "extern"){
+            if (selectTextOneUrl) {
+                selectTextOnePage.style.display = 'none';
+                selectTextImageOnePage.style.display = 'none';
+                selectTextImageOneUrl.style.display = 'block';
+                selectTextOneUrl.style.display = 'block';
+            }
+        }
+
+    }
+
+    const selectTextImageOneValue = document.querySelector(".select-text-image-one");
+    if(selectTextImageOneValue){
+        selectTextImageOne.addEventListener('change', selectTextOneFun);
+    }
+
+
+    // Promo Selctor
+    const selectPromoBox = document.querySelector(".select-promo-box");
+    const selectPromoBoxPage = document.querySelector(".select-promo-box-page");
+    const selectPromoBoxUrl = document.querySelector(".select-promo-box-url");
+
+    selectPromoFunc();
+
+    function selectPromoFunc(){
+        const selectPromoBoxValue = document.querySelector(".select-promo-box select");
+
+        if (!selectPromoBoxValue) {
+            return;
+        }
+
+        const selectPromoPage = findLabel(selectPromoBoxPage);
+        const selectPromoUrl = findLabel(selectPromoBoxUrl);
+
+        if(selectPromoBoxValue.value === "page"){
+            if (selectPromoPage) {
+                selectPromoBoxUrl.style.display = 'none';
+                selectPromoUrl.style.display = 'none';
+                selectPromoPage.style.display = 'block';
+                selectPromoBoxPage.style.display = 'block';
+            }
+        }else if(selectPromoBoxValue.value === "extern"){
+            if (selectPromoPage) {
+                selectPromoPage.style.display = 'none';
+                selectPromoBoxPage.style.display = 'none';
+                selectPromoBoxUrl.style.display = 'block';
+                selectPromoUrl.style.display = 'block';
+            }
+        }
+    }
+
+    const selectPromoBoxValue = document.querySelector(".select-promo-box select");
+    if(selectPromoBoxValue){
+        selectPromoBox.addEventListener('change', selectPromoFunc);
+    }
+
+    // Text Image Selector
+    const selectTextImage = document.querySelector(".select-image-text");
+    const selectTextImagePage = document.querySelector(".select-image-page");
+    const selectTextImageUrl = document.querySelector(".select-image-url");
+
+    selectTextImageFunc();
+
+    function selectTextImageFunc(){
+
+            const selectImageTextValue = document.querySelector(".select-image-text select");
+
+            if (!selectImageTextValue) {
+                return;
+            }
+            
+            const selectTextPage = findLabel(selectTextImagePage);
+            const selectTextUrl = findLabel(selectTextImageUrl);
+            // console.log(selectImageTextValue.value)
+    
+            if(selectImageTextValue.value === "page"){
+                // console.log('RUN page');
+                if (selectTextPage) {
+                    selectTextImageUrl.style.display = 'none';
+                    selectTextUrl.style.display = 'none';
+                    selectTextImagePage.style.display = 'block';
+                    selectTextPage.style.display = 'block';
+                }
+            }else if(selectImageTextValue.value === "extern"){
+                // console.log('RUN extern');
+                if(selectTextUrl){
+                    selectTextPage.style.display = 'none';
+                    selectTextImagePage.style.display = 'none';
+                    selectTextImageUrl.style.display = 'block';
+                    selectTextUrl.style.display = 'block';
+                }
+        }
+    }
+
+    const selectImageTextValue = document.querySelector(".select-image-text select");
+
+    if(selectImageTextValue){
+        selectTextImage.addEventListener('change', selectTextImageFunc);
+    }
 
     // Gallery Image Text Selector
     const selectGalleryImageText = document.querySelector(".select-gallery-image-text");
@@ -15,6 +218,11 @@ document.addEventListener("DOMContentLoaded", function() {
     function selectGalleryImageTextFunc(){
 
         const selectGalleryImageTextValue = document.querySelector(".select-gallery-image-text select");
+
+        if (!selectGalleryImageTextValue) {
+            return;
+        }
+
         const selectGalleryImagePage = findLabel(selectGalleryImageTextPage);
         const selectGalleryImageUrl = findLabel(selectGalleryImageTextUrl);
 
@@ -36,6 +244,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     }
 
+    const selectGalleryImageTextValue = document.querySelector(".select-gallery-image-text select");
+    if(selectGalleryImageTextValue){
+        selectGalleryImageText.addEventListener('change', selectGalleryImageTextFunc);
+    }
+    
+
     function findLabel(element) {
         while (element) {
             var labelElement = element.querySelector('.w-field__label');
@@ -47,145 +261,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
         return null;
     }
-
-    selectGalleryImageText.addEventListener('change', selectGalleryImageTextFunc);
-
-
-
-    // function updateFieldVisibility() {
-    //     if (linkChoice.value === "page") {
-    //         linkLabelField.style.display = "block";
-    //         pageLabelField.style.display = "none";
-    //     } else if (linkChoice.value === "extern") {
-    //         linkLabelField.style.display = "none";
-    //         pageLabelField.style.display = "block";
-    //     } else {
-    //         linkLabelField.style.display = "block";
-    //         pageLabelField.style.display = "none";
-    //     }
-    // }
-
-    // linkChoice.addEventListener("change", updateFieldVisibility);
-
-
-
-
-    // const linkChoice = document.querySelector("#id_link_choice");
-    // const linkLabelField = document.querySelector("#panel-child-startseiten_header-page_link-section");
-    // const pageLabelField = document.querySelector("#panel-child-startseiten_header-link_url-section");
-
-    // updateFieldVisibility();
-
-    // function updateFieldVisibility() {
-    //     if (linkChoice.value === "page") {
-    //         linkLabelField.style.display = "block";
-    //         pageLabelField.style.display = "none";
-    //     } else if (linkChoice.value === "extern") {
-    //         linkLabelField.style.display = "none";
-    //         pageLabelField.style.display = "block";
-    //     } else {
-    //         linkLabelField.style.display = "block";
-    //         pageLabelField.style.display = "none";
-    //     }
-    // }
-
-    // linkChoice.addEventListener("change", updateFieldVisibility);
-
-
-
-
-    // // Backend GalleryImageText
-    // const selectButton = document.querySelector('#content-0-value-link_type');
-    // const fieldButtonPage = document.querySelector('div[data-contentpath="button_page"]');
-    // const fieldButtonUrl = document.querySelector('div[data-contentpath="button_url"]');
-
-    // // selectButton.value = "page";
-    // updateFiledVisibilitySection();
-
-    // function updateFiledVisibilitySection(){
-    //     if(selectButton.value == "page"){
-    //         fieldButtonUrl.style.display = 'none';
-    //         fieldButtonPage.style.display = 'block';
-    //     }else if (selectButton.value == "extern"){
-    //         fieldButtonPage.style.display = 'none';
-    //         fieldButtonUrl.style.display = 'block';
-    //     }else{
-    //         fieldButtonUrl.style.display = 'none';
-    //         fieldButtonPage.style.display = 'block'; 
-    //     }
-    // };
-
-    // selectButton.addEventListener("change", updateFiledVisibilitySection);
-
-
-
-
-    
-    // // Feld Validator
-    // function addCharacterCount(elementSelector) {
-    //     var element = document.querySelector(elementSelector);
-    
-    //     if (element) {
-    //         var classNames = element.className.split(' ');
-    //         var maxLengthClass = classNames.find(function(className) {
-    //             return className.startsWith('max_length-');
-    //         });
-    
-    //         if (maxLengthClass) {
-    //             var maxChars = parseInt(maxLengthClass.split('-')[1]);
-    
-    //             // Extrahiere den Textinhalt aus dem Datenattribut data-text="true"
-    //             var textContentElement = element.querySelector('[data-text="true"]');
-    
-    //             // Füge die Anzahl der Zeichen direkt in das HTML des Elements ein
-    //             var charCountElement = document.createElement('span');
-    
-    //             // Setze die Schriftfarbe auf Grau (hex: #808080)
-    //             charCountElement.style.color = '#808080';
-    
-    //             charCountElement.innerText = ' Eingegebene Zeichen: ' + textContentElement.innerText.length + ' von ' + maxChars;
-    //             element.appendChild(charCountElement);
-    //         }
-    //     }
-    // }
-
-    // addCharacterCount('[data-contentpath="heading"] .max_length-66');
-    // addCharacterCount('[data-contentpath="paragraph"] .max_length-364');
-
-    // function addCharacterCountForParagraph(elementSelector) {
-    //     var element = document.querySelector(elementSelector);
-    
-    //     if (element) {
-    //         var classNames = element.className.split(' ');
-    //         var maxLengthClass = classNames.find(function(className) {
-    //             return className.startsWith('max_length-');
-    //         });
-    
-    //         if (maxLengthClass) {
-    //             var maxChars = parseInt(maxLengthClass.split('-')[1]);
-            
-    //             // Extrahiere den Textinhalt direkt aus dem inneren <div>
-    //             var innerDivElement = element.querySelector('div'); // Hier musst du den richtigen Selektor verwenden
-    //             var textContent = innerDivElement ? innerDivElement.textContent || innerDivElement.innerText : '';
-            
-    //             // Füge die Anzahl der Zeichen direkt in das HTML des Elements ein
-    //             var charCountElement = document.createElement('span');
-            
-    //             // Setze die Schriftfarbe auf Grau (hex: #808080)
-    //             charCountElement.style.color = '#808080';
-            
-    //             charCountElement.innerText = ' Eingegebene Zeichen: ' + textContent.length + ' von ' + maxChars;
-    //             element.appendChild(charCountElement);
-    //         }
-    //     }
-    // }
-
-    // addCharacterCountForParagraph('[data-contentpath="subline"] .max_length-89');
-    // addCharacterCountForParagraph('[data-contentpath="button_text"] .max_length-90');
-
-
-
-
 
 
 });

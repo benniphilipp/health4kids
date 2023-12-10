@@ -7914,7 +7914,12 @@ span.pw-skyline {
   font-family: 'Playfair Display'; }
 
 a {
+  color: var(--red);
   text-decoration: none; }
+  a:hover {
+    font-weight: 400;
+    text-decoration: underline;
+    color: var(--dark-blue); }
 
 .h-color-red {
   color: var(--red); }
