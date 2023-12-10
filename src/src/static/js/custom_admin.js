@@ -2,7 +2,10 @@
 
 document.addEventListener("DOMContentLoaded", function() {
 
+    // 
 
+
+    // Gallery Image Text Selector
     const selectGalleryImageText = document.querySelector(".select-gallery-image-text");
     const selectGalleryImageTextPage = document.querySelector(".select-gallery-image-text-page");
     const selectGalleryImageTextUrl = document.querySelector(".select-gallery-image-text-url");

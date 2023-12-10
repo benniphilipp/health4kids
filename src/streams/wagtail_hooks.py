@@ -14,7 +14,8 @@ def register_custom_inline_feature(features):
 
     control = {
         'type': type_,
-        'label': 'BTFU',
+        'label': 'TFBRU',
+        'description': 'Text in Braun, unterstrichen.',
         'style': {'color': '#B09B8A'},
     }
 
@@ -39,8 +40,8 @@ def register_custom_inline_feature(features):
 
     control = {
         'type': type_,
-        'label': 'TFBU',
-        'description': 'Image underline blue',
+        'label': 'TFBLU',
+        'description': 'Text in Blau, unterstrichen.',
         'style': {'color': '#0B2948'},
     }
 
@@ -71,8 +72,9 @@ def register_bluehighlight_feature(features):
 
     control = {
         'type': type_,
-        'label': 'TFW', 
+        'label': 'TFBR', 
         'style': {'color': '#B09B8A'},
+        'description': 'Text in Farbe Braun',
     }
     
     features.register_editor_plugin(
@@ -110,7 +112,8 @@ def register_bluehighlight_feature(features):
     control = {
         'type': type_,
         'label': 'TFW', 
-        'style': {'color': '#808080'},
+        'description': 'Text in Farbe Weiß',
+        'style': {'color': '#FFFFFF'},
     }
     
     features.register_editor_plugin(
@@ -147,6 +150,7 @@ def register_bluehighlight_feature(features):
     control = {
         'type': type_,
         'label': 'TFR', 
+        'description': 'Text in Farbe Rot',
         'style': {'color': '#C7202D'},
     }
     
@@ -180,7 +184,8 @@ def register_bluehighlight_feature(features):
 
     control = {
         'type': type_,
-        'label': 'TFB', 
+        'label': 'TFBL', 
+        'description': 'Text in Farbe Blau',
         'style': {'color': '#0B2948'},
     }
     
