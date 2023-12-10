@@ -67,7 +67,7 @@ def register_bluehighlight_feature(features):
         
     feature_name = 'pw-brown'
     type_ = 'PW_BROWN'
-    tag = f'span{feature_name}'
+    tag = 'span'
 
     control = {
         'type': type_,
@@ -105,7 +105,7 @@ def register_bluehighlight_feature(features):
         
     feature_name = 'pw-white'
     type_ = 'PW_WHITE'
-    tag = f'span{feature_name}'
+    tag = 'span'
 
     control = {
         'type': type_,
@@ -142,7 +142,7 @@ def register_bluehighlight_feature(features):
         
     feature_name = 'pw-red'
     type_ = 'PW_RED'
-    tag = f'span{feature_name}'
+    tag = 'span'
 
     control = {
         'type': type_,
@@ -176,7 +176,7 @@ def register_bluehighlight_feature(features):
         
     feature_name = 'pw-dark-blue'
     type_ = 'PW_DARK_BLUE'
-    tag = f'span{feature_name}'
+    tag = 'span'
 
     control = {
         'type': type_,

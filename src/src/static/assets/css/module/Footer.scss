@@ -4,10 +4,6 @@ footer{
     height: 100%;
     width: 100%;
     overflow: hidden;
-    // // position: absolute;
-    // bottom: 0;
-
-    overflow: hidden;
     z-index: 0;
 
     &::before {
@@ -18,7 +14,7 @@ footer{
         width: 100%;
         height: 100%;
         z-index: -1;
-        opacity: 0.1; /* Ändere die Opazität nach Bedarf */
+        opacity: 0.1;
         background-color: var(--dark-blue);
     }
     &::after{
@@ -40,6 +36,7 @@ footer{
         opacity: 1;
         background-color: var(--white);
         height: 2px;
+        margin: 0 1rem 1rem;
     }
     .copyright{
         font-size: 1rem;
@@ -100,6 +97,9 @@ footer{
         max-width: 560px;
         margin: calc(1.6rem + 70px) auto 0;
         color: var(--white);
+        ol, ul {
+            padding-left: unset;
+        }
         ul{
             list-style: none;
             display: flex;
@@ -116,6 +116,10 @@ footer{
         }
     }
 
+    @media (max-width: 768px){
+
+    }
+
     @media (max-width: 992px) {
        .copy-div{
         gap: 1rem;
@@ -126,10 +130,15 @@ footer{
 }
 
 // Footer Logo
-.image-logo-rounde-footer{
-    z-index: 3;
+a.footer-link-logo{
     position: absolute;
+    left: 50%;
+    z-index: 3;
     bottom: -70px;
+    transform: translateX(-50%);
+}
+.image-logo-rounde-footer{
+    position: relative;
     padding: .3rem;
     border-radius: 50%;
     background-color: var(--white);

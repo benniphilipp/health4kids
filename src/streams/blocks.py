@@ -207,7 +207,7 @@ class Video(blocks.StructBlock):
         help_text='Bitte wähle aus, was du verlinken möchtest: eine externe Seite oder eine interne Seite.'
     ) 
     
-        #Button Page
+    #Button Page
     button_page = blocks.PageChooserBlock(
         required=False,
         label="Seitenauswahl",
@@ -414,7 +414,7 @@ class TextfieldFullWidth(blocks.StructBlock):
         required=True,
         max_length=10000,
         label="Fließtextfeld",
-        features=['h2', 'custom-inline', 'custom-inline-blue'],
+        features=['h2', 'h3', 'h4', 'p', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'], # Mein Fließtextfeld Test
         help_text="Textfeld gesamte Breite, maximal 10.000 Zeichen."
     ) 
     

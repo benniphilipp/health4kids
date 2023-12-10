@@ -91,17 +91,17 @@
                         <div class="d-flex align-items-center pw-display-none">
                             <div class="d-flex p-2">
                                 {% if settings.site_settings.MySettings.facebook %}
-                                <a href="{{ settings.site_settings.SocialMediaSettings.facebook }}" aria-label="facebook öffnen">
+                                <a href="{{ settings.site_settings.MySettings.facebook }}" aria-label="facebook öffnen">
                                     <i class="pw-icon fa-brands fa-square-facebook"></i>
                                 </a>
                                 {% endif %}
                                 {% if settings.site_settings.MySettings.instagram %}
-                                <a href="{{ settings.site_settings.SocialMediaSettings.instagram }}" aria-label="instagram öffnen">
+                                <a href="{{ settings.site_settings.MySettings.instagram }}" aria-label="instagram öffnen">
                                     <i class="pw-icon fa-brands fa-instagram"></i>
                                 </a>
                                 {% endif %}
                                 {% if settings.site_settings.MySettings.whatsapp %}
-                                    <a href="{{ settings.site_settings.SocialMediaSettings.whatsapp }}" aria-label="Whatsapp öffnen">
+                                    <a href="{{ settings.site_settings.MySettings.whatsapp }}" aria-label="Whatsapp öffnen">
                                         <i class="pw-icon fa-brands fa-whatsapp"></i>
                                     </a>
                                 {% endif %}
@@ -134,17 +134,17 @@
 
             <div class="d-flex p-2">
                 {% if settings.site_settings.MySettings.facebook %}
-                <a href="{{ settings.site_settings.SocialMediaSettings.facebook }}" aria-label="facebook öffnen">
+                <a href="{{ settings.site_settings.MySettings.facebook }}" aria-label="facebook öffnen">
                     <i class="pw-icon fa-brands fa-square-facebook"></i>
                 </a>
                 {% endif %}
                 {% if settings.site_settings.MySettings.instagram %}
-                <a href="{{ settings.site_settings.SocialMediaSettings.instagram }}" aria-label="instagram öffnen">
+                <a href="{{ settings.site_settings.MySettings.instagram }}" aria-label="instagram öffnen">
                     <i class="pw-icon fa-brands fa-instagram"></i>
                 </a>
                 {% endif %}
                 {% if settings.site_settings.MySettings.whatsapp %}
-                    <a href="{{ settings.site_settings.SocialMediaSettings.whatsapp }}" aria-label="Whatsapp öffnen">
+                    <a href="{{ settings.site_settings.MySettings.whatsapp }}" aria-label="Whatsapp öffnen">
                         <i class="pw-icon fa-brands fa-whatsapp"></i>
                     </a>
                 {% endif %}
@@ -156,15 +156,15 @@
         {% block content %}{% endblock %}
         {# Footer #}
 
-        <div class="container pw-custom-column">
+        <div class="container pw-custom-column mt-4">
             <div class="row">
                 <div class="col-12 col-md-12 d-flex justify-content-center position-relative">
                     {% if settings.site_settings.MySettings.around_logo %}
 
                     {% image settings.site_settings.MySettings.around_logo format-webp-lossless as img %}
-                        <a href="/">
+                        <a class="footer-link-logo" href="/">
                             <img class="image-logo-rounde-footer" width="140px" height="140px" src="{{ img.url }}" alt="{{ img.alt }}">
-                        </a>
+                        </a>                    
                     {% endif %}
 
                     <div id="scrollToTopBtn" class="pw-arrow-up">
@@ -233,27 +233,28 @@
                     {% endif %}   
 
                 </div>
-
+                
                 <div class="row my-3">
+                    
                     <div class="container">
                         <hr>
-                        <div class="col-12 col-md-12 d-flex justify-content-between copy-div">
-                            <div class="d-flex copyright">
+                        <div class="col-12 col-md-12 d-flex justify-content-between copy-div px-3">
+                            <div class="copyright">
                                 Copyright © 2023 <span>&nbsp; Health4Kids</span>. Alle Rechte vorbehalten.
                             </div>
                             <div class="d-flex">
                                 {% if settings.site_settings.MySettings.facebook %}
-                                <a href="{{ settings.site_settings.SocialMediaSettings.facebook }}" aria-label="facebook öffnen">
+                                <a href="{{ settings.site_settings.MySettings.facebook }}" aria-label="facebook öffnen">
                                     <i class="pw-icon fa-brands fa-square-facebook"></i>
                                 </a>
                                 {% endif %}
                                 {% if settings.site_settings.MySettings.instagram %}
-                                <a href="{{ settings.site_settings.SocialMediaSettings.instagram }}" aria-label="instagram öffnen">
+                                <a href="{{ settings.site_settings.MySettings.instagram }}" aria-label="instagram öffnen">
                                     <i class="pw-icon fa-brands fa-instagram"></i>
                                 </a>
                                 {% endif %}
                                 {% if settings.site_settings.MySettings.whatsapp %}
-                                    <a href="{{ settings.site_settings.SocialMediaSettings.whatsapp }}" aria-label="Whatsapp öffnen">
+                                    <a href="{{ settings.site_settings.MySettings.whatsapp }}" aria-label="Whatsapp öffnen">
                                         <i class="pw-icon fa-brands fa-whatsapp"></i>
                                     </a>
                                 {% endif %}
