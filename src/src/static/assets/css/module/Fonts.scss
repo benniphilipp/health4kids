@@ -58,12 +58,19 @@ p{
     font-weight: 400;
     line-height: 1.5;
 }
+
 span.pw-skyline{
     font-family: 'Playfair Display';
 }
 
 a{
+    color: var(--red);
     text-decoration: none;
+    &:hover{
+        font-weight: 400;
+        text-decoration: underline;
+        color: var(--dark-blue);  
+    }
 }
 
 .h-color-red{

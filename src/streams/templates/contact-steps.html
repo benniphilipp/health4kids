@@ -3,13 +3,13 @@
 <section id="contact-steps" class="pw-custom-column pw-custom-column-tablet">
     <div class="container py-3 py-lg-5 d-flex pw-content flex-column">
 
-        <div class="row">
-            <div class="col-12 col-md-12 col-md-4">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 col-md-4">
                 <div class='pw-content d-flex flex-column position-relative'>
                     <div class="pw-headline-text h-color-dark-blue text-center">
                         {{self.headline|richtext}}
                     </div>
-                    <div class="pw-text text-center">
+                    <div class="pw-text text-center textliste">
                         {{self.paragraph|richtext}}
                     </div>
                 </div>
@@ -20,7 +20,7 @@
             {% for steps_reapeat  in self.contact_steps_reapeat %}
                 {% image steps_reapeat.image format-webp-lossless width-800 as img %}
 
-                <div class="col-12 col-md-4 col-lg-4">
+                <div class="col-12 col-md-4 col-lg-4  my-md-0 mt-4">
                     <div class="d-flex flex-column justify-content-center position-relative flex-column pw-content">
                         <div class="image-round-wrapper">
                             <div class="conter">
@@ -39,11 +39,11 @@
         </div>
 
         <div class="row">
-            <div class="col-12 col-md-12 d-flex justify-content-center">
+            <div class="col-12 col-md-12 d-flex justify-content-center my-md-0 mt-4">
                 {% if self.button_url %}
                     <a href="{{self.button_url}}" class="btn btn-secondary">{{ self.button_text }} <i class="fa-solid fa-arrow-right"></i></a>
                 {% elif self.button_page %}
-                    <a href="{{self.button_page}}" class="btn btn-secondary">{{ self.button_text }} <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="{{self.button_page.url}}" class="btn btn-secondary">{{ self.button_text }} <i class="fa-solid fa-arrow-right"></i></a>
                 {% endif %}
             </div>
         </div>

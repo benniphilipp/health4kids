@@ -7,7 +7,7 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.blocks import RichTextBlock
 
 
-# Fragebogen Iframe
+'''Fragebogen Iframe'''
 class QuestionnaireIframe(blocks.StructBlock):
     
     # Überschrift
@@ -15,7 +15,7 @@ class QuestionnaireIframe(blocks.StructBlock):
         required=True,
         max_length=96,
         label="Überschrift",
-        features=['h2', 'custom-inline', 'custom-inline-blue'],
+        features=['h2', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue'],
         help_text="Kreiere eine überzeugende Überschrift, um deine Website-Besucher auf deiner Website zu halten. Maximal 96 Zeichen."
     )
     
@@ -27,7 +27,7 @@ class QuestionnaireIframe(blocks.StructBlock):
         form_classname="max_length-364",
         label="Fließtextfeld",
         help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst. Maximal 550 Zeichen.",
-        features=['h2', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'])
+        features=['custom-inline', 'custom-inline-blue', 'link', 'ol', 'ul', 'bold', 'italic'])
     
     # Iframe
     typeform = blocks.CharBlock(
@@ -41,8 +41,7 @@ class QuestionnaireIframe(blocks.StructBlock):
         label = "Typeform Fragebogen"
 
 
-
-# Imagebulletpoints
+'''Imagebulletpoints'''
 class ImageBulletPoints(blocks.StructBlock):
     
     # Image
@@ -57,7 +56,7 @@ class ImageBulletPoints(blocks.StructBlock):
         required=True,
         max_length=96,
         label="Überschrift",
-        features=['h2', 'custom-inline', 'custom-inline-blue'],
+        features=['h2', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue'],
         help_text="Kreiere eine überzeugende Überschrift, um deine Website-Besucher auf deiner Website zu halten. Maximal 96 Zeichen."
     )
     
@@ -69,7 +68,7 @@ class ImageBulletPoints(blocks.StructBlock):
         form_classname="max_length-364",
         label="Fließtextfeld",
         help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst. Maximal 550 Zeichen.",
-        features=['h2', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'])
+        features=['custom-inline', 'custom-inline-blue', 'link', 'ol', 'ul', 'bold', 'italic'])
     
     
     class Meta:
@@ -79,20 +78,20 @@ class ImageBulletPoints(blocks.StructBlock):
        help_text="Fließtext mit Bild einfach, mit einem Bild und der Möglichkeit, das Bild links und den Text rechts oder das Bild rechts und den Text links zu platzieren."
 
 
-
-# Contact steps
+'''Contact steps'''
+# Label-Feldname Anpassung
 class ContactStepsBlock(blocks.StructBlock):
     titel = blocks.TextBlock(
         required=False, 
         max_length=33, 
         help_text="Maximal 33 Zeichen.", 
-        label="Titel Accordion")
+        label="Titel")
     
     text = blocks.TextBlock(
         required=True, 
         help_text="Maximal 120 Zeichen.", 
         max_length=120, 
-        label="Text Accordion")
+        label="Text")
     
     image = ImageChooserBlock(
         required=False,
@@ -101,16 +100,13 @@ class ContactStepsBlock(blocks.StructBlock):
     )
 
 class ContactSteps(blocks.StructBlock):
-    
-    min_num = 1
-    max_num = 3
-    
+        
     # Überschrift
     headline = blocks.RichTextBlock(
         required=True,
         max_length=96,
         label="Überschrift",
-        features=['h2', 'custom-inline', 'custom-inline-blue'],
+        features=['h2', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue'],
         help_text="Kreiere eine überzeugende Überschrift, um deine Website-Besucher auf deiner Website zu halten. Maximal 96 Zeichen."
     )
     
@@ -122,12 +118,14 @@ class ContactSteps(blocks.StructBlock):
         form_classname="max_length-364",
         label="Fließtextfeld",
         help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst.",
-        features=['h2', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'])
+        features=['custom-inline', 'custom-inline-blue', 'pw-dark-blue', 'pw-white', 'pw-red', 'link', 'ol', 'ul', 'bold', 'italic'])
     
     # Contact Steps
     contact_steps_reapeat = blocks.ListBlock(
         ContactStepsBlock,
         label="Kontaktschritte Karten",
+        min_num = 1,
+        max_num = 3,
         help_text="Hier kannst du die Schritte aufzeigen, die deine Website-Besucher gehen müssen, um mit dir in Kontakt zu treten.")
 
     #Button Auswahl
@@ -137,7 +135,8 @@ class ContactSteps(blocks.StructBlock):
             ('extern', 'Verlinkung extern'),
         ],
         label="Auswahl",
-        default='page', 
+        default='page',
+        form_classname="select-contact-steps", 
         help_text='Bitte wähle aus, was du verlinken möchtest: eine externe Seite oder eine interne Seite.'
     ) 
     
@@ -145,12 +144,14 @@ class ContactSteps(blocks.StructBlock):
     button_page = blocks.PageChooserBlock(
         required=False,
         label="Seitenauswahl",
+        form_classname="select-contact-steps-page", 
         help_text="Die Seite muss öffentlich sein, damit Besucher deine Website erreichen können.")
     
     #Button link
     button_url = blocks.URLBlock(
         required=False,
         label="Websiten-URL",
+        form_classname="select-contact-steps-url", 
         help_text="Hier kannst du eine Wunschwebsite verlinken. Achte darauf, dass diese Seite unter https erreichbar ist.")
     
     #Button Text
@@ -164,13 +165,12 @@ class ContactSteps(blocks.StructBlock):
     
     class Meta:
         template = 'contact-steps.html'
-        icon = 'edit'
+        icon = 'dots-horizontal'
         label = "Kontaktschritte"
+        help_text="Hier kannst du Schritte abbilden, wie eine Zusammenarbeit mit dir aussieht oder wie man mit dir in Kontakt tritt."
 
-    
 
-
-# Video
+'''Video'''
 class Video(blocks.StructBlock):
     video_url = blocks.CharBlock(
         required=True, 
@@ -182,7 +182,7 @@ class Video(blocks.StructBlock):
         required=True,
         max_length=96,
         label="Überschrift",
-        features=['h2', 'custom-inline', 'custom-inline-blue'],
+        features=['h2', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue'],
         help_text="Kreiere eine überzeugende Überschrift, um deine Website-Besucher auf deiner Website zu halten. Maximal 96 Zeichen."
     )
     
@@ -194,7 +194,7 @@ class Video(blocks.StructBlock):
         form_classname="max_length-364",
         label="Fließtextfeld",
         help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst.",
-        features=['h2', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'])
+        features=['custom-inline', 'pw-white', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue', 'link', 'ol', 'ul', 'bold', 'italic'])
     
     #Button Auswahl
     link_type = blocks.ChoiceBlock(
@@ -204,19 +204,22 @@ class Video(blocks.StructBlock):
         ],
         label="Auswahl",
         default='page', 
+        form_classname="select-video",
         help_text='Bitte wähle aus, was du verlinken möchtest: eine externe Seite oder eine interne Seite.'
-    ) 
+    )
     
-        #Button Page
+    #Button Page
     button_page = blocks.PageChooserBlock(
         required=False,
         label="Seitenauswahl",
+        form_classname="select-video-page",
         help_text="Die Seite muss öffentlich sein, damit Besucher deine Website erreichen können.")
     
     #Button link
     button_url = blocks.URLBlock(
         required=False,
         label="Websiten-URL",
+        form_classname="select-video-url",
         help_text="Hier kannst du eine Wunschwebsite verlinken. Achte darauf, dass diese Seite unter https erreichbar ist.")
     
     #Button Text
@@ -235,12 +238,8 @@ class Video(blocks.StructBlock):
         help_text = "Ein Video hilft deinen Website-Besuchern, deine Botschaft noch intensiver zu vermitteln und sie länger auf deiner Website zu halten."
 
 
-
-
-
-
-
-# Accordion
+'''Accordion'''
+# Label-Feldname Anpassung
 class AccordionBlock(blocks.StructBlock):
     titel = blocks.TextBlock(required=False, max_length=33, help_text="Maximal 33 Zeichen.", label="Titel Accordion")
     text = blocks.TextBlock(required=True, help_text="Maximal 400 Zeichen.", max_length=400, label="Text Accordion")
@@ -253,7 +252,7 @@ class Accordion(blocks.StructBlock):
         required=True,
         max_length=96,
         label="Überschrift",
-        features=['h2', 'custom-inline', 'custom-inline-blue'],
+        features=['h2', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue'],
         help_text="Kreiere eine überzeugende Überschrift, um deine Website-Besucher auf deiner Website zu halten. Maximal 96 Zeichen."
     )
     
@@ -264,8 +263,8 @@ class Accordion(blocks.StructBlock):
         max_length=164,
         form_classname="max_length-364",
         label="Fließtextfeld",
-        help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst.",
-        features=['h2', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'])
+        help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst, maximal 164 Zeichen.",
+        features=['custom-inline', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown', 'custom-inline-blue', 'link', 'ol', 'ul', 'bold', 'italic'])
     
     accordion_reapeat = blocks.ListBlock(
         AccordionBlock(),
@@ -280,7 +279,8 @@ class Accordion(blocks.StructBlock):
             ('extern', 'Verlinkung extern'),
         ],
         label="Auswahl",
-        default='page', 
+        default='page',
+        form_classname="select-accordion-one",
         help_text='Bitte wähle aus, was du verlinken möchtest: eine externe Seite oder eine interne Seite.'
     ) 
     
@@ -288,12 +288,14 @@ class Accordion(blocks.StructBlock):
     button_page = blocks.PageChooserBlock(
         required=False,
         label="Seitenauswahl",
+        form_classname="select-accordion-one-page",
         help_text="Die Seite muss öffentlich sein, damit Besucher deine Website erreichen können.")
     
     #Button link
     button_url = blocks.URLBlock(
         required=False,
         label="Websiten-URL",
+        form_classname="select-accordion-one-url",
         help_text="Hier kannst du eine Wunschwebsite verlinken. Achte darauf, dass diese Seite unter https erreichbar ist.")
     
     #Button Text
@@ -307,19 +309,24 @@ class Accordion(blocks.StructBlock):
     
     class Meta:
         template = 'accordion.html'
-        icon = 'edit'
+        icon = 'clipboard-list'
         label = "Accordion"
         help_text="Das Accordion ist dazu da, viel Text auf wenig Raum übersichtlich zu präsentieren."
     
-    
 
-
-
-
-
-
-# Text One Image mit Wechsle bild links oder rechts
+'''Text One Image mit Wechsle bild links oder rechts'''
 class TextOneImage(blocks.StructBlock):
+    
+    # Text links rechts
+    text_position = blocks.ChoiceBlock(
+        choices=[
+            ('order-first', 'Bild Links & Text Rechts'),
+            ('order-last', 'Bild Rechts & Text Links'),
+        ],
+        label="Auswahl",
+        default='order-first', 
+        help_text='Hier kannst du ganz leicht das Bild links oder rechts platzieren.'
+    ) 
     
     # Image
     image = ImageChooserBlock(
@@ -333,7 +340,7 @@ class TextOneImage(blocks.StructBlock):
         required=True,
         max_length=96,
         label="Überschrift",
-        features=['h2', 'custom-inline', 'custom-inline-blue'],
+        features=['h2', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue'],
         help_text="Kreiere eine überzeugende Überschrift, um deine Website-Besucher auf deiner Website zu halten. Maximal 96 Zeichen."
     ) 
     
@@ -353,7 +360,7 @@ class TextOneImage(blocks.StructBlock):
         form_classname="max_length-364",
         label="Fließtextfeld",
         help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst.",
-        features=['h2', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'])
+        features=['custom-inline', 'custom-inline-blue', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown', 'link', 'ol', 'ul', 'bold', 'italic'])
     
     #Button Auswahl
     link_type = blocks.ChoiceBlock(
@@ -363,29 +370,22 @@ class TextOneImage(blocks.StructBlock):
         ],
         label="Auswahl",
         default='page', 
+        form_classname="select-text-image-one",
         help_text='Bitte wähle aus, was du verlinken möchtest: eine externe Seite oder eine interne Seite.'
-    ) 
-    
-    text_position = blocks.ChoiceBlock(
-        choices=[
-            ('order-first', 'Bild Links & Text Rechts'),
-            ('order-last', 'Bild Rechts & Text Links'),
-        ],
-        label="Auswahl",
-        default='order-first', 
-        help_text='Hier kannst du ganz leicht das Bild links oder rechts platzieren.'
     ) 
     
     #Button Page
     button_page = blocks.PageChooserBlock(
         required=False,
         label="Seitenauswahl",
+        form_classname="select-text-image-one-page",
         help_text="Die Seite muss öffentlich sein, damit Besucher deine Website erreichen können.")
     
     #Button link
     button_url = blocks.URLBlock(
         required=False,
         label="Websiten-URL",
+        form_classname="select-text-image-one-url",
         help_text="Hier kannst du eine Wunschwebsite verlinken. Achte darauf, dass diese Seite unter https erreichbar ist.")
     
     #Button Text
@@ -404,17 +404,14 @@ class TextOneImage(blocks.StructBlock):
        label = "Fließtext mit Bild einfach."
        help_text="Fließtext mit Bild einfach, mit einem Bild und der Möglichkeit, das Bild links und den Text rechts oder das Bild rechts und den Text links zu platzieren."
     
-    
 
-
-
-# Textfield Full Width
+'''Textfield Full Width'''
 class TextfieldFullWidth(blocks.StructBlock):
     text = blocks.RichTextBlock(
         required=True,
         max_length=10000,
         label="Fließtextfeld",
-        features=['h2', 'custom-inline', 'custom-inline-blue'],
+        features=['h2', 'h3', 'h4', 'p', 'link', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'], # Mein Fließtextfeld Test
         help_text="Textfeld gesamte Breite, maximal 10.000 Zeichen."
     ) 
     
@@ -425,7 +422,8 @@ class TextfieldFullWidth(blocks.StructBlock):
         help_text = "Textfeld gesamte Breite, gut geeignet, um viel Fließtext zu platzieren."
 
 
-#Link Cards
+'''Link Karten'''
+# Label-Feldname Anpassung
 class CustomLinkCardBlock(blocks.StructBlock):
     image = ImageChooserBlock(
         required=False,
@@ -467,6 +465,8 @@ class LinkCards(blocks.StructBlock):
     heading = blocks.RichTextBlock(
         blank=True,
         label="Überschrift",
+        max_length=66,
+        features=['h2', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue'],
         help_text="Hier kannst du eine Überschrift eingeben."
     )
 
@@ -479,11 +479,11 @@ class LinkCards(blocks.StructBlock):
     class Meta:
         template = 'link-cards.html'
         icon = 'edit'
-        label = "Link-Karte"
+        label = "Link-Karten"
         help_text = "Benutzerdefinierte Link-Karten sind gut geeignet, um dem Benutzer eine Orientierung zu geben und ihn dorthin zu leiten, wo es für dich wichtig ist."
 
 
-#Promo Box
+'''Promo Box'''
 class PromoBox(blocks.StructBlock):
     heading = blocks.RichTextBlock(
         max_length=66,
@@ -491,15 +491,15 @@ class PromoBox(blocks.StructBlock):
         form_classname="max_length-66", 
         required=True,
         help_text="Eine aussagekräftige Überschrift, um deine Website-Besucher zu animieren, weiter zu klicken, maximal 66 Zeichen.",
-        features=['h2', 'custom-inline', 'custom-inline-blue'])
+        features=['h2', 'custom-inline', 'custom-inline-blue',])
     
     paragraph = blocks.RichTextBlock(
         max_length=192,
         form_classname="max_length-192", 
         required=False,
         label="Fließtextfeld",
-        help_text="Beschreibe noch einmal, um was es auf der Seite gibt, die du verlinkt hast. Maximal 66 Zeichen.",
-        features=['h2', 'h3', 'custom-inline', 'custom-inline-blue'])
+        help_text="Beschreibe noch einmal, um was es auf der Seite gibt, die du verlinkt hast. Maximal 192 Zeichen.",
+        features=['pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue', 'bold', 'italic'])
     
     #Button Auswahl
     link_type = blocks.ChoiceBlock(
@@ -508,7 +508,8 @@ class PromoBox(blocks.StructBlock):
             ('extern', 'Verlinkung extern'),
         ],
         label="Auswahl",
-        default='page', 
+        default='page',
+        form_classname="select-promo-box",
         help_text='Bitte wähle aus, was du verlinken möchtest: eine externe Seite oder eine interne Seite.'
     ) 
     
@@ -516,12 +517,14 @@ class PromoBox(blocks.StructBlock):
     button_page = blocks.PageChooserBlock(
         required=False,
         label="Seitenauswahl",
+        form_classname="select-promo-box-page",
         help_text="Hier kannst du eine Wunschwebsite verlinken.")
     
     #Button link
     button_url = blocks.URLBlock(
         required=False,
         label="Websiten-URL",
+        form_classname="select-promo-box-url",
         help_text="Hier kannst du eine Wunschwebsite verlinken. Achte darauf, dass diese Seite unter https erreichbar ist.")
     
     #Button Text
@@ -534,40 +537,46 @@ class PromoBox(blocks.StructBlock):
 
     class Meta:
         template = 'promo-box.html'
-        icon = 'edit'
+        icon = 'success'
         label = "Promo Box"
+        help_text = "Promo-Box zum Hervorheben von Aktionen, die der Benutzer ausführen soll."
     
 
-# Media Masonry
+'''Media Masonry'''
+# Label-Feldname Anpassung
+class ImageBlock(blocks.StructBlock):
+    image = ImageChooserBlock(required=True)
+
 class MediaMasonry(blocks.StructBlock):
-    min_num = 3
-    max_num = 9
+    heading = blocks.RichTextBlock(
+        features=['h2', 'pw-dark-blue', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue'],
+        label="Überschrift",
+        max_length=33, 
+        blank=True)
     
-    heading = blocks.RichTextBlock(form_classname="Titel", blank=True)
-    subline = blocks.CharBlock(blank=True, max_length=350)
+    subline = blocks.CharBlock(
+        label="Unterzeile", 
+        blank=True, 
+        max_length=120)
     
-    image_repeat = blocks.ListBlock(
-        blocks.StructBlock(
-            [
-                ("image", ImageChooserBlock(required=True)),
-            ]
-        )
-    )
+    images = blocks.ListBlock(ImageBlock(), min_num=3, max_num=6)
     
     class Meta:
         template = 'media-masonry.html'
         icon = 'edit'
         label = "Media Masonry"
-        
+        help_text = "Eine einfache Bildergalerie: Die Bilder werden bei einem Klick auf das Bild in einem Popup angezeigt." 
+           
 
+'''Bild Text'''
+# Label-Feldname Anpassung
 class CustomImageRepeatBlock(blocks.StructBlock):
     image = ImageChooserBlock(
         required=True,
         label="Dein Bild",
         help_text="Hier kannst du ein Bild auswählen."
     )
-    
-#Bild Text
+
 class ImageText(blocks.StructBlock):
     min_num = 1
     max_num = 3
@@ -579,7 +588,7 @@ class ImageText(blocks.StructBlock):
         label="Überschrift", 
         help_text="Hier ist der Platz für eine aussagekräftige Überschrift, um deine Webseitenbesucher zu begeistern, maximal 33 Zeichen..",
         form_classname="max_length-66",
-        features=['h2', 'custom-inline', 'custom-inline-blue']
+        features=['h2', 'pw-dark-blue', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue']
     )
     
     # Subline
@@ -597,7 +606,8 @@ class ImageText(blocks.StructBlock):
         max_length=280,
         label="Fließtextfeld",
         help_text="Die Unterzeile wird in Rot dargestellt, ist auf maximal 280 Zeichen begrenzt und kein Pflichtfeld. Du kannst es gerne leer lassen!", 
-        form_classname="max_length-280"
+        form_classname="max_length-280",
+        features=['pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic']
     )
     
     #Button Auswahl
@@ -608,6 +618,7 @@ class ImageText(blocks.StructBlock):
         ],
         label="Auswahl",
         default='page', 
+        form_classname="select-image-text",
         help_text='Bitte wähle aus, was du verlinken möchtest: eine externe Seite oder eine interne Seite.'
     ) 
     
@@ -615,12 +626,14 @@ class ImageText(blocks.StructBlock):
     button_page = blocks.PageChooserBlock(
         required=False,
         label="Seitenauswahl",
+        form_classname="select-image-page",
         help_text="Die Seite muss öffentlich sein, damit Besucher deine Website erreichen können.")
     
     #Button link
     button_url = blocks.URLBlock(
         required=False,
         label="Websiten-URL",
+        form_classname="select-image-url",
         help_text="Hier kannst du eine Wunschwebsite verlinken. Achte darauf, dass diese Seite unter https erreichbar ist.")
     
     #Button Text
@@ -637,19 +650,18 @@ class ImageText(blocks.StructBlock):
     class Meta:
         template = 'bild-text.html'
         icon = 'edit'
-        label = "Bild Text"
+        label = "Bildtext mit farbigem Hintergrund"
         help_text= "Der Bild-Text ist dafür geeignet, reichlich Informationen mit ansprechenden Bildern bereitzustellen und sie von deiner Dienstleistung zu überzeugen."
 
 
-# Personen Block
+'''Testimonial Slider'''
+# Label-Feldname Anpassung
 class PersonBlock(blocks.StructBlock):
     text = blocks.TextBlock(required=True, help_text="Maximal 400 Zeichen.", max_length=400, label="Text")
     img_person = ImageChooserBlock(required=False, label="Bild der Person")
     name_person = blocks.TextBlock(required=False, max_length=33, help_text="Maximal 33 Zeichen.", label="Name der Person")
     job_person = blocks.TextBlock(required=False, max_length=33, help_text="Maximal 33 Zeichen.", label="Beruf der Person")
-    
 
-# Testimonial Slider
 class TestimonialSilder(blocks.StructBlock):
     min_mum = 1
     max_num = 12
@@ -681,11 +693,13 @@ class TestimonialSilder(blocks.StructBlock):
         
     class Meta:
         template = 'slider.html'
-        icon = 'edit'
-        label = "Slider"
-        help_text="Der Slider ist geeignet, um die Stimmen deiner Kunden deinen Website-Besuchern zu zeigen."
+        icon = 'image'
+        label = "Testimonial Slider"
+        help_text="Der Testimonial Slider ist geeignet, um die Stimmen deiner Kunden deinen Website-Besuchern zu zeigen."
 
 
+'''Fancy Box'''
+# Label-Feldname Anpassung
 class CustomCardBlock(blocks.StructBlock):
     image = ImageChooserBlock(
         required=True,
@@ -709,8 +723,6 @@ class CustomCardBlock(blocks.StructBlock):
         label="Seitenauswahl",
         help_text="Hier kannst du eine Wunschwebsite verlinken.")
 
-
-# Fancy Box Section
 class FancyBox(blocks.StructBlock):
     min_num = 1
     max_num = 2
@@ -720,13 +732,15 @@ class FancyBox(blocks.StructBlock):
         max_length=33,
         form_classname="max_length-33", 
         label="Überschrift klein",
-        help_text="Diese Überschrift ist nur dafür geeignet, den Website-Besucher neugierig zu machen, was es auf der nächsten Seite zu entdecken gibt.")
+        features=['h2', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue'],
+        help_text="Diese Überschrift ist nur dafür geeignet, den Website-Besucher neugierig zu machen, was es auf der nächsten Seite zu entdecken gibt. Maximal 33 Zeichen.")
     
     paragraph = blocks.RichTextBlock(
         required=False,
         max_length=178,
         label="Fließtextfeld",
-        help_text="Die Unterzeile wird in Rot dargestellt, ist auf maximal 178 Zeichen begrenzt und kein Pflichtfeld. Du kannst es gerne leer lassen!", 
+        help_text="Die Unterzeile wird in Rot dargestellt, ist auf maximal 178 Zeichen begrenzt und kein Pflichtfeld. Du kannst es gerne leer lassen! Maximal 178 Zeichen.",
+        features=['pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'], 
         form_classname="max_length-178")
     
     cards_repeat = blocks.ListBlock(CustomCardBlock, label="Deine Bilder-Galerie", help_text="Du kannst die gewünschten Bilder entweder aus der Mediathek einbinden oder extern laden.")
@@ -738,7 +752,8 @@ class FancyBox(blocks.StructBlock):
         help_text= "Die Fancy Box ist perfekt geeignet, um deine Website-Besucher auf eine weitere Website von dir zu leiten"
 
 
-# Label feld Name anpassung
+'''Gallery Image Text'''
+# Label-Feldname Anpassung
 class YourRenamedStructBlock(blocks.StructBlock):
     image = ImageChooserBlock(
         required=True,
@@ -746,8 +761,6 @@ class YourRenamedStructBlock(blocks.StructBlock):
         help_text="Wähle ein Bild aus."
     )
 
-
-# Label-Feldname Anpassung
 class GalleryImageText(blocks.StructBlock):
     
     min_num = 1
@@ -760,7 +773,7 @@ class GalleryImageText(blocks.StructBlock):
         label="Überschrift", 
         help_text="Hier ist der Platz für eine aussagekräftige Überschrift, um deine Webseitenbesucher zu begeistern.",
         form_classname="max_length-66",
-        features=['h2', 'custom-inline', 'custom-inline-blue', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown'])
+        features=['h2', 'custom-inline', 'custom-inline-blue', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown']) # Test Überschrift auswahl
     
     # Unterzeile
     subline = blocks.CharBlock(
@@ -774,11 +787,11 @@ class GalleryImageText(blocks.StructBlock):
     paragraph = blocks.RichTextBlock(
         blank=True, 
         null=True,
-        max_length=364,
+        max_length=464,
         form_classname="max_length-364",
         label="Fließtextfeld",
-        help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst.",
-        features=['h2', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'])
+        help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst. Maximal 464 Zeichen.",
+        features=['h2', 'h3', 'h4', 'p', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue', 'ol', 'ul', 'bold', 'italic'])
     
     #Button Auswahl
     link_type = blocks.ChoiceBlock(
@@ -788,6 +801,7 @@ class GalleryImageText(blocks.StructBlock):
         ],
         label="Auswahl",
         default='page', 
+        form_classname="select-gallery-image-text",
         help_text='Bitte wähle aus, was du verlinken möchtest: eine externe Seite oder eine interne Seite.'
     ) 
     
@@ -795,12 +809,14 @@ class GalleryImageText(blocks.StructBlock):
     button_page = blocks.PageChooserBlock(
         required=False,
         label="Seitenauswahl",
+        form_classname="select-gallery-image-text-page",
         help_text="Die Seite muss öffentlich sein, damit Besucher deine Website erreichen können.")
     
     #Button link
     button_url = blocks.URLBlock(
         required=False,
         label="Websiten-URL",
+        form_classname="select-gallery-image-text-url",
         help_text="Hier kannst du eine Wunschwebsite verlinken. Achte darauf, dass diese Seite unter https erreichbar ist.")
     
     #Button Text

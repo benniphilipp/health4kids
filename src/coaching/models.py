@@ -17,7 +17,8 @@ from streams.blocks import (
     ImageText, 
     MediaMasonry, 
     PromoBox, 
-    LinkCards)
+    LinkCards,
+    TextfieldFullWidth)
 
 class Coaching(Page):
     template = "coaching_page.html"
@@ -30,6 +31,7 @@ class Coaching(Page):
         ('video', Video()),
         ('contact_steps', ContactSteps()),
         ('image_bullet_points', ImageBulletPoints()),
+        ('textfield_full_width', TextfieldFullWidth()),
         ('questionnaire_iframe', QuestionnaireIframe()),
         ('headline_text_horizontal_line', GalleryImageText()),
         ('fancy_box', FancyBox()),
@@ -50,8 +52,10 @@ class Coaching(Page):
         ObjectList(content_stream, heading='Inhalt deiner Website'),
         ObjectList(Page.promote_panels, heading='Promotional'),
         ObjectList(Page.promote_panels, heading='Seo-Einstellungen'),
+        ObjectList(Page.settings_panels, heading='Einstellungen'),
     ])
     
     class Meta:
         verbose_name = "Seiten"
+        
     

@@ -5,7 +5,21 @@ from wagtail.fields import RichTextField, StreamField
 from wagtail.images import get_image_model
 from wagtail.admin.panels import FieldPanel, TabbedInterface, ObjectList
 
-from streams.blocks import GalleryImageText, FancyBox, TestimonialSilder, ImageText, MediaMasonry, PromoBox, LinkCards
+from streams.blocks import (
+    TextOneImage, 
+    Accordion, 
+    Video, 
+    ContactSteps, 
+    ImageBulletPoints, 
+    QuestionnaireIframe, 
+    GalleryImageText, 
+    FancyBox, 
+    TestimonialSilder, 
+    ImageText, 
+    MediaMasonry, 
+    PromoBox, 
+    LinkCards,
+    TextfieldFullWidth)
 
 class HomePage(Page):
     template = "home/home_page.html"
@@ -83,6 +97,13 @@ class HomePage(Page):
     
     # StreamField
     content = StreamField([
+        ('text_one_image', TextOneImage()),
+        ('accordion', Accordion()),
+        ('video', Video()),
+        ('contact_steps', ContactSteps()),
+        ('image_bullet_points', ImageBulletPoints()),
+        ('textfield_full_width', TextfieldFullWidth()),
+        ('questionnaire_iframe', QuestionnaireIframe()),
         ('headline_text_horizontal_line', GalleryImageText()),
         ('fancy_box', FancyBox()),
         ('testimonial_silder', TestimonialSilder()),

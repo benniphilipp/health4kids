@@ -17,12 +17,20 @@ class FormField(AbstractFormField):
     page = ParentalKey('FormPage', on_delete=models.CASCADE, related_name='form_fields')
 
 
+
 class FormPage(AbstractEmailForm):
     page_description = "Hier kannst du individuelle Kontaktseiten nach deinem Bedarf erstellen."
     
-    intro = RichTextField(blank=True)
-    thank_you_text = RichTextField(blank=True)
-    # template = "contact_page.html"
+    intro = models.CharField(
+        max_length=96, 
+        verbose_name="Überschrift",
+        blank=False)
+    
+    thank_you_text = models.CharField(
+        max_length=96, 
+        verbose_name="Text Danke-Seite",
+        blank=False)
+
     content_panels = AbstractEmailForm.content_panels + [
         FieldPanel('intro'),
         InlinePanel('form_fields', label="Form fields"),

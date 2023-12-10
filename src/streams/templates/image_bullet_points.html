@@ -6,18 +6,21 @@
             <div class="col-12 col-md-12 col-lg-6 position-relative d-flex flex-column justify-content-center align-items-center">
                 <div class="abs-bg190"></div>
                 {% image self.image format-webp-lossless as img %}
-                <div class="image-wrapper m-2 m-lg-4">
+                <div class="image-wrapper m-2 m-lg-2">
                     <img src="{{ img.url }}" class="img-fluid pw-image" alt="{{ img.alt }}">
+
+                    {% if settings.site_settings.MySettings.email %}
                     <div class="image-label-wrapper">
                         <div class="label d-flex">
                             <i class="fa-regular fa-envelope"></i>
                         </div>
                         <a href="mailto:{{settings.site_settings.MySettings.email}}">{{settings.site_settings.MySettings.email}}</a>
                     </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="col-12 col-md-12 col-lg-6 textliste h-color-dark-blue d-flex flex-column justify-content-center">
-                <div class="mb-4">{{self.headline|richtext}}</div>
+                <div class="my-4 my-md-0">{{self.headline|richtext}}</div>
                 {{self.paragraph|richtext}}
             </div>
         </div>
