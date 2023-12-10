@@ -470,6 +470,10 @@
     z-index: 0;
     background-color: var(--dark-blue);
 
+    .btn-secondary:hover{
+        color: #222222;
+        background-color: var(--white);
+    }
     &::after{
         content: "";
         position: absolute;
@@ -712,6 +716,23 @@
 
 // Cards
 #link-cards{
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+
+    &::after{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50%;
+        height: 50%;
+        background-size: contain;
+        background-position: left bottom;
+        background-repeat: no-repeat;
+        z-index: -1;
+        background-image: url('../../image/abs-bg200.png');
+    }
 
     .pw-headline-text{
         font-weight: bold;
@@ -720,9 +741,17 @@
         border: 0;
         position: relative;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background-color: transparent;
         img{
             border-radius: .8rem;
         }
+    }
+
+    .pw-headline-text{
+        padding-bottom: 1.875rem; 
     }
 
     .card-title{
@@ -733,6 +762,7 @@
     }
 
     .card-text{
+        flex: 1;
         margin-top: 10px;
     }
     
@@ -741,7 +771,14 @@
         margin-left: 1.678rem;
         margin-top: -4rem;
         background-color: var(--white);
+        flex: 1;
+        display: flex;
+        flex-direction: column;
     } 
+
+    .btn-outline-primary{
+        margin-right: auto;
+    }
 
 }
 

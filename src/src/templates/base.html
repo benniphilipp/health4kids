@@ -188,13 +188,13 @@
         {% block content %}{% endblock %}
         {# Footer #}
 
-        <div class="container pw-custom-column mt-4">
+        <div class="container pw-custom-column">
             <div class="row">
                 <div class="col-12 col-md-12 d-flex justify-content-center position-relative">
                     {% if settings.site_settings.MySettings.around_logo %}
 
                     {% image settings.site_settings.MySettings.around_logo format-webp-lossless as img %}
-                        <a class="footer-link-logo" href="/">
+                        <a class="footer-link-logo pt-4" href="/">
                             <img class="image-logo-rounde-footer" width="140px" height="140px" src="{{ img.url }}" alt="{{ img.alt }}">
                         </a>                    
                     {% endif %}
