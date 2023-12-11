@@ -1,7 +1,7 @@
 # Git
 git add .
 git commit -m <Commit>
-git push origin bug_list <branch_name>
+git push origin cookie_banner_update <branch_name>
 
 git branch --list
 git branch <Name>

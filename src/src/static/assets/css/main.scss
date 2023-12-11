@@ -159,6 +159,7 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+// PupUp
 .popup-content {
     position: absolute;
     top: 50%;
@@ -168,6 +169,9 @@
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    @media (max-width: 768px) {
+        width: 95%;
+    }
 }
 
 .close-cookie {
@@ -178,9 +182,6 @@
     font-size: 20px;
     cursor: pointer;
 }
-
-
-
 
 // Cookie banner
 #cookie-banner{
@@ -194,6 +195,9 @@
     border-top-right-radius: 10px;
     background-color: var(--pw-bg-white);
     transform: translateX(-50%);
+    @media (max-width: 768px) {
+        width: 95%;
+    }
 
     &::after{
         content: "";
@@ -466,6 +470,10 @@
     z-index: 0;
     background-color: var(--dark-blue);
 
+    .btn-secondary:hover{
+        color: #222222;
+        background-color: var(--white);
+    }
     &::after{
         content: "";
         position: absolute;
@@ -708,6 +716,23 @@
 
 // Cards
 #link-cards{
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+
+    &::after{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50%;
+        height: 50%;
+        background-size: contain;
+        background-position: left bottom;
+        background-repeat: no-repeat;
+        z-index: -1;
+        background-image: url('../../image/abs-bg200.png');
+    }
 
     .pw-headline-text{
         font-weight: bold;
@@ -716,9 +741,17 @@
         border: 0;
         position: relative;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background-color: transparent;
         img{
             border-radius: .8rem;
         }
+    }
+
+    .pw-headline-text{
+        padding-bottom: 1.875rem; 
     }
 
     .card-title{
@@ -729,6 +762,7 @@
     }
 
     .card-text{
+        flex: 1;
         margin-top: 10px;
     }
     
@@ -737,7 +771,14 @@
         margin-left: 1.678rem;
         margin-top: -4rem;
         background-color: var(--white);
+        flex: 1;
+        display: flex;
+        flex-direction: column;
     } 
+
+    .btn-outline-primary{
+        margin-right: auto;
+    }
 
 }
 
