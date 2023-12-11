@@ -134,7 +134,7 @@ a.footer-link-logo{
     position: absolute;
     left: 50%;
     z-index: 3;
-    bottom: -70px;
+    bottom: -65px;
     transform: translateX(-50%);
 }
 .image-logo-rounde-footer{
@@ -142,6 +142,8 @@ a.footer-link-logo{
     padding: .3rem;
     border-radius: 50%;
     background-color: var(--white);
+    width: 130px;
+    height: 130px;
 }
 
 .pw-arrow-up{

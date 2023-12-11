@@ -66,6 +66,9 @@ span.pw-skyline{
 a{
     color: var(--red);
     text-decoration: none;
+    &:hover{
+        color: var(--dark-blue);
+    }
 }
 
 .h-color-red{

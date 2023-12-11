@@ -7916,6 +7916,8 @@ span.pw-skyline {
 a {
   color: var(--red);
   text-decoration: none; }
+  a:hover {
+    color: var(--dark-blue); }
 
 .h-color-red {
   color: var(--red); }
@@ -8306,14 +8308,16 @@ a.footer-link-logo {
   position: absolute;
   left: 50%;
   z-index: 3;
-  bottom: -70px;
+  bottom: -65px;
   transform: translateX(-50%); }
 
 .image-logo-rounde-footer {
   position: relative;
   padding: .3rem;
   border-radius: 50%;
-  background-color: var(--white); }
+  background-color: var(--white);
+  width: 130px;
+  height: 130px; }
 
 .pw-arrow-up {
   width: 30px;
@@ -8987,7 +8991,8 @@ a.footer-link-logo {
   max-height: 530px;
   height: auto;
   object-fit: cover;
-  object-position: top; }
+  object-position: top;
+  border-radius: 8px; }
 
 #testimonial-silder .swiper-wrapper {
   width: 100%;
