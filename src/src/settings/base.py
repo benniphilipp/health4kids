@@ -169,6 +169,10 @@ MEDIA_URL = "/media/"
 
 WAGTAIL_SITE_NAME = "src"
 
+# Make low-quality but small images
+WAGTAILIMAGES_JPEG_QUALITY = 40
+WAGTAILIMAGES_WEBP_QUALITY = 45
+
 # Search
 # https://docs.wagtail.org/en/stable/topics/search/backends.html
 WAGTAILSEARCH_BACKENDS = {

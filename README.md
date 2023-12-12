@@ -1,7 +1,7 @@
 # Git
 git add .
 git commit -m <Commit>
-git push origin cookie_banner_update <branch_name>
+git push origin carts_links <branch_name>
 
 git branch --list
 git branch <Name>
@@ -57,7 +57,7 @@ Promo Box
     - Bilder anzahl
 
 Link Karten
-    nicht getestet
+    Test bestanden
 
 Textfield Full Width
     Text Link 
