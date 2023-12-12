@@ -173,6 +173,13 @@ WAGTAIL_SITE_NAME = "src"
 WAGTAILIMAGES_JPEG_QUALITY = 40
 WAGTAILIMAGES_WEBP_QUALITY = 45
 
+WAGTAILIMAGES_FORMAT_CONVERSIONS = {
+        'avif': 'avif',
+        'bmp': 'jpeg',
+        'webp': 'webp',
+        'png': 'png',
+}
+
 # Search
 # https://docs.wagtail.org/en/stable/topics/search/backends.html
 WAGTAILSEARCH_BACKENDS = {
