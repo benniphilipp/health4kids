@@ -114,7 +114,7 @@ class ContactSteps(blocks.StructBlock):
     paragraph = blocks.RichTextBlock(
         blank=True, 
         null=True,
-        max_length=164,
+        max_length=224,
         form_classname="max_length-364",
         label="Fließtextfeld",
         help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst.",
@@ -241,7 +241,7 @@ class Video(blocks.StructBlock):
 '''Accordion'''
 # Label-Feldname Anpassung
 class AccordionBlock(blocks.StructBlock):
-    titel = blocks.TextBlock(required=False, max_length=33, help_text="Maximal 33 Zeichen.", label="Titel Accordion")
+    titel = blocks.TextBlock(required=False, max_length=166, help_text="Maximal 120 Zeichen.", label="Titel Accordion")
     text = blocks.TextBlock(required=True, help_text="Maximal 400 Zeichen.", max_length=400, label="Text Accordion")
 
     
@@ -250,7 +250,7 @@ class Accordion(blocks.StructBlock):
     # Überschrift
     headline = blocks.RichTextBlock(
         required=True,
-        max_length=96,
+        max_length=126,
         label="Überschrift",
         features=['h2', 'pw-dark-blue', 'pw-white', 'pw-red', 'pw-brown', 'custom-inline', 'custom-inline-blue'],
         help_text="Kreiere eine überzeugende Überschrift, um deine Website-Besucher auf deiner Website zu halten. Maximal 96 Zeichen."
@@ -260,7 +260,7 @@ class Accordion(blocks.StructBlock):
     paragraph = blocks.RichTextBlock(
         blank=True, 
         null=True,
-        max_length=164,
+        max_length=364,
         form_classname="max_length-364",
         label="Fließtextfeld",
         help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst, maximal 164 Zeichen.",
@@ -356,7 +356,7 @@ class TextOneImage(blocks.StructBlock):
     paragraph = blocks.RichTextBlock(
         blank=True, 
         null=True,
-        max_length=364,
+        max_length=564,
         form_classname="max_length-364",
         label="Fließtextfeld",
         help_text="Fließtextfeld für ausreichenden Text, sodass du deine Website-Besucher optimal ansprechen kannst.",
@@ -603,7 +603,7 @@ class ImageText(blocks.StructBlock):
     # Fließtextfeld 280
     paragraph = blocks.RichTextBlock(
         required=False,
-        max_length=280,
+        max_length=580,
         label="Fließtextfeld",
         help_text="Die Unterzeile wird in Rot dargestellt, ist auf maximal 280 Zeichen begrenzt und kein Pflichtfeld. Du kannst es gerne leer lassen!", 
         form_classname="max_length-280",

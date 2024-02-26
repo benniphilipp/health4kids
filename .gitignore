@@ -13,6 +13,8 @@ datenbank_sicherung.json
 # C extensions
 *.so
 
+./src/media
+.src/db.sqlite3
 
 # Distribution / packaging
 .Python

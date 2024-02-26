@@ -10,7 +10,7 @@ body{
     min-height: 100vh;
 }
 
-* {
+*{
     --diff: calc(var(--max-size) - var(--min-size));
     --responsive: calc((var(--min-size) * 1px) + var(--diff) * ((100vw - 420px) / (1200 - 420)));
 }
