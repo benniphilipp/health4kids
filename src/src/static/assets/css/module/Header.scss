@@ -5,6 +5,7 @@
     max-height: 58px;
     width: auto;
 }
+
 .navbar{
     background-color: var(--brown);
     font-family: var(--pw-font-family);
@@ -62,7 +63,7 @@
     display: none!important;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1440px) {
 
 
     #mobileMenuItem{
