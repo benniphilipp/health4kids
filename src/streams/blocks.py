@@ -89,8 +89,8 @@ class ContactStepsBlock(blocks.StructBlock):
     
     text = blocks.TextBlock(
         required=True, 
-        help_text="Maximal 120 Zeichen.", 
-        max_length=120, 
+        help_text="Maximal 320 Zeichen.", 
+        max_length=320, 
         label="Text")
     
     image = ImageChooserBlock(
